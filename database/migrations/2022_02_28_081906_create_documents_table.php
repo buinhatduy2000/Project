@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Interactive extends Migration
+class CreateDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class Interactive extends Migration
      */
     public function up()
     {
-        Schema::create('interactive', function (Blueprint $table) {
-            $table->foreign('idea_id')->references('idea_id')->on('ideas');
-            $table->interger('like');
-            $table->interger('dislike');
+        Schema::create('documents', function (Blueprint $table) {
+            $table->foreignId('idea_id')->constrained('ideas');
+            $table->string('file_name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class Interactive extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('documents');
     }
 }

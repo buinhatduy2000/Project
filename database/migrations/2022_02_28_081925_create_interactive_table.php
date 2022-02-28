@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Categories extends Migration
+class CreateInteractiveTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class Categories extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id('category_id');
-            $table->string('category_name');
+        Schema::create('interactive', function (Blueprint $table) {
+            $table->foreignId('idea_id')->constrained('ideas');
+            $table->integer('like')->default(0);
+            $table->integer('dislike')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class Categories extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('interactive');
     }
 }

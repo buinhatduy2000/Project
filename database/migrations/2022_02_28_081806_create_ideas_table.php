@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Ideas extends Migration
+class CreateIdeasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,13 @@ class Ideas extends Migration
     public function up()
     {
         Schema::create('ideas', function (Blueprint $table) {
-            $table->id('idea_id');
-            $table->foreign('user_id')->references('user_id')->on('accounts');
-            $table->string('idea_title');
-            $table->integer('views');
+            $table->id();
+            $table->string('idea_title', 50);
+            $table->foreignId('user_id')->constrained('accounts');
+            $table->foreignId('category_id')->constrained('categories');
             $table->string('image');
-            $table->foreign('category_id')->references('category_id')->on('categories');
+            $table->integer('view');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class Ideas extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('ideas');
     }
 }

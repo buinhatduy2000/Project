@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatAccountTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->bigInteger('user_id') -> unsigned();
-            $table->string('user_name');
-            $table->string('password');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->foreignId('idea_id')->constrained('ideas');
+            $table->text('content');
+            $table->integer('parent_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatAccountTable extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('comments');
     }
 }
