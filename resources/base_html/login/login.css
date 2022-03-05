@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.login{
+    display: flex;
+}
+.login-left{
+    background-image: url(../photos/img1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 60%;
+    height: 100vh;
+}
+.box-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20%;
+    height: 100%;
+    color: #fff;
+    font-family: sans-serif;
+}
+.login .login-left .box-left h1{
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+.login .login-left .box-left span{
+    font-size: 24px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+.login .login-left .box-left button{
+    background-color: #3F87F5;
+    color: #fff;
+    width: 18%;
+    font-size: 15px;
+    font-weight: 100;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    opacity: 0.8;
+}
+.login .login-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 10%;
+    font-family: sans-serif;
+}
+.login .login-right .box-right .title-top{
+    margin-bottom: 40px;
+
+}
+.login .login-right .box-right .title-top h1{
+    margin-bottom: 10px;
+}
+.login .login-right .box-right .title-top span{
+    font-weight: 300;
+}
+.box-top{
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 20px;
+    opacity: 0.5;
+}
+.login .login-right .box-right .box-title .box-top input{
+    border: none;
+    border-radius: 20px;
+    font-weight: 200;
+}
+.login .login-right .box-right .box-title .box-top input:focus-visible{
+    outline: none;
+}
+.box-bottom{
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 20px;
+    opacity: 0.5;
+}
+.login .login-right .box-right .box-title .box-bottom input{
+    border: none;
+    border-radius: 20px;
+    font-weight: 200;
+}
+.login .login-right .box-right .box-title .box-bottom input:focus-visible{
+    outline: none;
+}
+.login .login-right .box-right .box-title input{
+    width: 260px;
+    padding: 10px;
+}
+.login .login-right .box-right .title-bottom{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+.login .login-right .box-right .title-bottom input{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+.login .login-right .box-right .title-bottom span{
+    margin-left: 50px;
+}
+.login .login-right .box-right button{
+    width: 300px;
+    padding: 15px 0;
+    color: #fff;
+    background-color: #3F87F5;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+}

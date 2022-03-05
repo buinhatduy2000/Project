@@ -71,18 +71,38 @@ body{
     background-color: white;
     margin-right: 16px;
 }
-.login-box button{
-    width: 130px;
-    height: 37px;   
-    text-align: center; 
-    background-color: #18A0FB;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 25px;    
+.infor-user {
+    display: flex;
+}
+.btn-secondary {
+    background-color: white;
+}
+.infor-user img{
+    width: 37px;
+    height: 37px;
+    filter: drop-shadow(0px 25px 80px rgba(2, 140, 213, 0.2));
+    border-radius: 50%;
+    margin: 0 12px 0 22px;
+}
+.infor-user-name p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 26px;
+    color: #515252;
+}
+.infor-user-name h6{
+    margin: 0;
+    font-size: 8px;
+    line-height: 14px;
+    font-weight: 500;
+    color: #11132A;    
 }
 .tbody {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;        
+    
+    width: 1440px;
+    margin: 0 auto;   
 }
 .tbody-sitebar {
     width: 252px;
@@ -110,86 +130,85 @@ body{
     font-family: sans-serif;
 }
 .tbody-content {
-    width: 1188px;
-    height: 40px;
+    height: 940px;
 }
-.tbody-filter {
+.tbody-detail {   
+    text-align: center;   
+    width: 1187px;
+    color: #8F8F8F;
+}
+.create-docs {
+    width: 1187px;  
+    margin: 0 auto;             
+}
+.document {
     display: flex;
-    flex-direction: row; 
+    flex-direction: column;
+    width: 482px;    
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    border-radius: 4px;
+    margin: 20px auto; 
+}
+.document label {
+    color: rgba(17, 17, 17, 0.48);
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 6px 0 0 16px;
+}
+.document input {
+    border: none;    
+    margin: 0 0 6px 16px;
+}
+.document textarea {
+    border: none;    
+    margin: 0 0 6px 16px;
+}
+.document select {
+    border: none;    
+    margin: 0 0 6px 12px;
+}
+.document-file {
+    width: 482px;
+    display: flex;
     justify-content: space-between;
-    padding: 10px 40px 10px 40px;
-}
-.tbody-filter-right {
-    display: flex;
-    flex-direction: row; 
-}
-.tbody-filter-right p {
-    border-right: 1px solid #D5D6D6;
-}
-.tbody-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-.tbody-dropbtn {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);    
-    font-size: 14px;
-    margin-left: 18px;
-    border: none;
-    cursor: pointer;
-}
-.tbody-dropdown-ct {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.tbody-dropdown-ct a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-.tbody-dropdown-ct a:hover {
-    background-color: #f1f1f1;
-}
-.tbody-dropdown:hover .tbody-dropdown-ct {
-    display: block;
-}
-.tbody-documents {
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
-    margin: 0 24px 64px 32px;
-    border-bottom: 1px solid #000000;
-}
-.tbody-doc-left p{
-    width: 780px;
-    font-size: 18px;
-}
-.author {
-    color: rgba(28, 46, 69, 0.6);
-    margin-top: 28px;
-    margin-bottom: 4px;
-}
-.view {
-    margin-top: 14px;
-}
-.page-navigation {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-right: 24px;
-}
-.tbody {
-    height: 1640px;
-    width: 1440px;
     margin: 0 auto;
 }
- HEAD
-
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {  
+    font-size: 16px;
+    line-height: 24px;   
+    padding: 10px 20px; 
+    border: 2px solid #111111;     
+    border-radius: 4px;     
+    display: inline-block;
+    cursor: pointer;
+}
+.inputfile:focus + label, .inputfile + label:hover {
+    background-color: rgb(185, 185, 185);
+}
+.create-docs button {
+    width: 157.28px;
+    height: 32.95px;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #18A0FB;
+    background-color: #FFFFFF;
+    border-radius: 14px 14px 16px 14px;
+    border: 1px solid #18A0FB;
+    margin: 48px 534px;
+}
+footer {
+    width: 1440px;
+}
 .footer-1 {
     display: flex;  
     justify-content: space-between;
@@ -213,6 +232,7 @@ body{
 }
 .tool ul {    
     list-style-type: none;     
+    width: 280px;
 }
 .tool li {
     margin-bottom: 18px;
