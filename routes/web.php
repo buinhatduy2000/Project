@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ Route::post('/login', [\App\Http\Controllers\AccountController::class, 'postLogi
 Route::get('/logout', [\App\Http\Controllers\AccountController::class, 'logout'])->name('logout');
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/category', CategoryController::class);
