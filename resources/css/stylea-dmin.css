@@ -1,0 +1,578 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Login */
+
+.login{
+    display: flex;
+}
+.login-left{
+    background-image: url(../img/img1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 60%;
+    height: 100vh;
+}
+.login-box-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20%;
+    height: 100%;
+    color: #fff;
+    font-family: sans-serif;
+}
+.login .login-left .login-box-left h1{
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+.login .login-left .login-box-left span{
+    font-size: 24px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+.login .login-left .login-box-left button{
+    background-color: #3F87F5;
+    color: #fff;
+    width: 18%;
+    font-size: 15px;
+    font-weight: 100;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    opacity: 0.8;
+}
+.login .login-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 10%;
+    font-family: sans-serif;
+}
+.login .login-right .login-box-right .login-title-top{
+    margin-bottom: 40px;
+
+}
+.login .login-right .login-box-right .login-title-top h1{
+    margin-bottom: 10px;
+}
+.login .login-right .login-box-right .login-title-top span{
+    font-weight: 300;
+}
+.login-box-top{
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 20px;
+    opacity: 0.5;
+}
+.login .login-right .login-box-right .login-box-title .login-box-top input{
+    border: none;
+    border-radius: 20px;
+    font-weight: 200;
+}
+.login .login-right .login-box-right .login-box-title .login-box-top input:focus-visible{
+    outline: none;
+}
+.login-box-bottom{
+    margin-bottom: 15px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding-left: 20px;
+    opacity: 0.5;
+}
+.login .login-right .login-box-right .login-box-title .login-box-bottom input{
+    border: none;
+    border-radius: 20px;
+    font-weight: 200;
+}
+.login .login-right .login-box-right .login-box-title .login-box-bottom input:focus-visible{
+    outline: none;
+}
+.login .login-right .login-box-right .login-box-title input{
+    width: 260px;
+    padding: 10px;
+}
+.login .login-right .login-box-right .login-title-bottom{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+.login .login-right .login-box-right .login-title-bottom input{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+.login .login-right .login-box-right .login-title-bottom span{
+    margin-left: 50px;
+}
+.login .login-right .login-box-right button{
+    width: 300px;
+    padding: 15px 0;
+    color: #fff;
+    background-color: #3F87F5;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
+/* Start page */
+
+.header-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;   
+    height: 64px;
+}
+.header-left {
+    width: 254px;
+    margin: 22px 0 22px 30px;
+}
+.header-left ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+.header-left li {
+    margin: 0;
+}
+.header-left a {
+    color: black;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal; 
+    font-size: 14px;   
+    line-height: 20px;  
+    font-family: sans-serif;
+}
+.header-middle img {
+    height: 62px;
+    width: auto;
+}
+.header-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 14px 13px 13px 0;
+}
+.header-search-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #8F8F8F;
+    border-radius: 25px;
+    width: 171px;
+    height: 37px;
+    margin-right: 29px;
+}
+.header-search-box input {
+    border: none;
+    width: 100px;
+    margin: 6.5px 0 6.5px 16px;    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+} 
+.header-search-box button {
+    border: none;
+    background-color: white;
+    margin-right: 16px;
+}
+.login-box button{
+    width: 130px;
+    height: 37px;   
+    text-align: center; 
+    background-color: #18A0FB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;    
+}
+.startpage-section1{
+    background-image: url(../img/img2.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 762px;
+}
+.startpage-section1 .startpage-title1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 15%;
+    padding-left: 5%;
+    width: 500px;
+}
+.startpage-section1 .startpage-title1 h1{
+    font-size: 36px;
+}
+.startpage-section1 .startpage-title1 p{
+    font-size: 14px;
+    line-height: 24px;
+    color: #5C5C5C;
+    padding: 5px 0;
+}
+.startpage-section1 .startpage-title1 button{
+    width: 180px;
+    height: 50px;
+    font-size: 17px;
+    line-height: 21px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #18A0FB;
+    border-radius: 6px;
+    border: none;
+}
+.startpage-section2 .startpage-title2{
+    width: 400px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    margin-top: 50px;
+}
+.startpage-section2 .startpage-title2 h1{
+    color: #373F41;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.1px;
+}
+.startpage-section2 .startpage-title3{
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    margin: 50px 40px 140px 40px;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-left .startpage-box-left{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 180px;
+    opacity: 0.6;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-left .startpage-box-left .startpage-icon img{
+    width: 46px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-left .startpage-box-left h4{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: #373F41;
+    margin-bottom: 10px;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-left .startpage-box-left p{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #373F41;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-right .startpage-box-right{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 180px;
+    opacity: 0.6;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-right .startpage-box-right .startpage-icon img{
+    width: 46px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-right .startpage-box-right h4{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: #373F41;
+    margin-bottom: 10px;
+}
+.startpage-section2 .startpage-title3 .startpage-title3-right .startpage-box-right p{
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #373F41;
+}
+.startpage-section3{
+    background-color: #EAEEF5;
+    text-align: center;
+    padding: 50px 0;
+}
+.startpage-section3 h4{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #373F41;
+    margin-bottom: 40px;
+}
+.startpage-section3 p{
+    width: 300px;
+    margin: 0 auto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    color: #737B7D;
+    margin-bottom: 60px;
+}
+.startpage-section3 button{
+    width: 117px;
+    height: 48px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.3px;
+    background-color: #3C64B1;
+    color: #fff;
+    border: none;
+}
+.startpage-footer p{
+    background-color: #373F41;
+    border: 1px solid #000000;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #C3CBCD;
+    font-weight: 200;
+    padding: 20px 0;
+}
+
+/* Admin */
+
+.admin-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #2D3748;
+    height: 80px;
+}
+.admin-header .admin-logo img{
+    width: 120px;
+    height: 60px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.admin-header .admin-img-login img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    right: 30px;
+    top: 15px;
+}
+.admin-content{
+    display: flex;
+}
+.admin-content .admin-content-left{
+    width: 20%;
+    height: 100%;
+    background-color: #E5E5E5;
+}
+.admin-box-function{
+    height: 800px;
+    margin-top: 70px;
+}
+.admin-box-function .admin-title{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #4299E1;
+}
+
+.admin-box-function img{
+    width: 24px;
+    height: 24px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+.admin-view-site{
+    background-color: rgba(246, 1, 1, 0.19);
+    height: 40px;
+    margin-top: 10px;
+}
+.admin-document{
+    margin-top: 10px;
+}
+.admin-user{
+    margin-top: 10px;
+}
+.admin-archived{
+    margin-top: 10px;
+}
+.admin-box-function .admin-view-site span{
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2C5282;
+}
+.admin-box-function span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2C5282;
+}
+.admin-content .admin-content-right{
+    width: 80%;
+    height: 100%;
+    margin: 20px 0;
+}
+.tbody-filter {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    padding: 10px 40px 10px 40px;
+}
+.tbody-filter-left p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    color: #8F8F8F;
+}
+.tbody-filter-right {
+    display: flex;
+    flex-direction: row; 
+}
+.tbody-filter-right p {
+    border-right: 1px solid #D5D6D6;
+}
+.tbody-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.tbody-dropbtn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);    
+    font-size: 14px;
+    margin-left: 18px;
+    border: none;
+    cursor: pointer;
+}
+.tbody-dropdown-ct {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.tbody-dropdown-ct a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.tbody-dropdown-ct a:hover {
+    background-color: #f1f1f1;
+}
+.tbody-dropdown:hover .tbody-dropdown-ct {
+    display: block;
+}
+.tbody-documents {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    margin: 30px 24px 64px 32px;
+    border-bottom: 1px solid #000000;
+}
+.tbody-doc-left h3{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.015em;
+    color: #000000;
+}
+.tbody-doc-left p{
+    width: 780px;
+    font-size: 18px;
+}
+.author{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 125.3%;
+    display: flex;
+    align-items: center;
+    color: rgba(28, 46, 69, 0.6);
+}
+.tbody-doc-right{
+    display: flex;
+    flex-direction: column;
+}
+.view{
+    margin-top: 20px;
+}
+
+/* User List */
+
+.admin-content-right .userList-container .userList-btn{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.userList-btn button{
+    background-color: #fff;
+    border: 1px solid #18A0FB;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #18A0FB;
+    width: 15%;
+}
+.btn-userList{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.btn-userList button{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    padding: 10px 50px;
+    background-color: #fff;
+    border: 1px solid #18A0FB;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #18A0FB;
+    width: 150px;
+}
+.btn-userList .btn-delete{
+    margin-left: 20px;
+}

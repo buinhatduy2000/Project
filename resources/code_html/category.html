@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- JavaScript Bundle with Popper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-navbar">
+            <div class="header-left">
+                <ul>
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./start-page.html">Startpage</a></li>
+                    <li><a href="">Follow</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header-middle"><img src="../img/logo.png" alt=""></div>
+            <div class="header-right">
+                <div class="header-search-box">
+                    <input class="search-box" placeholder="Search" />
+                    <button class="search-box-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <div class="login-box">
+                    <div class="dropdown">
+                        <div class="login-infor-user" data-bs-toggle="dropdown">
+                            <img src="../img/avatar.png" alt="">
+                            <div class="login-infor-user-name">
+                                <p>Oliver Smith</p>
+                                <h6>Teacher English</h6>
+                            </div>
+                            <p><i class="bi bi-chevron-down"></i></p>
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="./use-detail.html">View Profile</a></li>
+                            <li><a class="dropdown-item" href="./create-docs.html">New Docs</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tbody-category">
+        <div class="tbody">
+            <div class="tbody-sitebar col col-lg-2">
+                <h4 class="tbody-category-h4">Category</h4>
+                <ul>
+                    <li><a href="">Book</a></li>
+                    <li><a href="">Community</a></li>
+                    <li><a href="">Infrastructure</a></li>
+                    <li><a href="">Subjects</a></li>
+                    <li><a href="">Service</a></li>
+                    <li><a href="">School fee</a></li>
+                    <li><a href="">Sharing experiences</a></li>
+                    <li><a href="">Rank and position</a></li>
+                    <li><a href="">Homework</a></li>
+                    <li><a href="">Exam</a></li>
+                    <li><a href="">Game</a></li>
+                </ul>
+            </div>
+            <div class="tbody-content col col-lg-10">
+                <div class="tbody-title-category">
+                    <p>Category</p>
+                    <!-- <input class="category-btn-new" type="button" id="new" value="New" /> -->
+                    <button type="button" class="category-btn-new" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        New
+                    </button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Create new category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-add" id="content">                    
+                                    <div class="category-input-name">
+                                        <label for="input-name" class="form-label">Category Name :</label>
+                                        <input class="form-control" type="text" id="cate-name" name="cate-name">
+                                        <p class="error">Error documentation!</p>
+                                    </div>                                    
+                                    <div class="category-input-date">
+                                        <label for="input-date" class="form-label">Category Date :</label>
+                                        <input class="form-control" type="date" id="cate-date" name="cate-date">
+                                    </div>                                                      
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Create</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="tbody-category-detail">
+                    <div class="category-item">
+                        <h3 id="category-item-name">Book</h3>
+                        <div class="form-edit col col-sm-4" id="editItem">
+                            <input class="form-control" type="text" id="cate-name" name="cate-name"
+                                placeholder="Book">
+                            <p class="error">Error documentation!</p>
+                            <input class="form-control" type="date" id="cate-date" name="cate-date"><br>
+                        </div>
+                        <div class="category-tool">
+                            <input class="category-btn-edit" type="button" id="edit" value="Edit" />
+                            <input class="category-btn-edit" type="button" id="save" value="Save" />
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <script language="javascript">
+                        document.getElementById("edit").onclick = function () {
+                            document.getElementById("editItem").style.display = 'inline-block';
+                            document.getElementById("edit").style.display = 'none';
+                            document.getElementById("category-item-name").style.display = 'none';
+                            document.getElementById("save").style.display = 'inline-block';
+                        };
+                        document.getElementById("save").onclick = function () {
+                            document.getElementById("editItem").style.display = 'none';
+                            document.getElementById("save").style.display = 'none';
+                            document.getElementById("category-item-name").style.display = 'inline-block';
+                            document.getElementById("edit").style.display = 'inline-block';
+                        };    
+                    </script>
+                    <div class="category-item">
+                        <h3>Community</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Infrastructure</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Subjects</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Service</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>School fee</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Sharing experiences</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Rank and position</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Homework</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Exam</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <h3>Game</h3>
+                        <div class="category-tool">
+                            <button class="category-btn-edit">Edit</button>
+                            <button class="category-btn-delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-1">
+            <div class="intro-gr3 col col-lg-4">
+                <h5>Group3</h5>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
+                    massa elit ornare nulla varius nisi arcu.
+                </p>
+                <h4>+44 322 11 00</h4>
+            </div>
+            <div class="tool col col-lg-8">
+                <ul class="col-sm-4">
+                    <li>Front End</li>
+                    <li>Minh</li>
+                    <li>Dung</li>
+                </ul>
+                <ul class="col-sm-4">
+                    <li>Back End</li>
+                    <li>Toan</li>
+                    <li>Duy</li>
+                </ul>
+                <ul class="col-sm-4">
+                    <li>Test Web</li>
+                    <li>Nam</li>
+                    <li>Bien</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-2">
+            <p>2022 © All rights reserved. Created by Group3</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
