@@ -27,7 +27,7 @@
             <div class="header-left">
                 <ul>
                     <li><a href="./home.html">Home</a></li>
-                    <li><a href="">Startpage</a></li>
+                    <li><a href="./start-page.html">Startpage</a></li>
                     <li><a href="">Follow</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
@@ -44,7 +44,7 @@
                     <div class="dropdown">
                         <div class="login-infor-user" data-bs-toggle="dropdown">
                             <img src="../img/avatar.png" alt="" />
-                            <div class="login-infor-user-name">                                
+                            <div class="login-infor-user-name">
                                 <p>Oliver Smith</p>
                                 <h6>Teacher English</h6>
                             </div>
@@ -62,7 +62,7 @@
     </div>
     <div class="tbody-create-docs">
         <div class="tbody">
-            <div class="tbody-sitebar">
+            <div class="tbody-sitebar col col-lg-2">
                 <h4>Category</h4>
                 <ul>
                     <li><a href="">Book</a></li>
@@ -78,38 +78,47 @@
                     <li><a href="">Game</a></li>
                 </ul>
             </div>
-            <div class="tbody-content">
+            <div class="tbody-content col col-lg-10">
                 <div class="tbody-detail">
                     <p>New Document</p>
                 </div>
                 <div class="tbody-ct">
                     <div class="create-docs">
-                        <div class="document">
-                            <label for="docs-name">Document name</label>
-                            <input type="text" id="docs-name" name="docs-name" />
+                        <div class="create-docs-detail">
+                            <div class="document">
+                                <label for="docs-name">Document name</label>
+                                <input type="text" id="docs-name" name="docs-name" />
+                            </div>
+                            <p>Error creating documentation!</p>
                         </div>
-                        <div class="document">
-                            <label for="docs-introduction">Introduction</label>
-                            <textarea name="docs-introduction" id="docs-introduction" cols="10" rows="7"></textarea>
+                        <div class="create-docs-detail">
+                            <div class="document">
+                                <label for="docs-introduction">Introduction</label>
+                                <textarea name="docs-introduction" id="docs-introduction" cols="10" rows="7"></textarea>
+                            </div>
+                            <p>Error creating documentation!</p>
                         </div>
-                        <div class="document">
-                            <label for="docs-category">Category</label>
-                            <select name="docs-category" id="docs-category">
-                                <option value="Book">Book</option>
-                                <option value="Community">Community</option>
-                                <option value="Infrastructure">Infrastructure</option>
-                                <option value="Subjects">Subjects</option>
-                                <option value="Service">Service</option>
-                                <option value="School fee">School fee</option>
-                                <option value="Sharing experiences">
-                                    Sharing experiences
-                                </option>
-                                <option value="Rank and position">Rank and position</option>
-                                <option value="Homework">Homework</option>
-                                <option value="Exam">Exam</option>
-                                <option value="Game">Game</option>
-                            </select>
+                        <div class="create-docs-detail">
+                            <div class="document">
+                                <label for="docs-category">Category</label>
+                                <select name="docs-category" id="docs-category">
+                                    <option value="Book">Book</option>
+                                    <option value="Community">Community</option>
+                                    <option value="Infrastructure">Infrastructure</option>
+                                    <option value="Subjects">Subjects</option>
+                                    <option value="Service">Service</option>
+                                    <option value="School fee">School fee</option>
+                                    <option value="Sharing experiences">
+                                        Sharing experiences
+                                    </option>
+                                    <option value="Rank and position">Rank and position</option>
+                                    <option value="Homework">Homework</option>
+                                    <option value="Exam">Exam</option>
+                                    <option value="Game">Game</option>
+                                </select>
+                            </div>
                         </div>
+
                         <div class="document-file">
                             <form action="">
                                 <input type="file" name="file" id="file" class="inputfile" />
@@ -131,7 +140,7 @@
     </div>
     <div class="footer">
         <div class="footer-1">
-            <div class="intro-gr3">
+            <div class="intro-gr3 col col-lg-4">
                 <h5>Group3</h5>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
@@ -139,18 +148,18 @@
                 </p>
                 <h4>+44 322 11 00</h4>
             </div>
-            <div class="tool">
-                <ul>
+            <div class="tool col col-lg-8">
+                <ul class="col-sm-4">
                     <li>Front End</li>
                     <li>Minh</li>
                     <li>Dung</li>
                 </ul>
-                <ul>
+                <ul class="col-sm-4">
                     <li>Back End</li>
                     <li>Toan</li>
                     <li>Duy</li>
                 </ul>
-                <ul>
+                <ul class="col-sm-4">
                     <li>Test Web</li>
                     <li>Nam</li>
                     <li>Bien</li>
