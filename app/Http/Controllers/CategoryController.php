@@ -15,28 +15,48 @@ class CategoryController extends Controller
     public function store(Request $request){
         // dd($request->all());
         // Category::create($request->all());
-
-        Category::create([
+        $cate = Category::create([
             'category_name' => $request->input('category_name'),
             '1st_closure_date' => date("Y-m-d H:i:s"),
             '2nd_closure_date' => date("Y-m-d H:i:s"),
         ]);
-        return redirect() -> route('category.index')->with('message', 'Thêm Category thành công');
+        if(!$cate){
+            return redirect()->back()->with('error','Thêm Category không thành công');
+        }else{
+            return redirect() -> route('category.index')->with('message', 'Thêm Category thành công');
+        }
     }
 
-    public function update(Request $request, Category $categories){
+    public function update(Request $request, Category $categories, $id){
         // dd($request->all());
-        $categories -> update([
+        
+        // $categories -> update([
+        //     'category_name' => $request->input('category_name'),
+        //     '1st_closure_date' => date("Y-m-d H:i:s"),
+        //     '2nd_closure_date' => date("Y-m-d H:i:s"),
+        // ]);
+
+        $update_cate = DB::table('categories')->where('id', '=', $id)->update([
             'category_name' => $request->input('category_name'),
             '1st_closure_date' => date("Y-m-d H:i:s"),
             '2nd_closure_date' => date("Y-m-d H:i:s"),
-        ]);
-        return redirect() -> route('category.index')->with('message',  'Sửa Category thành công');
+            ]);
+
+            if(!$update_cate){
+                return redirect()->back()->with('error','Sửa Category không thành công');
+            }
+            else{
+                return redirect() -> route('category.index')->with('message',  'Sửa Category thành công');
+            }  
     }
 
-    public function destroy(Category $categories){
-        $categories -> delete();
-        return redirect() -> route('category.index')->with('message', 'Xóa Category thành công');
+    public function destroy(Request $request, Category $categories, $id){
+        $delete_cate = DB::table('categories')->where('id', '=', $id) -> delete();
+        if(!$delete_cate){
+            return redirect()->back()->with('error','Xóa Category không thành công');
+        }else{
+            return redirect() -> route('category.index')->with('message', 'Xóa Category thành công');
+        }
     }
 
 }

@@ -93,7 +93,7 @@
                     @foreach ($categories as $cate)
                     <div class="category-item">
                         <h3 id="category-item-name">{{$cate ->category_name}}</h3>
-                        <form action="{{route('category.update', $cate ->id)}}" method="POST" class="form-edit" id="editItem">
+                        <form action="{{route('category.update', ['id' => $cate->id])}}" method="POST" class="form-edit" id="editItem">
                             @csrf
                             @method("PUT")
                             <input class="category-input" type="text" id="cate-name" name="category_name"
@@ -103,7 +103,7 @@
                         <div class="category-tool">
                             <input class="category-btn-edit" type="button" id="edit" value="Edit" />
                             
-                            <form action="{{route('category.destroy', $cate ->id)}}" method="post">
+                            <form action="{{route('category.destroy', ['id' => $cate->id])}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="category-btn-delete">Delete</button>
