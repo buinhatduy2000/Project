@@ -1,0 +1,72 @@
+[33mcommit fb1e196ecff7358064bc43c69e9d9ee67da51be5[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Merge: 5bfedbc f086d18
+Author: toantom98 <54390670+toantom98@users.noreply.github.com>
+Date:   Sun Mar 6 23:43:19 2022 +0700
+
+    Merge pull request #4 from buinhatduy2000/feature/authenticate
+    
+    feature/authenticate
+
+[33mcommit f086d18813a6064191bed24591e7e2dcf5bf5b9f[m[33m ([m[1;31morigin/feature/authenticate[m[33m, [m[1;32mfeature/authenticate[m[33m)[m
+Author: toanhs <toanhsgch16508@fpt.edu.vn>
+Date:   Sun Mar 6 23:39:08 2022 +0700
+
+    feature/authenticate
+
+[33mcommit 5bfedbc09645092eb3a7a92214e4d834d18fed88[m
+Merge: 6b637f5 8ae716d
+Author: Bui Nhat Duy <74580048+buinhatduy2000@users.noreply.github.com>
+Date:   Sat Mar 5 20:30:47 2022 +0700
+
+    Merge branch 'dev' of https://github.com/buinhatduy2000/Project into dev
+
+[33mcommit 8ae716d536a1fca9c71b8a371e291a87528be5a4[m
+Author: minhnngbh18582 <75022914+minhnngbh18582@users.noreply.github.com>
+Date:   Thu Mar 3 19:31:58 2022 +0700
+
+    interface
+
+[33mcommit 6b637f597f2ffad0108105971ab238c78479d140[m
+Merge: 4faee21 edaa524
+Author: toantom98 <54390670+toantom98@users.noreply.github.com>
+Date:   Wed Mar 2 15:05:07 2022 +0700
+
+    Merge pull request #1 from buinhatduy2000/feature/template-homepage
+    
+    homepage
+
+[33mcommit edaa5248d8086fde2991307a5df700b8a5097d4d[m
+Author: minhnngbh18582 <75022914+minhnngbh18582@users.noreply.github.com>
+Date:   Mon Feb 28 22:18:00 2022 +0700
+
+    homepage
+
+[33mcommit 4faee211631560550c46b3be69b51c6f4b41247e[m
+Author: toantom98 <54390670+toantom98@users.noreply.github.com>
+Date:   Mon Feb 28 18:57:28 2022 +0700
+
+    Update README.md
+
+[33mcommit 7e483d011d44eb8f55ec93725fc822ea881b6dce[m
+Author: toanhs <toanhsgch16508@fpt.edu.vn>
+Date:   Mon Feb 28 18:13:46 2022 +0700
+
+    initial project
+
+[33mcommit 00643338ed06c716832ec2cfe49a0f2d1d951506[m
+Author: toanhs <toanhsgch16508@fpt.edu.vn>
+Date:   Mon Feb 28 17:45:24 2022 +0700
+
+    initial project
+
+[33mcommit e4af11f9a31e0b76da7806700be4a2c3f31f5947[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Bui Nhat Duy <74580048+buinhatduy2000@users.noreply.github.com>
+Date:   Mon Feb 28 13:55:02 2022 +0700
+
+    First Commit
+
+[33mcommit 486a35a67a3c42441402776a8ca8b9ca8889d2a3[m
+Author: Bui Nhat Duy <74580048+buinhatduy2000@users.noreply.github.com>
+Date:   Mon Feb 28 13:50:28 2022 +0700
+
+    Initial commit

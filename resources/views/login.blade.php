@@ -28,14 +28,21 @@
                     <h1>Hello Again!</h1>
                     <span>Welcome Back</span>
                 </div>
+                @if(Session::has('check_email'))
+                    <p class="login-error">{{Session::get('check_email')}}</p>
+                @endif
                 <div class="box-title">
-                    <div class="box-top">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="User Name" name="user_name" autofocus autocomplete="false">
+                    <div class="box-account">
+                        <div class="box-top">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="User Name" name="user_name" value="{{old('user_name')}}">
+                        </div>
                     </div>
-                    <div class="box-bottom">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password">
+                    <div class="box-password">
+                        <div class="box-bottom">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Password" name="password">
+                        </div>
                     </div>
                 </div>
                 <div class="title-bottom">
