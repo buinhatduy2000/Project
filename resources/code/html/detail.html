@@ -26,7 +26,7 @@
             <div class="header-left">
                 <ul>
                     <li><a href="./home.html">Home</a></li>
-                    <li><a href="">Startpage</a></li>
+                    <li class="navbar-startpage"><a href="./start-page.html">Startpage</a></li>
                     <li><a href="">Follow</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
@@ -40,15 +40,76 @@
                     </button>
                 </div>
                 <div class="login-box">
-                    <button>Login</button>
+                    <button><a href="./login.html">Login</a></button>
                 </div>
-            </div>
+                <div class="tbody-responsive-navbar">
+                    <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
+                    <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-list"></i></button>
+                </div>
+            </div>            
         </div>
     </div>
+    <div id="navbar-item-detail">
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li class="navbar-startpage"><a href="./start-page.html">Startpage</a></li>
+            <li><a href="">Follow</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="./login.html">Login</a></li>
+        </ul>
+    </div>
+    <script language="javascript">
+        document.getElementById("navbar-item").onclick = function () {
+            document.getElementById("navbar-item-detail").style.display = 'block';
+            document.getElementById("navbar-item-cancel").style.display = 'block';
+            document.getElementById("navbar-item").style.display = 'none';
+        };
+        document.getElementById("navbar-item-cancel").onclick = function () {
+            document.getElementById("navbar-item-detail").style.display = 'none';
+            document.getElementById("navbar-item-cancel").style.display = 'none';
+            document.getElementById("navbar-item").style.display = 'block';
+        };    
+    </script>
     <div class="tbody-detail-docs">
         <div class="tbody">
-            <div class="tbody-sitebar">
-                <h4>Category</h4>
+            <div class="tbody-box-responsive">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="btn btn-outline-success" type="button" id="category" value="Category"/>
+                    <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category"/>
+                </form>
+            </div>
+            <div class="tbody-sitebar-responsive" id="cate-ct">
+                <h6><a href="./category.html">Category Edit</a></h6>
+                <ul>
+                    <li><a href="">Book</a></li>
+                    <li><a href="">Community</a></li>
+                    <li><a href="">Infrastructure</a></li>
+                    <li><a href="">Subjects</a></li>
+                    <li><a href="">Service</a></li>
+                    <li><a href="">School fee</a></li>
+                    <li><a href="">Sharing experiences</a></li>
+                    <li><a href="">Rank and position</a></li>
+                    <li><a href="">Homework</a></li>
+                    <li><a href="">Exam</a></li>
+                    <li><a href="">Game</a></li>
+                </ul>
+            </div>
+            <script language="javascript">
+                document.getElementById("category").onclick = function () {
+                    document.getElementById("cate-ct").style.display = 'block';
+                    document.getElementById("cate-cancel").style.display = 'block';
+                    document.getElementById("category").style.display = 'none';
+                };
+                document.getElementById("cate-cancel").onclick = function () {
+                    document.getElementById("cate-ct").style.display = 'none';
+                    document.getElementById("cate-cancel").style.display = 'none';
+                    document.getElementById("category").style.display = 'block';
+                };    
+            </script>
+            <div class="tbody-sitebar col col-sm-3 col-lg-2">
+                <h4><a href="./category.html">Category</a></h4>
                 <ul>
                     <li><a href="">Book</a></li>
                     <li><a href="">Community</a></li>
@@ -64,6 +125,12 @@
                 </ul>
             </div>
             <div class="tbody-content">
+                <div class="tbody-box-search">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
                 <div class="tbody-detail">
                     <p>Documents</p>
                 </div>
@@ -94,14 +161,15 @@
                                 Our kingdom fell into disarray. Despite my prowess I was shunned by our Emperor. And so
                                 I intend to face those who would stand against me in the battlefield upon Morus Isle,
                                 and support the rightful ruler across this land.
-                            </p>
-                        </div>
+                            </p>                            
+                        </div>                        
                         <div class="views-like-dislike">
                             <div class="view-icon">
                                 <ul>
                                     <li><i class="bi bi-hand-thumbs-up"></i></li>
                                     <li><i class="bi bi-hand-thumbs-down"></i></li>
                                     <li><i class="bi bi-chat-square"></i></li>
+                                    <li class="btn-dowload-responsive"><i class="bi bi-download"></i></li>
                                 </ul>
                             </div>
                             <div class="view-detail">
@@ -116,6 +184,11 @@
                                     <li><i class="bi bi-download"></i></li>
                                 </ul>
                             </div>
+                        </div>
+                        <div class="view-detail-responsive">
+                            <p>1222 views</p>
+                            <p>150 likes</p>
+                            <p>12 dislikes</p>
                         </div>
                         <div class="comments">
                             <div class="comments-detail">
@@ -155,7 +228,7 @@
     </div>
     <div class="footer">
         <div class="footer-1">
-            <div class="intro-gr3">
+            <div class="intro-gr3 col col-lg-4">
                 <h5>Group3</h5>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
@@ -163,22 +236,20 @@
                 </p>
                 <h4>+44 322 11 00</h4>
             </div>
-            <div class="tool">
-                <ul>
-                    <li>Front End</li>
-                    <li>Minh</li>
-                    <li>Dung</li>
-                </ul>
-                <ul>
-                    <li>Back End</li>
-                    <li>Toan</li>
-                    <li>Duy</li>
-                </ul>
-                <ul>
-                    <li>Test Web</li>
-                    <li>Nam</li>
-                    <li>Bien</li>
-                </ul>
+            <div class="footer-member">
+                <p>Front end</p>
+                <p>Minh</p>
+                <p>Dung</p>
+            </div>
+            <div class="footer-member">
+                <p>Back end</p>
+                <p>Toan</p>
+                <p>Duy</p>
+            </div>  
+            <div class="footer-member">
+                <p>Tester</p>
+                <p>Nam</p>
+                <p>Bien</p>
             </div>
         </div>
         <div class="footer-2">
