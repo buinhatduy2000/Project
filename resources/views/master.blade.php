@@ -32,7 +32,7 @@
                 <li><a href="">Contact</a></li>
             </ul>
         </div>
-        <div class="header-middle"><img src="{{asset('project/img/logo.png')}}" alt=""></div>
+        <div class="header-middle"><a href="{{route('home')}}"><img src="{{asset('project/img/logo.png')}}" alt="logo"></a></div>
         <div class="header-right">
             <div class="header-search-box">
                 <input class="search-box" placeholder="Search" />
@@ -69,7 +69,7 @@
 <div class="tbody-home">
     <div class="tbody">
         <div class="tbody-sitebar">
-            <h4><a href="./category.html">Category</a></h4>
+            <h4><a href={{route('category.index')}}>Category</a></h4>
             <ul>
                 @foreach($category as $item)
                     <li><a href="">{{$item->category_name}}</a></li>
