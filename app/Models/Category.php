@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $table = 'categories';
     protected $fillable = [
         'category_name',
-        '1st_closure_date',
-        '2nd_closure_date',
+        'first_closure_date',
+        'second_closure_date',
     ];
 
 }

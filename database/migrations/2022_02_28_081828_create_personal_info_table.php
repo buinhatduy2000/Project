@@ -14,14 +14,15 @@ class CreatePersonalInfoTable extends Migration
     public function up()
     {
         Schema::create('personal_info', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained('accounts');
-            $table->string('first_name', 50);
-            $table->string('last_name', 50);
-            $table->date('dob');
-            $table->string('phone_number', 11);
-            $table->string('email');
-            $table->string('address');
-            $table->string('department', 50);
+            $table->string('first_name', 50)->nullable();
+            $table->string('last_name', 50)->nullable();
+            $table->date('dob')->nullable();
+            $table->string('phone_number', 11)->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('department', 50)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
