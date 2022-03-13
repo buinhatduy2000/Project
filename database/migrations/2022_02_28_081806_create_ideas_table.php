@@ -18,8 +18,7 @@ class CreateIdeasTable extends Migration
             $table->string('idea_title', 50);
             $table->foreignId('user_id')->constrained('accounts');
             $table->foreignId('category_id')->constrained('categories');
-            $table->string('image');
-            $table->integer('view');
+            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

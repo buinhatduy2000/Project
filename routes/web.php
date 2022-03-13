@@ -20,4 +20,5 @@ Route::get('/logout', [\App\Http\Controllers\AccountController::class, 'logout']
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'account'], function() {
     Route::get('/personal-info/{id}', [\App\Http\Controllers\AccountController::class, 'viewInfo'])->name('viewInfo');
+    Route::resource('/idea', \App\Http\Controllers\IdealController::class);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,10 @@ class AccountController extends Controller
 
     public function postLogin(Request $request){
         if(Auth::guard('account')->attempt($request->only('user_name','password'))){
-            return redirect()->route('home')->with('success','Đăng nhập thành công');
+            return redirect()->route('home');
         }
             $request->session()->flash('check_email','Please check email and password');
             return redirect()->back()->withInput();
-
-
     }
 
     public function logout()
@@ -31,7 +30,7 @@ class AccountController extends Controller
 
     public function viewInfo ($id) {
         $account = Account::find($id);
-
-        return view('viewInfo', ['account' => $account]);
+        $ideas = Idea::where('user_id', $id)->get();
+        return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
     }
 }

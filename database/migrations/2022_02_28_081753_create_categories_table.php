@@ -16,8 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name', 50);
-            $table->date('1st_closure_date');
-            $table->date('2nd_closure_date');
+            $table->date('first_closure_date');
+            $table->date('second_closure_date');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="{{asset('project/css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('project/css/style-admin.css')}}" />
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
@@ -45,14 +46,14 @@
                         <div class="infor-user" data-bs-toggle="dropdown">
                             <img src="{{asset('project/img/avatar.png')}}" alt="">
                             <div class="infor-user-name">
-                                <p>Oliver Smith</p>
-                                <h6>Teacher English</h6>
+                                <p>{{Auth::guard('account')->user()->personal_info->first_name.' '.Auth::guard('account')->user()->personal_info->last_name}}</p>
+                                <h6>{{ ucfirst(trans(Auth::guard('account')->user()->role)) }}</h6>
                             </div>
                             <p><i class="bi bi-chevron-down"></i></p>
                         </div>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="{{route('viewInfo',['id' => Auth::guard('account')->user()->id])}}">View Profile</a></li>
-                            <li><a class="dropdown-item" href="#">New Docs</a></li>
+                            <li><a class="dropdown-item" href="{{route('idea.create')}}">New Docs</a></li>
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                         </ul>
                     </div>

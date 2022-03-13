@@ -20,7 +20,13 @@ class Account extends Authenticatable
     const ACCOUNT_QAC = 'QAC';
     const ACCOUNT_QAM = 'QAM';
 
-    public function personal_info() {
-        return $this->hasOne(Personal::class, 'user_id');
+    public function personal_info()
+    {
+        return $this->hasOne(Personal::class, 'user_id', 'id');
+    }
+
+    public function ideas()
+    {
+        return $this->hasMany(Idea::class, 'user_id', 'id');
     }
 }

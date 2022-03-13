@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Personal;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,5 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Account::factory()->create();
         \App\Models\Category::factory(5)->create();
+        Personal::create([
+            'user_id' => 1,
+            'first_name' => 'Admin',
+            'last_name' => 'Admin'
+        ]);
     }
 }
