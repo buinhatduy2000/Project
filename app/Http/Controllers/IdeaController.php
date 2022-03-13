@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class IdealController extends Controller
+class IdeaController extends Controller
 {
     /**
      * Display a listing of the resource.

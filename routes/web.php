@@ -22,6 +22,6 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 Route::resource('/category', CategoryController::class);
 Route::group(['middleware' => 'account'], function() {
     Route::get('/personal-info/{id}', [\App\Http\Controllers\AccountController::class, 'viewInfo'])->name('viewInfo');
-    Route::resource('/idea', \App\Http\Controllers\IdealController::class);
+    Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
 });
 
