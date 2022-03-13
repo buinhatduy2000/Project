@@ -22,9 +22,9 @@ class CategoryController extends Controller
             'second_closure_date' => Carbon::now()->addDays(14),
         ]);
         if(!$cate){
-            return redirect()->back()->with('error','Thêm Category không thành công');
+            return redirect()->back()->with('error','Create Category Not Success');
         }
-        return redirect() -> route('category.index')->with('message', 'Thêm Category thành công');
+        return redirect() -> route('category.index')->with('message', 'Create Category Success');
 
     }
 
@@ -37,9 +37,9 @@ class CategoryController extends Controller
                 'category_name' => $request->input('category_name'),
             ]);
             if(!$update_cate){
-                return redirect()->back()->with('error','Sửa Category không thành công');
+                return redirect()->back()->with('error','Update Category Not Success');
             }
-            return redirect() -> route('category.index')->with('message',  'Sửa Category thành công');
+            return redirect() -> route('category.index')->with('message',  'Update Category Success');
         }
     }
 
@@ -49,9 +49,9 @@ class CategoryController extends Controller
             $delete_cate = $cate->delete();
 
             if(!$delete_cate){
-                return redirect()->back()->with('error','Xóa Category không thành công');
+                return redirect()->back()->with('error','Delete Category Not Success');
             }
-            return redirect() -> route('category.index')->with('message', 'Xóa Category thành công');
+            return redirect() -> route('category.index')->with('message', 'Delete Category Success');
         }
 
     }
