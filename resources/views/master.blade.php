@@ -68,7 +68,7 @@
 </div>
 <div class="tbody-home">
     <div class="tbody">
-        <div class="tbody-sitebar">
+        <div class="tbody-sitebar col col-sm-3 col-lg-2">
             <h4><a href={{route('category.index')}}>Category</a></h4>
             <ul>
                 @foreach($category as $item)
