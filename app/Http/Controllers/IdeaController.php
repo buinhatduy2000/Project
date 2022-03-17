@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IdeaRequest;
 use App\Models\Document;
 use App\Models\Idea;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

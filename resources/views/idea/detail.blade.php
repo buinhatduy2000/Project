@@ -64,32 +64,13 @@
                             potenti pellentesque</p>
                         <h6>August 17, 2020 &emsp; Reply</h6>
                     </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
                 </div>
             </div>
-            <div class="input-comment">
-                <input type="text" placeholder="Add a comments...">
-                <button>Post</button>
-            </div>
+            <form action="comment/{id}" method="POST" class="input-comment">
+                @csrf
+                <input type="text" name="comment" placeholder="Add a comments...">
+                <button type="submit">Post</button>
+            </form>
         </div>
 </div>
 @endsection
