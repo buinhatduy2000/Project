@@ -72,7 +72,7 @@
             <h4><a href={{route('category.index')}}>Category</a></h4>
             <ul>
                 @foreach($category as $item)
-                    <li><a href="/category-by-id/{{$item->id}}">{{$item->category_name}}</a></li>
+                    <li><a href="">{{$item->category_name}}</a></li>
                 @endforeach
             </ul>
         </div>

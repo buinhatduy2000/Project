@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Models\Category;
-use App\Models\Idea;
 
 class CategoryController extends Controller
 {
@@ -56,4 +55,5 @@ class CategoryController extends Controller
         }
 
     }
+
 }

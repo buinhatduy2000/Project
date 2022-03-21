@@ -85,6 +85,7 @@ class IdeaController extends Controller
         $comments = Comment::where('idea_id', $id)->get();
 
         return view('idea.detail', ['idea' => $idea, 'comments' => $comments]);
+
     }
 
     /**

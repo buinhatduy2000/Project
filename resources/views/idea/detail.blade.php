@@ -61,16 +61,8 @@
                 <div class="comments">
                     @foreach ($comments as $comment)
                     <div class="comments-detail">
-                        <p>
-                            @if ($comment->anonymous == null)
-                            <span>{{$idea->author->personal_info->first_name}}</span>
-                            @else
-                            <span>Anonymous</span>
-                            @endif
-                             
-                            &nbsp; 
-                            {{$comment->content}}
-                        </p>
+                        <p><span>{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}}</span> &nbsp; 
+                            {{$comment->content}}</p>
                         <h6>{{$comment->created_at}} &emsp;</h6>
                     </div>
                     @endforeach
@@ -79,7 +71,6 @@
             <form action="comment/{{$idea->id}}" method="POST" class="input-comment">
                 @csrf
                 <input type="text" name="comment" placeholder="Add a comments...">
-                <input type="checkbox" name="anonymous" value="1">
                 <button type="submit">Post</button>
             </form>
         </div>
