@@ -23,6 +23,6 @@ Route::resource('/category', CategoryController::class);
 Route::group(['middleware' => 'account'], function() {
     Route::get('/personal-info/{id}', [\App\Http\Controllers\AccountController::class, 'viewInfo'])->name('viewInfo');
     Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
-    Route::post('/comment/{id}', [\App\Http\Controllers\CommentController::class], 'postComment');
+    Route::post('idea/comment/{id}', [\App\Http\Controllers\CommentController::class, 'postComment']);
 });
 

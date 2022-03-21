@@ -59,14 +59,16 @@
                     <p>12 dislikes</p>
                 </div>
                 <div class="comments">
+                    @foreach ($comments as $comment)
                     <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
+                        <p><span>{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}}</span> &nbsp; 
+                            {{$comment->content}}</p>
+                        <h6>{{$comment->created_at}} &emsp;</h6>
                     </div>
+                    @endforeach
                 </div>
             </div>
-            <form action="comment/{id}" method="POST" class="input-comment">
+            <form action="comment/{{$idea->id}}" method="POST" class="input-comment">
                 @csrf
                 <input type="text" name="comment" placeholder="Add a comments...">
                 <button type="submit">Post</button>

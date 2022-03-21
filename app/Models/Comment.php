@@ -16,13 +16,8 @@ class Comment extends Model
         return $this->belongsTo(Account::class, 'user_id');
     }
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function idea(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function ideal(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Idea::class);
+        return $this->belongsTo(Idea::class, 'idea_id', 'id');
     }
 }

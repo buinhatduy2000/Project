@@ -24,4 +24,8 @@ class Idea extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function comments(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->hasMany(Comment::class, 'idea_id', 'id');
+    }
 }

@@ -82,7 +82,10 @@ class IdeaController extends Controller
     {
         $idea = Idea::find($id);
 
-        return view('idea.detail', ['idea' => $idea]);
+        $comments = Comment::where('idea_id', $id)->get();
+
+        return view('idea.detail', ['idea' => $idea, 'comments' => $comments]);
+
     }
 
     /**
