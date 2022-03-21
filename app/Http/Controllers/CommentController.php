@@ -17,6 +17,7 @@ class CommentController extends Controller
             'idea_id' => $id,
             'content' => $request->comment,
             'parent_id' => Auth::guard('account')->user()->id,
+            'anonymous' => $request->anonymous,
         ]);
         if(!$comment){
             return redirect()->back()->with('error','Comment Not Success');
