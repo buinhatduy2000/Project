@@ -23,10 +23,14 @@
         <div class="tbody-documents">
             <div class="tbody-doc-left col-sm-8">
                 <h3>{{$idea->idea_title}}</h3>
-                <p class="author-responsive">{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}} - {{$idea->category->first_closure_date}} &ensp; <i class="bi bi-tag"> {{$idea->category->category_name}}</i> <i
-                                class="bi bi-people-fill"> 2300</i></p>
-                        <p class="tbody-doc-right-date-responsive"><i class="bi bi-calendar2-week"></i>
-                            <span>Expiry:</span> {{$idea->category->second_closure_date}}</p>
+                <p class="author-responsive">
+                    {{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}} - {{$idea->category->first_closure_date}} &ensp; 
+                    <i class="bi bi-tag"> {{$idea->category->category_name}}</i> 
+                    <i class="bi bi-people-fill"> 2300</i></p>
+                    <p class="tbody-doc-right-date-responsive">
+                        <i class="bi bi-calendar2-week"></i>
+                        <span>Expiry:</span> {{$idea->category->second_closure_date}}
+                    </p>
                 <p>
                     {{$idea->description}}
                 </p>
