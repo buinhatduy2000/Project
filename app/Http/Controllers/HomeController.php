@@ -13,4 +13,10 @@ class HomeController extends Controller
         $ideas = Idea::all()->where('deleted_at', null);
         return view('home', ['ideas' => $ideas]);
     }
+
+    public function filByCategory($id)
+    {
+        $ideas = Idea::where('category_id', $id)->get();
+        return view('home', ['ideas' => $ideas]);
+    }
 }

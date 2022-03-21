@@ -9,7 +9,7 @@ class Comment extends Model
 {
     use HasFactory;
     protected $table = 'comments';
-    protected $fillable = ['idea_id', 'content', 'category_id', 'parent_id'];
+    protected $fillable = ['idea_id', 'content', 'category_id', 'parent_id', 'anonymous'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
