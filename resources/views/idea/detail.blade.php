@@ -15,7 +15,7 @@
                 <img src="{{asset('project/img/avatar.png')}}" alt="">
                 <div class="infor-user-name">
                     <a href="#">{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}}</a>
-                    <h6>{{ ucfirst(trans(Auth::guard('account')->user()->role)) }}</h6>
+                    <h6>{{ ucfirst(trans($idea->author->role)) }}</h6>
                 </div>
             </div>
             <div class="detail-docs">
