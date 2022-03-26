@@ -63,12 +63,10 @@
                     <div class="comments-detail">
                         <p>
                             @if ($comment->anonymous == null)
-                            <span>{{$idea->author->personal_info->first_name}}</span>
+                            <span>{{$comment->author->personal_info->first_name}}</span>
                             @else
                             <span>Anonymous</span>
                             @endif
-                             
-                            &nbsp; 
                             {{$comment->content}}
                         </p>
                         <h6>{{$comment->created_at}} &emsp;</h6>

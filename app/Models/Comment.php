@@ -9,11 +9,11 @@ class Comment extends Model
 {
     use HasFactory;
     protected $table = 'comments';
-    protected $fillable = ['idea_id', 'content', 'category_id', 'parent_id', 'anonymous'];
+    protected $fillable = ['idea_id', 'content', 'category_id', 'account_id', 'anonymous'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Account::class, 'user_id');
+        return $this->belongsTo(Account::class, 'account_id');
     }
 
     public function idea(): \Illuminate\Database\Eloquent\Relations\BelongsTo

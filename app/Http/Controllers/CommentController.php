@@ -16,7 +16,7 @@ class CommentController extends Controller
         $comment = Comment::create([
             'idea_id' => $id,
             'content' => $request->comment,
-            'parent_id' => Auth::guard('account')->user()->id,
+            'account_id' => Auth::guard('account')->user()->id,
             'anonymous' => $request->anonymous,
         ]);
         if(!$comment){
