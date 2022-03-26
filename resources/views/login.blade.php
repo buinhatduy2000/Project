@@ -21,6 +21,11 @@
         </div>
     </div>
     <div class="login-right">
+        @if(Session::has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{Session::get('error')}}
+        </div>
+        @endif
         <form action="{{route('postLogin')}}" method="post">
             @csrf
             <div class="box-right">

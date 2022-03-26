@@ -19,6 +19,26 @@ class Account extends Authenticatable
     const ACCOUNT_STAFF = 'staff';
     const ACCOUNT_QAC = 'QAC';
     const ACCOUNT_QAM = 'QAM';
+    /**
+     * @var mixed
+     */
+
+    public function is_admin()
+    {
+        return $this->role === self::ACCOUNT_ADMIN;
+    }
+    public function is_QAM()
+    {
+        return $this->role === self::ACCOUNT_QAM;
+    }
+    public function is_QAC()
+    {
+        return $this->role === self::ACCOUNT_QAC;
+    }
+    public function is_staff()
+    {
+        return $this->role === self::ACCOUNT_STAFF;
+    }
 
     public function personal_info()
     {

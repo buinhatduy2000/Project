@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AccountController extends Controller
 {
@@ -31,6 +32,15 @@ class AccountController extends Controller
     public function viewInfo ($id) {
         $account = Account::find($id);
         $ideas = Idea::where('user_id', $id)->get();
-        return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
+        return view('user.viewInfo', ['account' => $account, 'ideas' => $ideas]);
+    }
+
+    public function listUser(Account $account)
+    {
+        if (! Gate::allows('list-user', $account)) {
+            return redirect()->route('login')->with('error','You do not have permission');
+        }
+        $user = Account::where('role', '!=', Account::ACCOUNT_ADMIN)->get();
+        dd($user);
     }
 }

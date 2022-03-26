@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 
 /* Login */
@@ -130,7 +131,7 @@
 .header-navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;   
+    justify-content: space-between;
     height: 64px;
 }
 .header-left {
@@ -152,9 +153,9 @@
     color: black;
     text-decoration: none;
     font-style: normal;
-    font-weight: normal; 
-    font-size: 14px;   
-    line-height: 20px;  
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
     font-family: sans-serif;
 }
 .header-middle img {
@@ -180,12 +181,12 @@
 .header-search-box input {
     border: none;
     width: 100px;
-    margin: 6.5px 0 6.5px 16px;    
+    margin: 6.5px 0 6.5px 16px;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;
-} 
+}
 .header-search-box button {
     border: none;
     background-color: white;
@@ -193,12 +194,12 @@
 }
 .login-box button{
     width: 130px;
-    height: 37px;   
-    text-align: center; 
+    height: 37px;
+    text-align: center;
     background-color: #18A0FB;
     color: #FFFFFF;
     border: none;
-    border-radius: 25px;    
+    border-radius: 25px;
 }
 .startpage-section1{
     background-image: url(../img/img2.png);
@@ -375,13 +376,13 @@
     background-color: #2D3748;
     height: 80px;
 }
-.admin-header .admin-logo img{
+.admin-logo img{
     width: 120px;
     height: 60px;
     padding-top: 20px;
     padding-left: 20px;
 }
-.admin-header .admin-img-login img{
+.admin-img-login img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -394,7 +395,7 @@
 }
 .admin-content .admin-content-left{
     width: 20%;
-    height: 100%;
+    /* height: 100%; */
     background-color: #E5E5E5;
 }
 .admin-box-function{
@@ -406,34 +407,31 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
+    margin-left: 50px;
     color: #4299E1;
 }
-
+.admin-box-function{
+    line-height: 3;
+}
 .admin-box-function img{
     width: 24px;
     height: 24px;
     margin-bottom: 10px;
     margin-right: 15px;
+    margin-left: 50px;
 }
-.admin-view-site{
-    background-color: rgba(246, 1, 1, 0.19);
-    height: 40px;
-    margin-top: 10px;
-}
-.admin-document{
-    margin-top: 10px;
-}
-.admin-user{
-    margin-top: 10px;
-}
-.admin-archived{
-    margin-top: 10px;
-}
-.admin-box-function .admin-view-site span{
-    font-weight: 900;
+.admin-box-function .menu span{
+    font-weight: 700;
     font-size: 18px;
     line-height: 21px;
     color: #2C5282;
+}
+.active-bgr{
+    background-color: rgba(246, 1, 1, 0.19);
+}
+.menu:hover{
+    background-color: rgba(246, 1, 1, 0.19);
+    cursor: pointer;
 }
 .admin-box-function span{
     font-style: normal;
@@ -442,27 +440,25 @@
     line-height: 21px;
     color: #2C5282;
 }
+
 .admin-content .admin-content-right{
     width: 80%;
     height: 100%;
     margin: 20px 0;
 }
+.tbody-content {
+    width: 100%;
+    height: 40px;
+}
 .tbody-filter {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     padding: 10px 40px 10px 40px;
 }
-.tbody-filter-left p{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 20px;
-    color: #8F8F8F;
-}
 .tbody-filter-right {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
 }
 .tbody-filter-right p {
     border-right: 1px solid #D5D6D6;
@@ -473,7 +469,7 @@
 }
 .tbody-dropbtn {
     background-color: #ffffff;
-    color: rgb(0, 0, 0);    
+    color: rgb(0, 0, 0);
     font-size: 14px;
     margin-left: 18px;
     border: none;
@@ -501,46 +497,34 @@
 }
 .tbody-documents {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
-    margin: 30px 24px 64px 32px;
+    margin: 0 24px 64px 32px;
     border-bottom: 1px solid #000000;
-}
-.tbody-doc-left h3{
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 36px;
-    letter-spacing: -0.015em;
-    color: #000000;
 }
 .tbody-doc-left p{
     width: 780px;
     font-size: 18px;
 }
-.author{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 125.3%;
-    display: flex;
-    align-items: center;
+.author {
     color: rgba(28, 46, 69, 0.6);
+    margin-top: 28px;
+    margin-bottom: 4px;
 }
-.tbody-doc-right{
-    display: flex;
-    flex-direction: column;
-}
-.view{
-    margin-top: 20px;
+.view {
+    margin-top: 14px;
 }
 
 /* User List */
 
-.admin-content-right .userList-container .userList-btn{
+.userList-container .userList-btn{
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    margin-bottom: 20px;
+}
+.userList-container{
+    margin: 30px 80px;
 }
 .userList-btn button{
     background-color: #fff;
@@ -554,12 +538,167 @@
     color: #18A0FB;
     width: 15%;
 }
+.userList-btn button:hover{
+    background-color: #18A0FB;
+    color: #fff;
+}
 .btn-userList{
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
-.btn-userList button{
+.btnUser button{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    background-color: #fff;
+    border: 1px solid #18A0FB;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #18A0FB;
+    width: 100px;
+}
+.btnUser button:hover{
+    background-color: #18A0FB;
+    color: #fff;
+}
+
+/* Create User */
+
+.createUser-content-right{
+    width: 75%;
+    height: 100%;
+    margin: 20px 0;
+}
+.createUser-content-right .box{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 7%;
+    margin-top: 5%;
+}
+.box .box-content-top{
+    margin-top: 20px;
+    text-align: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    color: #000000;
+}
+.box p{
+    color: #F23C4F;
+}
+.box .box-content-bottom{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px 0 20px;
+}
+.box-content-bottom p{
+    text-align: center;
+}
+.box-content-left .content-user{
+    padding: 10px 0 0px 10px;
+}
+@media only screen and (max-width: 1350px) {
+    .box .box-content-bottom{
+        display: block;
+    }
+}
+.content-user input{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #111111;
+}
+.box-content-left, .box-content-right{
+    width: 100%;
+    padding: 10px;
+}
+.box-content-bottom .box-content-left .content-user{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    height: 65px;
+}
+.content-user span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    color: rgba(17, 17, 17, 0.48);
+}
+.box-content-left .box-title{
+    display: flex;
+    gap: 0 20px;
+    width: 100%;
+}
+.title-user{
+    width: 50%;
+}
+.title-left{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    height: 65px;
+}
+.title-left span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: rgba(17, 17, 17, 0.48);
+}
+.box-title input{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.title-right{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    height: 65px;
+}
+
+.title-right span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: rgba(17, 17, 17, 0.48);
+}
+.box-content-right .content-user{
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+    border-radius: 4px;
+    width: 100%;
+    height: 65px;
+    padding: 10px 0 10px 10px;
+}
+.content-user input{
+    width: 90%;
+    border: none;
+    outline: none;
+}
+.btn{
+    display: flex;
+    margin: 20px 0;
+}
+.btn-update{
+    margin: 0 10px 20px 10px;
+}
+.btn button{
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
@@ -573,6 +712,234 @@
     color: #18A0FB;
     width: 150px;
 }
-.btn-userList .btn-delete{
+.btn button:hover{
+    background-color: #18A0FB;
+    color: #fff;
+}
+
+/* Documents List */
+.document-right{
+    width: 80%;
+}
+.box-document{
+    margin: 30px 50px;
+}
+.nav-document{
+    display: flex;
+    justify-content: space-between;
+}
+.nav-title{
+    display: flex;
+    align-items: center;
+}
+.title-between{
+    padding: 0 300px 0 510px;
+}
+.nav-document span{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C5282;
+}
+.nav-btn{
+    background-color: #2A4365;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFCFE;
+    padding: 12px 20px ;
+}
+.nav-btn span{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFCFE;
+}
+.document-list{
+    display: flex;
+    background-color: #F7FAFC;
+    padding: 30px;
+}
+.document-content-left{
+    display: flex;
+    flex-direction: column;
+}
+.document-content-left span{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2A4365;
+}
+.document-content-left .document-author{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #2A4365;
+}
+.document-content-btn{
+    padding-left: 140px;
+}
+.document-content-btn button{
+    border: 2px solid #9AE6B4;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 135px;
+    height: 32px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #9AE6B4;
+    background-color: #fff;
+}
+.document-content-btn button:hover{
+    background-color: #9AE6B4;
+    color: #fff;
+}
+.document-content-right{
+    padding-left: 180px;
+    text-align: center;
+}
+.document-view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.document-view span{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #2A4365;
+}
+.document-view .document-view-between{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #A0AEC0;
+    margin: 0 10px;
+}
+.document-date{
+    display: flex;
+    padding-top: 10px;
+}
+.document-date span{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: rgba(26, 41, 61, 0.83);
+    padding-left: 10px;
+}
+.dots{
+    padding-left: 140px;
+}
+.dots span{
+    font-size: 30px;
+}
+.document-content-btn-draft{
+    padding-left: 140px;
+}
+.document-content-btn-draft button{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FC8181;
+    border: 2px solid #FC8181;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 135px;
+    height: 32px;
+    background-color: #fff;
+}
+.document-content-btn-draft button:hover{
+    background-color: #FC8181;
+    color: #fff;
+}
+.document-content-btn-exSoon{
+    padding-left: 140px;
+}
+.document-content-btn-exSoon button{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FBD38D;
+    border: 2px solid #FBD38D;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 135px;
+    height: 32px;
+    background-color: #fff;
+}
+.document-content-btn-exSoon button:hover{
+    background-color: #FBD38D;
+    color: #fff;
+}
+.document-number{
+    margin-top: 60px;
+    text-align: center;
+}
+.document-number .document-number-one{
+    background-color: #2A4365;
+    color: #fff;
+}
+.document-number span{
+    padding: 10px 15px;
+    background-color: #E2E8F0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2C5282;
+}
+
+/* Archived */
+
+.btn-archived{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.btn-archived button{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.015em;
+    padding: 10px 50px;
+    background-color: #fff;
+    border: 1px solid #18A0FB;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: #18A0FB;
+    width: 180px;
+}
+.btn-archived button:hover{
+    background-color: #18A0FB;
+    color: #fff;
+}
+.btn-delete-archived{
     margin-left: 20px;
+}
+
+.active-bgr{
+    background-color: rgba(246, 1, 1, 0.19);
+}
+.menu:hover{
+    background-color: rgba(246, 1, 1, 0.19);
+    cursor: pointer;
 }

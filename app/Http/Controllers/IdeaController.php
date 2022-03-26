@@ -29,7 +29,7 @@ class IdeaController extends Controller
      */
     public function create()
     {
-        return view('idea.create');
+        return view('user.idea.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class IdeaController extends Controller
     {
         $idea = Idea::find($id);
 
-        return view('idea.detail', ['idea' => $idea]);
+        return view('user.idea.detail', ['idea' => $idea]);
     }
 
     /**

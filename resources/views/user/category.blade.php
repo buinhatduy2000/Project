@@ -1,6 +1,7 @@
-@extends('master')
+@extends('user.master')
 @section('content')
 <div class="tbody-content">
+    @can('create-cate')
     <div class="tbody-detail-category">
         <p>Category</p>
         <input class="category-btn-new" type="button" id="new" value="New" />
@@ -20,10 +21,12 @@
             document.getElementById("content").style.display = 'none';
         };
     </script>
+    @endcan
     <div class="tbody-category">
         @foreach ($categories as $cate)
             <div class="category-item">
                 <h3 id="category-item-name">{{$cate ->category_name}}</h3>
+                @can('update-cate')
                 <form action="{{route('category.update', ['category' => $cate->id])}}" method="POST" class="form-edit" id="editItem">
                     @csrf
                     @method("PUT")
@@ -31,6 +34,8 @@
                            value="{{$cate ->category_name}}">
                     <button type="submit" class="category-btn-edit" id="save">Save</button>
                 </form>
+                @endcan
+                @can('delete-cate')
                 <div class="category-tool">
                     <input class="category-btn-edit" type="button" id="edit" value="Edit" />
 
@@ -41,6 +46,7 @@
                     </form>
 
                 </div>
+                @endcan
             </div>
             <script language="javascript">
                 document.getElementById("edit").onclick = function () {

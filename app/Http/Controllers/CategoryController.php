@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
     public function index(){
         $categories = Category::paginate(10)->sortByDesc('id');
-        return view('category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
+        if (Auth::guard('account')->user()->role == Account::ACCOUNT_ADMIN) {
+            return view('admin.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
+        }
+        return view('user.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
     }
 
-    public function store(Request $request){
-
+    public function store(Request $request, Category $category){
+         
         $cate = Category::create([
             'category_name' => $request->category_name,
             'first_closure_date' => Carbon::now(),
@@ -28,8 +33,10 @@ class CategoryController extends Controller
 
     }
 
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id, Account $account, Category $category){
+        if (! Gate::allows('edit-cate', $account)) {
+            return redirect()->back()->with('error','You can not edit category');
+        }
         $cate = Category::find($id);
 
         if($cate){
@@ -43,8 +50,14 @@ class CategoryController extends Controller
         }
     }
 
-    public function destroy(Request $request, $id){
+    public function destroy(Request $request, $id, Category $category){
+        if (! Gate::allows('delete-cate', $category)) {
+            return redirect()->back()->with('error','You can not delete category');
+        }
         $cate = Category::find($id);
+        if (count($cate->idea) != 0){
+            return redirect()->back()->with('error','Delete Category Not Success');
+        }
         if($cate){
             $delete_cate = $cate->delete();
 

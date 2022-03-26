@@ -19,9 +19,16 @@ Route::post('/login', [\App\Http\Controllers\AccountController::class, 'postLogi
 Route::get('/logout', [\App\Http\Controllers\AccountController::class, 'logout'])->name('logout');
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/category', CategoryController::class);
+Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
 Route::group(['middleware' => 'account'], function() {
     Route::get('/personal-info/{id}', [\App\Http\Controllers\AccountController::class, 'viewInfo'])->name('viewInfo');
-    Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
+    Route::resource('/category', CategoryController::class);
+    Route::get('/list-user', [\App\Http\Controllers\AccountController::class, 'listUser'])->name('adminListUser');
+    Route::get('create-user', [\App\Http\Controllers\AccountController::class, 'createUser'])->name('adminCreateUser');
 });
+//Route::group(['prefix' => 'admin', 'middleware' => 'account'], function() {
+//    if (Auth::check() && Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN) {
+//        Route::get('/', [AdminController::class, 'index'])->name('admin_index');
+//    }
+//});
 
