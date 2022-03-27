@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Personal;
+use App\Models\Idea;
+use App\Mail\HelloMail;
 
 class CommentController extends Controller
 {
@@ -22,6 +26,15 @@ class CommentController extends Controller
         if(!$comment){
             return redirect()->back()->with('error','Comment Not Success');
         }
+        // dd('send mail');\
+        $idea = Idea::find($id);
+        $user_id = $idea['user_id'];
+        // dd($user_id);
+        $user = Personal::find($user_id);
+        // dd($user['email']);
+        $mailable = new HelloMail($user);
+        Mail::to($user['email'])->send($mailable);
+
         return redirect() -> back()->with('message', 'Comment Success');
     }
 }
