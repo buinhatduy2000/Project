@@ -85,6 +85,8 @@ class IdeaController extends Controller
 
         $comments = Comment::where('idea_id', $id)->get();
 
+        // dd(count($comments));
+
         Idea::find($id)->increment('views');
 
         return view('idea.detail', ['idea' => $idea, 'comments' => $comments]);
