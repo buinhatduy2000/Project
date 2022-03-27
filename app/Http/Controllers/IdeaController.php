@@ -58,6 +58,7 @@ class IdeaController extends Controller
             'user_id' => Auth::guard('account')->user()->id,
             'description' => $request->description ?? '',
             'category_id' => $request->category_id,
+            'views' => 0,
         ]);
         $lastInsertId = DB::getPdo()->lastInsertId();
         foreach ($pathFile as $file) {
@@ -83,6 +84,8 @@ class IdeaController extends Controller
         $idea = Idea::find($id);
 
         $comments = Comment::where('idea_id', $id)->get();
+
+        Idea::find($id)->increment('views');
 
         return view('idea.detail', ['idea' => $idea, 'comments' => $comments]);
     }

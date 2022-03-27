@@ -42,7 +42,7 @@
                     </div>
                     <div class="view-detail">
                         <ul>
-                            <li>1222 <span>views</span></li>
+                            <li>{{$idea->views}} <span>views</span></li>
                             <li>150 <span>likes</span></li>
                             <li>12 <span>dislikes</span></li>
                         </ul>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="view-detail-responsive">
-                    <p>1222 views</p>
+                    <p>{{$idea->views}} views</p>
                     <p>150 likes</p>
                     <p>12 dislikes</p>
                 </div>

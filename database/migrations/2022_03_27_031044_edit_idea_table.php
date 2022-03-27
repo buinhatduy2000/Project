@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditCommentsTable extends Migration
+class EditIdeaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class EditCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-                $table->BOOLEAN('anonymous')->nullable();
+        Schema::table('ideas', function (Blueprint $table) {
+            $table->integer('views');
         });
     }
 
@@ -25,8 +25,8 @@ class EditCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            //
+        Schema::table('ideas', function (Blueprint $table) {
+
         });
     }
 }

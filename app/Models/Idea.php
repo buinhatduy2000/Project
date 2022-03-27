@@ -9,7 +9,7 @@ class Idea extends Model
 {
     use HasFactory;
     protected $table = 'ideas';
-    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description'];
+    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

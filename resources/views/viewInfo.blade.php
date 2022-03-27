@@ -50,7 +50,7 @@
                     <button class="btn btn-outline-secondary"><a href="{{route('idea.show', ['idea' => $idea->id])}}">See More</a></button>
                     <p class="view">
                         <i class="bi bi-tag"></i> {{$idea->category->category_name}} &emsp;&emsp;&emsp;&nbsp;
-                        <i class="bi bi-people-fill"></i> 2300
+                        <i class="bi bi-people-fill"></i> {{$idea->views}}
                     </p>
                 </div>
             </div>
