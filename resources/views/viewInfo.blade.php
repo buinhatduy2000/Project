@@ -28,9 +28,10 @@
                     <div class="tbody-dropdown">
                         <button class="tbody-dropbtn">Choose sort order</button>
                         <div class="tbody-dropdown-ct">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="{{Request::url()}}?sort_by=popular">Most popular</a>
+                            <a href="{{Request::url()}}?sort_by=newtest">Latest Ideas</a>
+                            <a href="{{Request::url()}}?sort_by=like">Most likes</a>
+                            <a href="{{Request::url()}}?sort_by=comments">Most comments</a>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,12 @@ class DatabaseSeeder extends Seeder
         Personal::create([
             'user_id' => 1,
             'first_name' => 'Admin',
-            'last_name' => 'Admin'
+            'last_name' => 'Admin',
+            'dob' => '2000-09-01',
+            'phone_number' => '0888888888',
+            'email' => 'duybngch18459@fpt.edu.vn',
+            'address' => 'Ha Noi, Viet Nam',
+            'department' => 'Management',
         ]);
         
         \App\Models\Account::create([
@@ -32,7 +37,12 @@ class DatabaseSeeder extends Seeder
         Personal::create([
             'user_id' => 2,
             'first_name' => 'Staff',
-            'last_name' => '1'
+            'last_name' => '1',
+            'dob' => '2000-09-01',
+            'phone_number' => '0888888888',
+            'email' => 'buinhatduykbhb.2000@gmail.com',
+            'address' => 'Ha Noi, Viet Nam',
+            'department' => 'IT',
         ]);
     }
 }
