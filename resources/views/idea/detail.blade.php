@@ -84,7 +84,7 @@
                 <div class="checkbox-comment form-check">                    
                     <input class="form-check-input" type="checkbox" name="anonymous" value="1" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
-                        Default checkbox
+                        Comment by anonymous
                     </label>
                 </div>                                               
             </form>
