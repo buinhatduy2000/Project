@@ -8,6 +8,7 @@
 </head>
 <body>
     <div>
+        <h1>Hello {{$user->first_name}}</h1>
         <h2>You have new comment on your idea</h2>
         <p> <b>Please check your idea see who comment</b></p>
      </div>

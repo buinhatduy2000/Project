@@ -33,14 +33,31 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'role' => 'staff',
         ]);
-
         Personal::create([
             'user_id' => 2,
             'first_name' => 'Staff',
-            'last_name' => '1',
+            'last_name' => 'Duy',
             'dob' => '2000-09-01',
             'phone_number' => '0888888888',
             'email' => 'buinhatduykbhb.2000@gmail.com',
+            'address' => 'Ha Noi, Viet Nam',
+            'department' => 'IT',
+        ]);
+
+
+        \App\Models\Account::create([
+            'user_name' => "staff_account_2",
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'role' => 'staff',
+        ]);
+
+        Personal::create([
+            'user_id' => 3,
+            'first_name' => 'Staff',
+            'last_name' => 'Minh',
+            'dob' => '2000-11-08',
+            'phone_number' => '0888888888',
+            'email' => 'minhnngbh18582@fpt.edu.vn',
             'address' => 'Ha Noi, Viet Nam',
             'department' => 'IT',
         ]);

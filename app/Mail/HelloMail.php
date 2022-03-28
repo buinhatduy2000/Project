@@ -29,9 +29,12 @@ class HelloMail extends Mailable
      */
     public function build()
     {
+        // dd($this->user);
         return $this
         ->subject("You have comment")
         ->view('mail.comments')
-        ->with(['user'=> $this->user]);
+        ->with(['user'=> $this->user,
+                'content'=> $this->user,
+                ]);
     }
 }

@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+<div class="tbody-detail-docs col col-sm-9 col-lg-10">
 <div class="tbody-content">
 {{--        <div class="tbody-box-search">--}}
 {{--            <form class="d-flex">--}}
@@ -74,12 +75,20 @@
                     @endforeach
                 </div>
             </div>
-            <form action="comment/{{$idea->id}}" method="POST" class="input-comment">
+            <form action="comment/{{$idea->id}}" method="POST" class="form-comment">
                 @csrf
-                <input type="text" name="comment" placeholder="Add a comments...">
-                <input type="checkbox" name="anonymous" value="1">
-                <button type="submit">Post</button>
+                <div class="input-comment">
+                    <input type="text" name="comment" placeholder="Add a comments...">
+                    <button type="submit">Post</button>
+                </div>
+                <div class="checkbox-comment form-check">                    
+                    <input class="form-check-input" type="checkbox" name="anonymous" value="1" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Default checkbox
+                    </label>
+                </div>                                               
             </form>
         </div>
+</div>
 </div>
 @endsection
