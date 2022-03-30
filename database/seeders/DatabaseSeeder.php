@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Personal::create([
             'user_id' => 2,
-            'first_name' => 'Staff',
+            'first_name' => 'Bui Nhat',
             'last_name' => 'Duy',
             'dob' => '2000-09-01',
             'phone_number' => '0888888888',
@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
 
         Personal::create([
             'user_id' => 3,
-            'first_name' => 'Staff',
+            'first_name' => 'Nguyen Ngoc',
             'last_name' => 'Minh',
             'dob' => '2000-11-08',
             'phone_number' => '0888888888',

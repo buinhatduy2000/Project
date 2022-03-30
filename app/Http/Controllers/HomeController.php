@@ -25,12 +25,8 @@ class HomeController extends Controller
             dd(request()->sort_by);
         }
         else if(request()->sort_by == 'comments'){
-            $ideas = Idea::all()->where('deleted_at', null);
-            dd($ideas);
-            // $id = $ideas->id;
-            dd($id);
-            $comments = Comment::all()->where('account_id', $id);
-            // dd(count($comments));
+            $ideas = Idea::all()->where('deleted_at', null)->sortByDesc('comments');
+            return view('home', ['ideas' => $ideas]);
         }
         else{
             $ideas = Idea::all()->where('deleted_at', null);

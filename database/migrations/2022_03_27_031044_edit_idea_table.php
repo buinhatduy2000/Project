@@ -15,6 +15,7 @@ class EditIdeaTable extends Migration
     {
         Schema::table('ideas', function (Blueprint $table) {
             $table->integer('views');
+            $table->integer('comments');
         });
     }
 

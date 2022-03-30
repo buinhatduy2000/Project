@@ -59,6 +59,7 @@ class IdeaController extends Controller
             'description' => $request->description ?? '',
             'category_id' => $request->category_id,
             'views' => 0,
+            'comments' => 0,
         ]);
         $lastInsertId = DB::getPdo()->lastInsertId();
         foreach ($pathFile as $file) {

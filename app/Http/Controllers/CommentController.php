@@ -28,6 +28,7 @@ class CommentController extends Controller
         }
         // dd('send mail');\
         $idea = Idea::find($id);
+        Idea::find($id)->increment('comments');
         $user = Personal::find($idea['user_id']);
         // dd($user['email']);
         $mailable = new HelloMail($user);

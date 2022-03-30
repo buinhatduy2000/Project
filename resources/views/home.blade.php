@@ -63,6 +63,7 @@
                                     <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
                                     &emsp;&emsp;&emsp;&nbsp;
                                     <i class="bi bi-people-fill"></i> {{ $idea->views }}
+                                    <i class="bi bi-chat-square"></i> {{ $idea->comments }}
                                 </p>
                             </div>
                         </div>
