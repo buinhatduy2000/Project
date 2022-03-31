@@ -15,7 +15,6 @@ class EditIdeaTable extends Migration
     {
         Schema::table('ideas', function (Blueprint $table) {
             $table->integer('views');
-            $table->integer('comments');
         });
     }
 
@@ -27,7 +26,7 @@ class EditIdeaTable extends Migration
     public function down()
     {
         Schema::table('ideas', function (Blueprint $table) {
-
+        
         });
     }
 }

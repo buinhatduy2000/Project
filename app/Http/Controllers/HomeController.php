@@ -14,24 +14,22 @@ class HomeController extends Controller
         
         if(request()->sort_by == 'popular'){
             $ideas = Idea::all()->where('deleted_at', null)->sortByDesc('views');
-            return view('home', ['ideas' => $ideas]);
 
         }
         else if(request()->sort_by == 'newtest'){
             $ideas = Idea::all()->where('deleted_at', null)->sortByDesc('created_at');
-            return view('home', ['ideas' => $ideas]);
         }
         else if(request()->sort_by == 'like'){
             dd(request()->sort_by);
         }
         else if(request()->sort_by == 'comments'){
-            $ideas = Idea::all()->where('deleted_at', null)->sortByDesc('comments');
-            return view('home', ['ideas' => $ideas]);
+            $ideas = Idea::withCount('comments')->orderBy('comments_count', 'desc')->get();
+            // dd($ideas);
         }
         else{
             $ideas = Idea::all()->where('deleted_at', null);
-            return view('home', ['ideas' => $ideas]);
         }
+        return view('home', ['ideas' => $ideas]);
         
     }
 
@@ -39,22 +37,20 @@ class HomeController extends Controller
     {
         if(request()->sort_by == 'popular'){
             $ideas = Idea::where('category_id', $id)->get()->sortByDesc('views');
-            return view('home', ['ideas' => $ideas]);
 
         }
         else if(request()->sort_by == 'newtest'){
             $ideas = Idea::where('category_id', $id)->get()->sortByDesc('created_at');
-            return view('home', ['ideas' => $ideas]);
         }
         else if(request()->sort_by == 'like'){
             dd(request()->sort_by);
         }
         else if(request()->sort_by == 'comments'){
-            dd(request()->sort_by);
+            $ideas = Idea::where('category_id', $id)->withCount('comments')->orderBy('comments_count', 'desc')->get();
         }
         else{
             $ideas = Idea::where('category_id', $id)->get();
-            return view('home', ['ideas' => $ideas]);
         }
+        return view('home', ['ideas' => $ideas]);
     }
 }

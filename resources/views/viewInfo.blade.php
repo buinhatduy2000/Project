@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<div class="tbody-user col col-sm-9 col-lg-10"></div>
+<div class="tbody-user col col-sm-9 col-lg-10">
     <div class="tbody-content">
         <div class="tbody-user-detail">
             <div class="tbody-user-title">
@@ -53,6 +53,7 @@
                     <p class="view">
                         <i class="bi bi-tag"></i> {{$idea->category->category_name}} &emsp;&emsp;&emsp;&nbsp;
                         <i class="bi bi-people-fill"></i> {{$idea->views}}
+                        <i class="bi bi-chat-square"></i> {{ $idea->comments->count() }}
                     </p>
                 </div>
             </div>
@@ -78,4 +79,6 @@
             </div>
         @endif
     </div>
+
+</div>
 @endsection
