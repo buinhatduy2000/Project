@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('content')
+<div class="tbody-user col col-sm-9 col-lg-10"></div>
     <div class="tbody-content">
         <div class="tbody-user-detail">
             <div class="tbody-user-title">
@@ -28,9 +29,10 @@
                     <div class="tbody-dropdown">
                         <button class="tbody-dropbtn">Choose sort order</button>
                         <div class="tbody-dropdown-ct">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="{{Request::url()}}?sort_by=popular">Most popular</a>
+                            <a href="{{Request::url()}}?sort_by=newtest">Latest Ideas</a>
+                            <a href="{{Request::url()}}?sort_by=like">Most likes</a>
+                            <a href="{{Request::url()}}?sort_by=comments">Most comments</a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +52,7 @@
                     <button class="btn btn-outline-secondary"><a href="{{route('idea.show', ['idea' => $idea->id])}}">See More</a></button>
                     <p class="view">
                         <i class="bi bi-tag"></i> {{$idea->category->category_name}} &emsp;&emsp;&emsp;&nbsp;
-                        <i class="bi bi-people-fill"></i> 2300
+                        <i class="bi bi-people-fill"></i> {{$idea->views}}
                     </p>
                 </div>
             </div>

@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <!-- navbar đã login -->
     <div class="header">
         <div class="header-navbar">
             <div class="header-left">
@@ -53,71 +54,122 @@
                         </ul>
                     </div>
                 </div>
+                <div class="tbody-responsive-navbar">
+                    <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
+                    <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-list"></i></button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="tbody-category">
-        <div class="tbody">
-            <div class="tbody-sitebar col col-lg-2">
-                <h4 class="tbody-category-h4">Category</h4>
-                <ul>
-                    <li><a href="">Book</a></li>
-                    <li><a href="">Community</a></li>
-                    <li><a href="">Infrastructure</a></li>
-                    <li><a href="">Subjects</a></li>
-                    <li><a href="">Service</a></li>
-                    <li><a href="">School fee</a></li>
-                    <li><a href="">Sharing experiences</a></li>
-                    <li><a href="">Rank and position</a></li>
-                    <li><a href="">Homework</a></li>
-                    <li><a href="">Exam</a></li>
-                    <li><a href="">Game</a></li>
-                </ul>
+    <!-- navbar after responsive -->
+    <div id="navbar-item-detail">
+        <div class="login-infor-user" data-bs-toggle="dropdown">
+            <img src="../img/avatar.png" alt="" />
+            <div class="login-infor-user-name">
+                <p>Oliver Smith</p>
+                <h6>Teacher English</h6>
             </div>
-            <div class="tbody-content col col-lg-10">
-                <div class="tbody-title-category col-sm-12">                    
+        </div>
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./start-page.html">Startpage</a></li>
+            <li><a href="">Follow</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="./use-detail.html">View Profile</a></li>
+            <li><a href="./create-docs.html">New Docs</a></li>
+            <li><a href="">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="tbody">
+        <!-- sitebar category after responsive: sitebar này bt sẽ ẩn sao khi thu nhỏ trang web mới hiện -->
+        <div class="tbody-box-responsive">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="btn btn-outline-success" type="button" id="category" value="Category" />
+                <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category" />
+            </form>
+        </div>
+        <div class="tbody-sitebar-responsive" id="cate-ct">
+            <h6><a href="./category.html">Category Edit</a></h6>
+            <ul>
+                <li><a href="">Book</a></li>
+                <li><a href="">Community</a></li>
+                <li><a href="">Infrastructure</a></li>
+                <li><a href="">Subjects</a></li>
+                <li><a href="">Service</a></li>
+                <li><a href="">School fee</a></li>
+                <li><a href="">Sharing experiences</a></li>
+                <li><a href="">Rank and position</a></li>
+                <li><a href="">Homework</a></li>
+                <li><a href="">Exam</a></li>
+                <li><a href="">Game</a></li>
+            </ul>
+        </div>
+        <!--sitebar category simple: sitebar mặc định -->
+        <div class="tbody-sitebar col col-sm-3 col-lg-2">
+            <h4 class="tbody-category-h4">Category</h4>
+            <ul>
+                <li><a href="">Book</a></li>
+                <li><a href="">Community</a></li>
+                <li><a href="">Infrastructure</a></li>
+                <li><a href="">Subjects</a></li>
+                <li><a href="">Service</a></li>
+                <li><a href="">School fee</a></li>
+                <li><a href="">Sharing experiences</a></li>
+                <li><a href="">Rank and position</a></li>
+                <li><a href="">Homework</a></li>
+                <li><a href="">Exam</a></li>
+                <li><a href="">Game</a></li>
+            </ul>
+        </div>
+        <!-- tbody-category để chỉnh độ dài của trang cho footer ko đè lên -->
+        <div class="tbody-category col col-lg-10">
+            <div class="tbody-content">
+                <div class="tbody-title-category col-sm-12">
                     <!-- <input class="category-btn-new" type="button" id="new" value="New" /> -->
-                    <button type="button" class="category-btn-new" data-bs-toggle="modal"
-                        data-bs-target="#newModal">
+                    <button type="button" class="category-btn-new" data-bs-toggle="modal" data-bs-target="#newModal">
                         New
                     </button>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="newModalLabel">Create new category</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-add" id="content">                    
-                                    <div class="category-input-name">
-                                        <label for="input-name" class="form-label">Category Name :</label>
-                                        <input class="form-control" type="text" id="cate-name" name="cate-name">
-                                        <p class="error">Error documentation!</p>
-                                    </div>                                    
-                                    <div class="category-input-date">
-                                        <label for="input-date" class="form-label">Category Date :</label>
-                                        <input class="form-control" type="date" id="cate-date" name="cate-date">
-                                    </div>                                                      
+                            <form action="">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="newModalLabel">Create new category</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Create</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
+                                <div class="modal-body">
+                                    <div class="form-add" id="content">
+                                        <div class="category-input-name">
+                                            <label for="input-name" class="form-label">Category Name :</label>
+                                            <input class="form-control" type="text" id="cate-name" name="cate-name">
+                                            <p class="error">Error documentation!</p>
+                                        </div>
+                                        <div class="category-input-date">
+                                            <label for="input-date" class="form-label">Category Date :</label>
+                                            <input class="form-control" type="date" id="cate-date" name="cate-date">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Create</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>                
+                </div>
                 <div class="tbody-category-detail">
-                    <div class="category-item">
+                    <form class="category-item" action="">
                         <h3 id="category-item-name">Book</h3>
                         <div class="form-edit col col-sm-4" id="editItem">
-                            <input class="form-control" type="text" id="cate-name" name="cate-name"
-                                placeholder="Book">
+                            <input class="form-control" type="text" id="cate-name" name="cate-name" placeholder="Book">
                             <p class="error">Error documentation!</p>
                             <input class="form-control" type="date" id="cate-date" name="cate-date"><br>
                         </div>
@@ -125,37 +177,34 @@
                             <input class="category-btn-edit" type="button" id="edit" value="Edit" />
                             <input class="category-btn-edit" type="button" id="save" value="Save" />
                             <!--Delete Modal -->
-                            <button type="button" class="category-btn-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Delete</button>
                         </div>
-                    </div>
-                    <script language="javascript">
-                        document.getElementById("edit").onclick = function () {
-                            document.getElementById("editItem").style.display = 'inline-block';
-                            document.getElementById("edit").style.display = 'none';
-                            document.getElementById("category-item-name").style.display = 'none';
-                            document.getElementById("save").style.display = 'inline-block';
-                        };
-                        document.getElementById("save").onclick = function () {
-                            document.getElementById("editItem").style.display = 'none';
-                            document.getElementById("save").style.display = 'none';
-                            document.getElementById("category-item-name").style.display = 'inline-block';
-                            document.getElementById("edit").style.display = 'inline-block';
-                        };    
-                    </script>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </form>
                     <!--Delete Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="deleteModalLabel">Delete category</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     Do you want to delete category ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary">Detele</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                    
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -166,12 +215,26 @@
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
                         </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                        </div>
                     </div>
                     <div class="category-item">
                         <h3>Infrastructure</h3>
                         <div class="category-tool">
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
+                        </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                     <div class="category-item">
@@ -180,12 +243,26 @@
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
                         </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                        </div>
                     </div>
                     <div class="category-item">
                         <h3>Service</h3>
                         <div class="category-tool">
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
+                        </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                     <div class="category-item">
@@ -194,12 +271,26 @@
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
                         </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                        </div>
                     </div>
                     <div class="category-item">
                         <h3>Sharing experiences</h3>
                         <div class="category-tool">
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
+                        </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                     <div class="category-item">
@@ -208,12 +299,26 @@
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
                         </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                        </div>
                     </div>
                     <div class="category-item">
                         <h3>Homework</h3>
                         <div class="category-tool">
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
+                        </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                     <div class="category-item">
@@ -222,12 +327,26 @@
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
                         </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
+                        </div>
                     </div>
                     <div class="category-item">
                         <h3>Game</h3>
                         <div class="category-tool">
                             <button class="category-btn-edit">Edit</button>
                             <button class="category-btn-delete">Delete</button>
+                        </div>
+                        <div class="category-tool-responsive">
+                            <button class="category-btn-edit" id="edit-responsive"><i class="bi bi-pen"></i></button>
+                            <button class="category-btn-edit" id="save-responsive"><i class="bi bi-save"></i></button>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"><i class="bi bi-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -244,28 +363,72 @@
                 </p>
                 <h4>+44 322 11 00</h4>
             </div>
-            <div class="tool col col-lg-8">
-                <ul class="col-sm-4">
-                    <li>Front End</li>
-                    <li>Minh</li>
-                    <li>Dung</li>
-                </ul>
-                <ul class="col-sm-4">
-                    <li>Back End</li>
-                    <li>Toan</li>
-                    <li>Duy</li>
-                </ul>
-                <ul class="col-sm-4">
-                    <li>Test Web</li>
-                    <li>Nam</li>
-                    <li>Bien</li>
-                </ul>
+            <div class="footer-member">
+                <p>FrontE</p>
+                <p>Minh</p>
+                <p>Dung</p>
+            </div>
+            <div class="footer-member">
+                <p>BackE</p>
+                <p>Toan</p>
+                <p>Duy</p>
+            </div>
+            <div class="footer-member">
+                <p>Tester</p>
+                <p>Nam</p>
+                <p>Bien</p>
             </div>
         </div>
         <div class="footer-2">
             <p>2022 © All rights reserved. Created by Group3</p>
         </div>
     </div>
+    <script language="javascript">
+        document.getElementById("navbar-item").onclick = function () {
+            document.getElementById("navbar-item-detail").style.display = 'block';
+            document.getElementById("navbar-item-cancel").style.display = 'block';
+            document.getElementById("navbar-item").style.display = 'none';
+        };
+        document.getElementById("navbar-item-cancel").onclick = function () {
+            document.getElementById("navbar-item-detail").style.display = 'none';
+            document.getElementById("navbar-item-cancel").style.display = 'none';
+            document.getElementById("navbar-item").style.display = 'block';
+        };
+        document.getElementById("category").onclick = function () {
+            document.getElementById("cate-ct").style.display = 'block';
+            document.getElementById("cate-cancel").style.display = 'block';
+            document.getElementById("category").style.display = 'none';
+        };
+        document.getElementById("cate-cancel").onclick = function () {
+            document.getElementById("cate-ct").style.display = 'none';
+            document.getElementById("cate-cancel").style.display = 'none';
+            document.getElementById("category").style.display = 'block';
+        };
+        document.getElementById("edit").onclick = function () {
+            document.getElementById("editItem").style.display = 'inline-block';
+            document.getElementById("edit").style.display = 'none';
+            document.getElementById("category-item-name").style.display = 'none';
+            document.getElementById("save").style.display = 'inline-block';
+        };
+        document.getElementById("save").onclick = function () {
+            document.getElementById("editItem").style.display = 'none';
+            document.getElementById("save").style.display = 'none';
+            document.getElementById("category-item-name").style.display = 'inline-block';
+            document.getElementById("edit").style.display = 'inline-block';
+        };
+        document.getElementById("edit-responsive").onclick = function () {
+            document.getElementById("editItem").style.display = 'inline-block';
+            document.getElementById("edit-responsive").style.display = 'none';
+            document.getElementById("category-item-name").style.display = 'none';
+            document.getElementById("save-responsive").style.display = 'inline-block';
+        };
+        document.getElementById("save-responsive").onclick = function () {
+            document.getElementById("editItem").style.display = 'none';
+            document.getElementById("save-responsive").style.display = 'none';
+            document.getElementById("category-item-name").style.display = 'inline-block';
+            document.getElementById("edit-responsive").style.display = 'inline-block';
+        };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
