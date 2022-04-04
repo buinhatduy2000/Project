@@ -66,7 +66,7 @@
                                 <li><a class="dropdown-item"
                                         href="{{ route('viewInfo', ['id' => Auth::guard('account')->user()->id]) }}">View
                                         Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ route('idea.create') }}">New Idea</a></li>
+                                {{-- <li><a class="dropdown-item" href="{{ route('idea.create') }}">New Idea</a></li> --}}
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                             </ul>
                         </div>

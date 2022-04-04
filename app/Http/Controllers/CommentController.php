@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Personal;
 use App\Models\Idea;
-use App\Mail\HelloMail;
+use App\Mail\NewComments;
 
 class CommentController extends Controller
 {
@@ -33,7 +33,7 @@ class CommentController extends Controller
         $idea = Idea::find($id);
         $user = Personal::find($idea['user_id']);
         // dd($user['email']);
-        $mailable = new HelloMail($user, $idea);
+        $mailable = new NewComments($user, $idea);
         Mail::to($user['email'])->send($mailable);
 
         return redirect() -> back()->with('message', 'Comment Success');

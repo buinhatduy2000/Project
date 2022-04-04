@@ -7,12 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class HelloMail extends Mailable
+class NewComments extends Mailable
 {
     use Queueable, SerializesModels;
     private $user;
     private $idea;
-
     /**
      * Create a new message instance.
      *
@@ -31,7 +30,6 @@ class HelloMail extends Mailable
      */
     public function build()
     {
-        // dd($this->user);
         return $this
         ->subject("You have comment")
         ->view('mail.comments')

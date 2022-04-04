@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Mail\SubmitIdea;
 
 class IdeaController extends Controller
 {
@@ -69,6 +70,10 @@ class IdeaController extends Controller
             ]);
         }
         if ($status){
+            // $user = Personal::find($idea['user_id']);
+
+            // $mailable = new SubmitIdea($user);
+            // Mail::to($user['email'])->send($mailable);
             return redirect()->route('viewInfo', ['id' => Auth::guard('account')->user()->id])->with('success', "Create successful");
         }
         return back()->withInput();
