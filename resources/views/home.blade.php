@@ -1,4 +1,11 @@
 @extends('master')
+@section('css')
+    <style>
+        .tbody-content{
+            height: 100%;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="tbody-home col col-sm-9 col-lg-10">
         <div class="tbody-content">
