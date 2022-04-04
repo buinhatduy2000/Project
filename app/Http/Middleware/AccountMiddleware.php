@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Account;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class AccountMiddleware
     {
         if(!Auth::guard('account')->check()){
             return redirect('/login');
-        }else{
+        } else {
             return $next($request);
         }
     }

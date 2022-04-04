@@ -1,4 +1,4 @@
-@extends('master')
+@extends('user.master')
 @section('content')
     <div class="tbody-content">
         <div class="tbody-detail-category">
@@ -28,6 +28,11 @@
                         class="form-edit" id="editItem">
                         @csrf
                         @method("PUT")
+                        @error('category_name')
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         <input class="category-input" type="text" id="cate-name" name="category_name"
                             value="{{ $cate->category_name }}">
                         <button type="submit" class="category-btn-edit" id="save">Save</button>

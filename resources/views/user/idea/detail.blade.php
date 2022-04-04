@@ -1,4 +1,4 @@
-@extends('master')
+@extends('user.master')
 @section('content')
 <div class="tbody-detail-docs col col-sm-9 col-lg-10">
 <div class="tbody-content">
@@ -59,6 +59,15 @@
                     <p>150 likes</p>
                     <p>12 dislikes</p>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="comments">
                     @foreach ($comments as $comment)
                     <div class="comments-detail">
@@ -81,12 +90,12 @@
                     <input type="text" name="comment" placeholder="Add a comments...">
                     <button type="submit">Post</button>
                 </div>
-                <div class="checkbox-comment form-check">                    
+                <div class="checkbox-comment form-check">
                     <input class="form-check-input" type="checkbox" name="anonymous" value="1" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Comment by anonymous
                     </label>
-                </div>                                               
+                </div>
             </form>
         </div>
 </div>

@@ -1,4 +1,4 @@
-@extends('master')
+@extends('user.master')
 @section('content')
     <div class="tbody-content col col-lg-10">
         <div class="tbody-detail">

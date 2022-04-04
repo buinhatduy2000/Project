@@ -15,8 +15,10 @@ class Category extends Model
         'first_closure_date',
         'second_closure_date',
     ];
+
     public function idea()
     {
         return $this->hasMany(Idea::class, 'category_id');
     }
+
 }
