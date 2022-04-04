@@ -61,5 +61,6 @@ class DatabaseSeeder extends Seeder
             'address' => 'Ha Noi, Viet Nam',
             'department' => 'IT',
         ]);
+
     }
 }

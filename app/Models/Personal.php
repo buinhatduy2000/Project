@@ -12,7 +12,7 @@ class Personal extends Model
     protected $table = 'personal_info';
     protected $fillable = ['user_id', 'first_name', 'last_name', 'dob', 'phone_number', 'email', 'address', 'department'];
 
-    public function acccount() {
+    public function account() {
         return $this->belongsTo(Account::class, 'user_id');
     }
 }

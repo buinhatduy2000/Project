@@ -6,11 +6,15 @@ use App\Http\Requests\IdeaRequest;
 use App\Models\Document;
 use App\Models\Idea;
 use App\Models\Comment;
+use App\Models\Account;
+use App\Models\Personal;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Mail\SubmitIdea;
+use Illuminate\Support\Facades\Mail;
 
 class IdeaController extends Controller
 {
@@ -71,10 +75,19 @@ class IdeaController extends Controller
             ]);
         }
         if ($status){
-            // $user = Personal::find($idea['user_id']);
+            $users = Account::with(['personal_info' => function($q) use ($department) {
+                $q->where('personal_info.department', '=', $department);
+            }])->where('role', Account::ACCOUNT_QAC)->get();
 
-            // $mailable = new SubmitIdea($user);
-            // Mail::to($user['email'])->send($mailable);
+            $category_mail = Category::where('id', $request->category_id)->first();
+            // dd($users);
+            // dd($category);
+
+            foreach($users as $user){
+                $mailable = new SubmitIdea($user, $category_mail);
+                Mail::to($user->personal_info->email)->send($mailable);
+            }
+
             return redirect()->route('viewInfo', ['id' => Auth::guard('account')->user()->id])->with('success', "Create successful");
         }
         return back()->withInput();
