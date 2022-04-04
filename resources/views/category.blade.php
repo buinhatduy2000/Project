@@ -1,63 +1,109 @@
 @extends('master')
 @section('content')
-    <div class="tbody-content">
-        <div class="tbody-detail-category">
-            <p>Category</p>
-            <input class="category-btn-new" type="button" id="new" value="New" />
-        </div>
-        <form action="{{ route('category.store') }}" class="form-add" id="content" method="POST">
-            @csrf
-            <label for="category-name">Category Name :</label>
-            <input class="category-input" type="text" id="cate-name" name="category_name">
-            <button type="submit" class="category-btn-add">Add</button>
-            <input class="category-btn-cancel" type="button" id="cancel" value="Cancel" />
-        </form>
-        <script language="javascript">
-            document.getElementById("new").onclick = function() {
-                document.getElementById("content").style.display = 'block';
-            };
-            document.getElementById("cancel").onclick = function() {
-                document.getElementById("content").style.display = 'none';
-            };
-        </script>
-        <div class="tbody-category">
-            @foreach ($categories as $cate)
-                <div class="category-item">
-                    <h3 id="category-item-name">{{ $cate->category_name }}</h3>
-                    <form action="{{ route('category.update', ['category' => $cate->id]) }}" method="POST"
-                        class="form-edit" id="editItem">
-                        @csrf
-                        @method("PUT")
-                        <input class="category-input" type="text" id="cate-name" name="category_name"
-                            value="{{ $cate->category_name }}">
-                        <button type="submit" class="category-btn-edit" id="save">Save</button>
-                    </form>
-                    <div class="category-tool">
-                        <input class="category-btn-edit" type="button" id="edit" value="Edit" />
-
-                        <form action="{{ route('category.destroy', ['category' => $cate->id]) }}" method="post">
+    <div class="tbody-category col col-lg-10">
+        <div class="tbody-content">
+            <div class="tbody-title-category col-sm-12">
+                <button type="button" class="category-btn-new" data-bs-toggle="modal" data-bs-target="#newModal">
+                    New
+                </button>
+            </div>
+            <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="{{ route('category.store') }}" class="form-add" id="content" method="POST">
                             @csrf
-                            @method('DELETE')
-                            <button type="submit" class="category-btn-delete">Delete</button>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newModalLabel">Create new category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-add" id="content">
+                                    <div class="category-input-name">
+                                        <label for="input-name" class="form-label">Category Name :</label>
+                                        <input class="form-control" type="text" id="cate-name" name="category_name">
+                                        {{-- <p class="error">Error documentation!</p> --}}
+                                    </div>
+                                    <div class="category-input-date">
+                                        <label for="input-date" class="form-label">Category Date :</label>
+                                        <input class="form-control" type="date" id="cate-date" name="category_date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </form>
-
                     </div>
                 </div>
-                <script language="javascript">
-                    document.getElementById("edit").onclick = function() {
-                        document.getElementById("editItem").style.display = 'inline-block';
-                        document.getElementById("edit").style.display = 'none';
-                        document.getElementById("category-item-name").style.display = 'none';
-                        document.getElementById("save").style.display = 'inline-block';
-                    };
-                    document.getElementById("save").onclick = function() {
-                        document.getElementById("editItem").style.display = 'none';
-                        document.getElementById("save").style.display = 'none';
-                        document.getElementById("category-item-name").style.display = 'inline-block';
-                        document.getElementById("edit").style.display = 'inline-block';
-                    };
-                </script>
-            @endforeach
+            </div>
+            <div class="tbody-category">
+
+                @foreach ($categories as $cate)
+                    <div class="category-item">
+                        <h3 id="category-item-name">{{ $cate->category_name }}</h3>
+                        <div class="category-tool">                           
+                            <button type="button" class="category-btn-edit" data-bs-toggle="modal"
+                                data-bs-target="#editModal{{ $cate->id }}">Edit</button>
+                            <div class="modal fade" id="editModal{{ $cate->id }}" tabindex="-1"
+                                aria-labelledby="editModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Edit category</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        
+                                            <form action="{{ route('category.update', ['category' => $cate->id]) }}" method="POST"
+                                                class="form-edit" id="editItem">
+                                                @csrf
+                                                @method("PUT")
+                                                <div class="modal-body">
+                                                <input class="form-control" type="text" id="cate-name" name="category_name"
+                                                    value="{{ $cate->category_name }}">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="category-btn-edit" id="save">Save</button>                                                    
+                                                </div>                                                
+                                            </form>
+                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Delete Modal -->
+                            <button type="button" class="category-btn-delete" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{ $cate->id }}">Delete</button>
+                            <div class="modal fade" id="deleteModal{{ $cate->id }}" tabindex="-1"
+                                aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Delete category</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Do you want to delete category ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{ route('category.destroy', ['category' => $cate->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="category-btn-delete">Delete</button>
+                                            </form>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection

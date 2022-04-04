@@ -56,7 +56,7 @@
                     </div>
                     <div class="docs-save">
                         <button type="submit">Create</button>
-                    </div>                    
+                    </div>
                 </div>
             </form>
         </div>

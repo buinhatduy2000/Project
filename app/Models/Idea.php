@@ -9,7 +9,7 @@ class Idea extends Model
 {
     use HasFactory;
     protected $table = 'ideas';
-    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'comments'];
+    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
@@ -24,7 +24,7 @@ class Idea extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function comments(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Comment::class, 'idea_id', 'id');
     }

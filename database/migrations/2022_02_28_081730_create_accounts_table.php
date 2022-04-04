@@ -18,6 +18,7 @@ class CreateAccountsTable extends Migration
             $table->string('user_name', 50)->unique();
             $table->string('password');
             $table->enum('role', ['admin', 'staff', 'QAC', 'QAM']);
+            $table->boolean('active');
             $table->softDeletes();
             $table->timestamps();
         });

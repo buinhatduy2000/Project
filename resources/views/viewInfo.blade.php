@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<div class="tbody-user col col-sm-9 col-lg-10"></div>
+<div class="tbody-user col col-sm-9 col-lg-10">
     <div class="tbody-content">
         <div class="tbody-user-detail">
             <div class="tbody-user-title">
@@ -78,4 +78,5 @@
             </div>
         @endif
     </div>
+</div>
 @endsection
