@@ -27,7 +27,8 @@ Route::group(['middleware' => 'account'], function() {
     Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
     Route::get('/personal-info/{id}', [\App\Http\Controllers\AccountController::class, 'viewInfo'])->name('viewInfo');
     Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
-    Route::post('idea/comment/{id}', [\App\Http\Controllers\CommentController::class, 'postComment']);
+    Route::post('/idea/comment/{id}', [\App\Http\Controllers\CommentController::class, 'postComment']);
+    Route::post('/idea/like', [\App\Http\Controllers\IdeaController::class, 'likeIdea'])->name('postLikeIdea');
     Route::get('/list-user', [\App\Http\Controllers\AccountController::class, 'listUser'])->name('adminListUser');
     Route::get('/create-user', [\App\Http\Controllers\AccountController::class, 'createUser'])->name('adminCreateUser');
     Route::post('/create-user', [\App\Http\Controllers\AccountController::class, 'storeUser'])->name('adminStoreUser');

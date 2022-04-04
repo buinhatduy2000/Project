@@ -45,11 +45,11 @@
                             </div>
                             <div class="title-user">
                                 <div class="title-right">
-                                    <span>Department</span>
-                                    <input type="text" name="department" value="{{old('department')}}">
+                                <span>Address</span>
+                                <input type="text" name="address" value="{{old('address')}}">
                                 </div>
-                                @error('department')
-                                    <p>{{$message}}</p>
+                                @error('address')
+                                <p>{{$message}}</p>
                                 @enderror
                             </div>
                         </div>
@@ -73,13 +73,20 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="content-user">
-                            <span>Adress</span>
-                            <input type="text" name="address" value="{{old('address')}}">
+                        <div class="content-user" style="height: 85px; padding-right: 10px">
+                            <span>Department</span>
+                            <select class="form-select" name="department" id="">
+                                <option value="">---Choose Department---</option>
+                                <option value="IT" {{old('department') == 'IT' ? 'selected' : ''}}>IT</option>
+                                <option value="Marketing" {{old('department') == 'Marketing' ? 'selected' : ''}}>Marketing</option>
+                                <option value="Management" {{old('department') == 'Management' ? 'selected' : ''}}>Management</option>
+                                <option value="Education" {{old('department') == 'Education' ? 'selected' : ''}}>Education</option>
+                            </select>
                         </div>
-                        @error('address')
-                            <p>{{$message}}</p>
+                        @error('department')
+                        <p>{{$message}}</p>
                         @enderror
+
                     </div>
                     <div class="box-content-right">
                         <div class="content-user">

@@ -1,4 +1,12 @@
 @extends('master')
+@section('css')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <style>
+        .view-detail ul li .like-count, .view-detail ul li .dislike-count{
+            color: unset;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="tbody-detail-docs col col-sm-9 col-lg-10">
 <div class="tbody-content">
@@ -9,7 +17,7 @@
 {{--            </form>--}}
 {{--        </div>--}}
         <div class="tbody-detail">
-            <p>Documents</p>
+            <p>Ideas</p>
         </div>
         <div class="tbody-detail-ct">
             <div class="infor-user">
@@ -31,12 +39,21 @@
                         porttitor donec neque, pulvinar a. Arcu consequat tortor, quisque porttitor ullamcorper
                         leo.'}}
                     </p>
+                    @foreach($idea->documents as $key => $doc)
+                        <a href="{{$doc->file_name}}" target="_blank"><p>File {{$key + 1}}</p></a>
+                    @endforeach
                 </div>
                 <div class="views-like-dislike">
                     <div class="view-icon">
                         <ul>
-                            <li><i class="bi bi-hand-thumbs-up"></i></li>
-                            <li><i class="bi bi-hand-thumbs-down"></i></li>
+                            <li id="like-idea"><i class=
+                            @if(Auth::guard('account')->user()->hasLiked($idea))
+                                "bi bi-hand-thumbs-up-fill" style="color: blue"
+                            @else
+                                "bi bi-hand-thumbs-up"
+                            @endif
+                                ></i></li>
+{{--                            <li><i class="bi bi-hand-thumbs-down"></i></li>--}}
                             <li><i class="bi bi-chat-square"></i></li>
                             <li class="btn-dowload-responsive"><i class="bi bi-download"></i></li>
                         </ul>
@@ -44,8 +61,9 @@
                     <div class="view-detail">
                         <ul>
                             <li>{{$idea->views}} <span>views</span></li>
-                            <li>150 <span>likes</span></li>
-                            <li>12 <span>dislikes</span></li>
+                            <li><span class="like-count">{{$idea->likers()->count()}}</span> <span>likes</span></li>
+                            <li>{{ $idea->comments->count() }} <span>comments</span></li>
+{{--                            <li><span class="dislike-count">2</span> <span>dislikes</span></li>--}}
                         </ul>
                     </div>
                     <div class="download-icon">
@@ -56,8 +74,8 @@
                 </div>
                 <div class="view-detail-responsive">
                     <p>{{$idea->views}} views</p>
-                    <p>150 likes</p>
-                    <p>12 dislikes</p>
+                    <p class="like-count">{{$idea->likers()->count()}} likes</p>
+{{--                    <p class="dislike-count">12 dislikes</p>--}}
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -100,4 +118,42 @@
         </div>
 </div>
 </div>
+    @section('script')
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var flag = true
+                $('#like-idea').on('click', function() {
+                    if (!flag){
+                        return false;
+                    }
+                    var likeButton = $(this);
+                    var id = {{$idea->id}}
+                    $.ajax({
+                        type:'POST',
+                        url:'/idea/like',
+                        data:{id:id},
+                        beforeSend: function(){
+                            flag = false
+                        },
+                        success:function(data){
+                            if(jQuery.isEmptyObject(data.success)){
+                                likeButton.children().removeClass('bi-hand-thumbs-up-fill').css('color', '')
+                                likeButton.children().addClass('bi-hand-thumbs-up')
+                            }else {
+                                likeButton.children().removeClass('bi-hand-thumbs-up')
+                                likeButton.children().addClass('bi-hand-thumbs-up-fill').css('color', 'blue')
+                            }
+                            flag = true
+                            $('.like-count').text(data.likes)
+                        }
+                    });
+                })
+            })
+        </script>
+    @endsection
 @endsection

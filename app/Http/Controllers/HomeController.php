@@ -14,44 +14,48 @@ class HomeController extends Controller
     public function index()
     {
         if(request()->sort_by == 'popular'){
-            $ideas = Idea::all()->where('deleted_at', null)->sortByDesc('views');
-
+            $ideas = Idea::where('deleted_at', null)->sortByDesc('views');
         }
         else if(request()->sort_by == 'newtest'){
-            $ideas = Idea::all()->where('deleted_at', null)->sortByDesc('created_at');
+            $ideas = Idea::where('deleted_at', null)->sortByDesc('created_at');
         }
         else if(request()->sort_by == 'like'){
             dd(request()->sort_by);
         }
         else if(request()->sort_by == 'comments'){
-            $ideas = Idea::withCount('comments')->orderBy('comments_count', 'desc')->get();
+            $ideas = Idea::withCount('comments')->orderBy('comments_count', 'desc');
         }
         else{
-            $ideas = Idea::where('deleted_at', null)->get();
+            $ideas = Idea::where('deleted_at', null);
         }
-        return view('home', ['ideas' => $ideas]);
+        if (Auth::guard('account')->user()->role == Account::ACCOUNT_STAFF) {
+            $ideas = $ideas->where('department', Auth::guard('account')->user()->personal_info->department);
+        }
+        return view('home', ['ideas' => $ideas->get()]);
 
     }
 
     public function filByCategory($id)
     {
         if(request()->sort_by == 'popular'){
-            $ideas = Idea::where('category_id', $id)->get()->sortByDesc('views');
-
+            $ideas = Idea::where('category_id', $id)->sortByDesc('views');
         }
         else if(request()->sort_by == 'newtest'){
-            $ideas = Idea::where('category_id', $id)->get()->sortByDesc('created_at');
+            $ideas = Idea::where('category_id', $id)->sortByDesc('created_at');
         }
         else if(request()->sort_by == 'like'){
             dd(request()->sort_by);
         }
         else if(request()->sort_by == 'comments'){
-            $ideas = Idea::where('category_id', $id)->withCount('comments')->orderBy('comments_count', 'desc')->get();
+            $ideas = Idea::where('category_id', $id)->withCount('comments')->orderBy('comments_count', 'desc');
         }
         else{
-            $ideas = Idea::where('category_id', $id)->get();
+            $ideas = Idea::where('category_id', $id)->where('deleted_at', null);
         }
-        return view('home', ['ideas' => $ideas]);
+        if (Auth::guard('account')->user()->role == Account::ACCOUNT_STAFF) {
+            $ideas = $ideas->where('department', Auth::guard('account')->user()->personal_info->department);
+        }
+        return view('home', ['ideas' => $ideas->get()]);
     }
 
     public function dashboard(){

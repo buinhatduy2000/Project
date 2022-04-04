@@ -1,8 +1,13 @@
 @extends('master')
 @section('css')
     <style>
+        .admin-content-right {
+            width: 100%;
+        }
         .userList-btn button {
             width: 100%;
+            height: 40px;
+            padding: 0 30px;
         }
     </style>
 @endsection
@@ -29,10 +34,11 @@
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Date of Birth</th>
-                    <th>Department</th>
+                    <th>Role</th>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>Department</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -46,6 +52,7 @@
                     <td>{{$user->personal_info->phone_number}}</td>
                     <td>{{$user->personal_info->email}}</td>
                     <td>{{$user->personal_info->address}}</td>
+                    <td>{{$user->personal_info->department}}</td>
                     <td>
                         <a href="{{route('adminEditUser', ['id' => $user->id])}}"><button>Edit</button></a>
                         <a href="{{route('adminDeleteUser', ['id' => $user->id])}}" onclick="return confirm('Are you really want to delete this account')"><button>Delete</button></a>

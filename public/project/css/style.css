@@ -173,7 +173,7 @@ i {
 /* homepage */
 .tbody-home {
     height: 100%;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
 }
 .tbody-filter {
     display: flex;
@@ -741,9 +741,6 @@ i {
     color: #8F8F8F;
     text-align: center;
 }
-.tbody-title-category button {
-    margin: 12 auto;
-}
 .category-btn-new {
     width: 157.28px;
     height: 32.95px;
@@ -751,7 +748,7 @@ i {
     border-radius: 6px;
     color: #18A0FB;
     background-color: white;
-    margin: 16px 0;
+    margin: 16px 0 32px;
 }
 .form-add {
     margin: 0 12px;
@@ -805,6 +802,7 @@ i {
     justify-content: space-between;
     border-bottom: 1px solid #000000;
     margin-bottom: 32px;
+    padding: 0 0 32px 32px ;
 }
 .category-item h3 {
     font-weight: bold;
@@ -813,10 +811,10 @@ i {
     letter-spacing: -0.015em;
     color: #000000;
 }
-.form-edit {          
-    flex-direction: column;        
+.form-edit {
+    flex-direction: column;
     box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
-    border-radius: 4px;         
+    border-radius: 4px;
     padding: 12px 12px;
 }
 .category-input {
@@ -922,7 +920,7 @@ i {
     }
     .tbody-home {
         height: 100%;
-        margin-bottom: 100px;
+        /*margin-bottom: 100px;*/
     }
     .tbody-responsive-navbar {
         display: block;
@@ -1333,10 +1331,10 @@ i {
     box-sizing: border-box;
 }
 .main-content {
-    position: relative;    
+    position: relative;
     transition: margin-left 500ms;
 }
-main {    
+main {
     background: #f1f5f9;
     min-height: 90vh;
     padding: 1rem 3rem;
@@ -1387,28 +1385,28 @@ main {
 #view-likes-btn {
     color: red;
 }
-#view-likes-btn:hover {    
+#view-likes-btn:hover {
     font-weight: bold;
 }
 #view-dislikes-btn {
-    color: green;    
+    color: green;
 }
-#view-dislikes-btn:hover {    
+#view-dislikes-btn:hover {
     font-weight: bold;
 }
 #view-downloads-btn {
-    color: blue;    
+    color: blue;
 }
-#view-downloads-btn:hover {    
+#view-downloads-btn:hover {
     font-weight: bold;
 }
 #view-all-btn {
     margin-left: 16px;
     margin-bottom: 20px;
 }
-.recent {    
+.recent {
     margin-top: 3rem;
-    margin-bottom: 3rem;    
+    margin-bottom: 3rem;
 }
 .activity-grid {
     display: grid;
@@ -1536,22 +1534,22 @@ tbody tr:nth-child(even) {
 @media only screen and (max-width: 1200px) {
     .main-content {
         margin: 0 auto;
-    }      
+    }
 }
 
 @media only screen and (max-width: 860px) {
     .dash-cards {
         grid-template-columns: repeat(2,1fr);
     }
-    
+
     .card-single {
         margin-bottom: 1rem;
     }
-    
+
     .activity-grid {
         display: block;
     }
-    
+
     .summary {
         margin-top: 1.5rem;
     }

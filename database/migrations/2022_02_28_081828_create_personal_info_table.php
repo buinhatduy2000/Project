@@ -22,7 +22,7 @@ class CreatePersonalInfoTable extends Migration
             $table->string('phone_number', 11)->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
-            $table->string('department', 50)->nullable();
+            $table->enum('department', ['IT', 'Marketing', 'Management', 'Education']);
             $table->softDeletes();
             $table->timestamps();
         });
