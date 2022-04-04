@@ -24,10 +24,11 @@ class IdeaRequest extends FormRequest
     public function rules()
     {
         return [
-            'idea_title' => 'required',
+            'idea_title' => 'required|max:255',
             'description' => 'max:255',
             'category_id' => 'required',
-            'files.*' => 'sometimes|required|mimes:pdf,doc,docs,docx|max:2048'
+
+            'files.*' => 'sometimes|required|file|mimes:pdf,doc,docs,docx|max:2048'
         ];
     }
 }

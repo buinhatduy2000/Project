@@ -1,4 +1,11 @@
 @extends('master')
+@section('css')
+    <style>
+        .tbody-content{
+            height: 100%;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="tbody-home col col-sm-9 col-lg-10">
         <div class="tbody-content">
@@ -63,6 +70,7 @@
                                     <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
                                     &emsp;&emsp;&emsp;&nbsp;
                                     <i class="bi bi-people-fill"></i> {{ $idea->views }}
+                                    <i class="bi bi-hand-thumbs-up-fill"></i> {{$idea->likers()->count()}}
                                     <i class="bi bi-chat-square"></i> {{ $idea->comments->count() }}
                                 </p>
                             </div>

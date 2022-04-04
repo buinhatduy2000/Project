@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Overtrue\LaravelLike\Traits\Likeable;
 
 class Idea extends Model
 {
-    use HasFactory;
+    use HasFactory, Likeable;
     protected $table = 'ideas';
-    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views'];
+    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'department'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

@@ -54,13 +54,14 @@ class IdeaController extends Controller
                 $pathFile[] = $destinationPath . $fileName;
             }
         }
+        $department = Auth::guard('account')->user()->personal_info->department;
         $status = Idea::create([
             'idea_title' => $request->idea_title,
             'user_id' => Auth::guard('account')->user()->id,
             'description' => $request->description ?? '',
             'category_id' => $request->category_id,
+            'department' => $department,
             'views' => 0,
-            'comments' => 0,
         ]);
         $lastInsertId = DB::getPdo()->lastInsertId();
         foreach ($pathFile as $file) {
@@ -87,13 +88,14 @@ class IdeaController extends Controller
      */
     public function show($id)
     {
-        $idea = Idea::find($id);
+        $idea = Idea::with('documents')->find($id);
+        if (!$idea){
+            return redirect()->route('viewInfo', ['id' => Auth::guard('account')->user()->id])->with('error', "Idea do not exist");
+        }
 
         $comments = Comment::where('idea_id', $id)->get();
 
-        // dd(count($comments));
-
-        Idea::find($id)->increment('views');
+        $idea->increment('views');
 
         return view('idea.detail', ['idea' => $idea, 'comments' => $comments]);
     }
@@ -130,5 +132,15 @@ class IdeaController extends Controller
     public function destroy(Idea $ideal)
     {
         //
+    }
+
+    public function likeIdea(Request $request)
+    {
+        $idea = Idea::find($request->id);
+        $account = Auth::guard('account')->user();
+        $response = $account->toggleLike($idea);
+        $likes = $idea->likers()->count();
+
+        return response()->json(['success'=>$response, 'likes'=>$likes]);
     }
 }
