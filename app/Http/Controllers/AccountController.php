@@ -24,8 +24,8 @@ class AccountController extends Controller
         if(Auth::guard('account')->attempt($request->only('user_name','password'))){
             return redirect()->route('home');
         }
-            $request->session()->flash('check_email','Please check email and password');
-            return redirect()->back()->withInput();
+        $request->session()->flash('check_email','Please check email and password');
+        return redirect()->back()->withInput();
     }
 
     public function logout()
@@ -36,27 +36,21 @@ class AccountController extends Controller
 
     public function viewInfo ($id) {
         $account = Account::find($id);
-//        if(request()->sort_by == 'popular'){
-//            $ideas = Idea::where('user_id', $id)->get()->sortByDesc('views');
-//            return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
-//
-//        }
-//        else if(request()->sort_by == 'newtest'){
-//            $ideas = Idea::where('user_id', $id)->get()->sortByDesc('created_at');
-//            return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
-//        }
-//        else if(request()->sort_by == 'like'){
-//            dd(request()->sort_by);
-//        }
-//        else if(request()->sort_by == 'comments'){
-//            dd(request()->sort_by);
-//        }
-//        else{
-//            $ideas = Idea::where('user_id', $id)->get();
-//            return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
-//        }
         $ideas = Idea::where('user_id', $id)->get();
-        return view('user.viewInfo', ['account' => $account, 'ideas' => $ideas]);
+        if(request()->sort_by == 'popular'){
+            $ideas = Idea::where('user_id', $id)->get()->sortByDesc('views');
+
+        }
+        else if(request()->sort_by == 'newtest'){
+            $ideas = Idea::where('user_id', $id)->get()->sortByDesc('created_at');
+        }
+        else if(request()->sort_by == 'like'){
+            dd(request()->sort_by);
+        }
+        else if(request()->sort_by == 'comments'){
+            $ideas = Idea::where('user_id', $id)->withCount('comments')->orderBy('comments_count', 'desc')->get();
+        }
+        return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
     }
 
     public function listUser(Account $account)
@@ -65,12 +59,12 @@ class AccountController extends Controller
 //            return redirect()->route('login')->with('error','You do not have permission');
 //        }
         $users = Account::where('role', '!=', Account::ACCOUNT_ADMIN)->get();
-        return view('admin.listUser', compact('users'));
+        return view('listUser', compact('users'));
     }
 
      public function createUser()
      {
-         return view('admin.createUser');
+         return view('createUser');
      }
 
      public function storeUser(UserRequest $request)
@@ -104,7 +98,7 @@ class AccountController extends Controller
         if (!$account){
             return redirect()->back()->with('error', 'Account do not exist');
         }
-        return view('admin.editUser', compact('account'));
+        return view('editUser', compact('account'));
      }
 
      public function updateUser(UserRequest $request, $id)

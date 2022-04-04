@@ -15,10 +15,7 @@ class CategoryController extends Controller
 {
     public function index(){
         $categories = Category::paginate(10)->sortByDesc('id');
-        if (Auth::guard('account')->user()->role == Account::ACCOUNT_ADMIN) {
-            return view('admin.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
-        }
-        return view('user.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
+        return view('category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
     }
 
     public function store(Request $request){
@@ -27,8 +24,8 @@ class CategoryController extends Controller
         ]);
         $cate = Category::create([
             'category_name' => $request->category_name,
-            'first_closure_date' => Carbon::now(),
-            'second_closure_date' => Carbon::now()->addDays(14),
+            'first_closure_date' => $request->category_date,
+            'second_closure_date' => Carbon::createFromFormat('Y-m-d', $request->category_date)->addDays(14),
         ]);
         if(!$cate){
             return redirect()->back()->with('error','Create Category Not Success');

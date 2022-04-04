@@ -36,3 +36,4 @@ Route::group(['middleware' => 'account'], function() {
     Route::get('/delete-user/{id}', [\App\Http\Controllers\AccountController::class, 'deleteUser'])->name('adminDeleteUser');
 });
 
+Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');;

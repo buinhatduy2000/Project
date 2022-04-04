@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +29,13 @@
         <div class="header-left">
             <ul>
                 <li><a href="{{route('home')}}">Home</a></li>
-                <li><a href="">Follow</a></li>
                 <li><a href="{{route('idea.create')}}">New Idea</a></li>
+                @if(Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_ADMIN)
+                    <li><a href="{{route('adminListUser')}}">List User</a></li>
+                @endif
+                @if(Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
+                    <li><a href="">Dashboard</a></li>
+                @endif
             </ul>
         </div>
         <div class="header-middle"><a href="{{route('home')}}"><img src="{{asset('project/img/logo.png')}}" alt="logo"></a></div>

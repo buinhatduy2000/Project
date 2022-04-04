@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('master')
 @section('css')
     <style>
         .userList-btn button {

@@ -47,4 +47,5 @@ class Account extends Authenticatable
     {
         return $this->hasMany(Idea::class, 'user_id', 'id');
     }
+
 }

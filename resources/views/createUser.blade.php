@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('master')
 @section('css')
     <style>
         .title-right,.title-left {
@@ -37,7 +37,7 @@
                             <div class="title-user">
                                 <div class="title-left">
                                     <span>Date of birth</span>
-                                    <input type="date" name="dob" value="{{old('dob')}}">
+                                    <input type="date" name="dob" value="{{old('dob')}}" max="{{date('Y-m-d')}}">
                                 </div>
                                 @error('dob')
                                     <p>{{$message}}</p>
