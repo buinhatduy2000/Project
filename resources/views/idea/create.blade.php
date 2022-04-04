@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('master')
 @section('content')
     <div class="tbody-content col col-lg-10">
         <div class="tbody-detail">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="docs-save">
                         <button type="submit">Create</button>
-                    </div>                    
+                    </div>
                 </div>
             </form>
         </div>

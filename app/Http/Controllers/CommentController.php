@@ -16,9 +16,10 @@ class CommentController extends Controller
     public function postComment(Request $request, $id)
     {
         // dd($request->all());
-        $request->validate([
+        $validated = $request->validate([
             'comment' => 'required|max:255',
         ]);
+
         $comment = Comment::create([
             'idea_id' => $id,
             'content' => $request->comment,
@@ -30,10 +31,9 @@ class CommentController extends Controller
         }
         // dd('send mail');\
         $idea = Idea::find($id);
-        Idea::find($id)->increment('comments');
         $user = Personal::find($idea['user_id']);
         // dd($user['email']);
-        $mailable = new HelloMail($user);
+        $mailable = new HelloMail($user, $idea);
         Mail::to($user['email'])->send($mailable);
 
         return redirect() -> back()->with('message', 'Comment Success');

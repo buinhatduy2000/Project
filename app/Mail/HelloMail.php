@@ -11,15 +11,17 @@ class HelloMail extends Mailable
 {
     use Queueable, SerializesModels;
     private $user;
+    private $idea;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $idea)
     {
         $this->user = $user;
+        $this->idea = $idea;
     }
 
     /**
@@ -35,6 +37,7 @@ class HelloMail extends Mailable
         ->view('mail.comments')
         ->with(['user'=> $this->user,
                 'content'=> $this->user,
+                'idea'=>$this->idea,
                 ]);
     }
 }

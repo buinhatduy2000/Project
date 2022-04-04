@@ -15,10 +15,7 @@ class CategoryController extends Controller
 {
     public function index(){
         $categories = Category::paginate(10)->sortByDesc('id');
-        if (Auth::guard('account')->user()->role == Account::ACCOUNT_ADMIN) {
-            return view('admin.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
-        }
-        return view('user.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
+        return view('category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
     }
 
     public function store(Request $request){

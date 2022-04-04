@@ -30,7 +30,7 @@ class IdeaController extends Controller
      */
     public function create()
     {
-        return view('user.idea.create');
+        return view('idea.create');
     }
 
     /**
@@ -90,7 +90,7 @@ class IdeaController extends Controller
 
         Idea::find($id)->increment('views');
 
-        return view('user.idea.detail', ['idea' => $idea, 'comments' => $comments]);
+        return view('idea.detail', ['idea' => $idea, 'comments' => $comments]);
     }
 
     /**
