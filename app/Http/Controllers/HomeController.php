@@ -60,7 +60,7 @@ class HomeController extends Controller
 
         $contributors = Idea::select('user_id')->groupBy('category_id')->get();
 
-        // dd($contributors);
+        dd($contributors);
 
         $ideas_jan = Idea::whereMonth('created_at', '=', 1)->get();
         $ideas_feb = Idea::whereMonth('created_at', '=', 2)->get();
