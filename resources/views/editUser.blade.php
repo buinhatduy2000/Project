@@ -39,7 +39,7 @@
                             <div class="title-user">
                                 <div class="title-left">
                                     <span>Date of birth</span>
-                                    <input type="date" name="dob" value="{{old('dob') ?? $account->personal_info->dob}}">
+                                    <input type="date" name="dob" value="{{old('dob') ?? $account->personal_info->dob}}" max="{{date('Y-m-d')}}">
                                 </div>
                                 @error('dob')
                                     <p>{{$message}}</p>
@@ -47,10 +47,10 @@
                             </div>
                             <div class="title-user">
                                 <div class="title-right">
-                                    <span>Department</span>
-                                    <input type="text" name="department" value="{{old('department') ?? $account->personal_info->department}}">
+                                    <span>Address</span>
+                                    <input type="text" name="address" value="{{old('address') ?? $account->personal_info->address}}">
                                 </div>
-                                @error('department')
+                                @error('address')
                                 <p>{{$message}}</p>
                                 @enderror
                             </div>
@@ -75,11 +75,17 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="content-user">
-                            <span>Adress</span>
-                            <input type="text" name="address" value="{{old('address') ?? $account->personal_info->address}}">
+                        <div class="content-user" style="height: 85px; padding-right: 10px">
+                            <span>Department</span>
+                            <select class="form-select" name="department" id="">
+                                <option value="">---Choose Department---</option>
+                                <option value="IT" {{$account->personal_info->department == 'IT' ? 'selected' : ''}}>IT</option>
+                                <option value="Marketing" {{$account->personal_info->department == 'Marketing' ? 'selected' : ''}}>Marketing</option>
+                                <option value="Management" {{$account->personal_info->department == 'Management' ? 'selected' : ''}}>Management</option>
+                                <option value="Education" {{$account->personal_info->department == 'Education' ? 'selected' : ''}}>Education</option>
+                            </select>
                         </div>
-                        @error('address')
+                        @error('department')
                         <p>{{$message}}</p>
                         @enderror
                     </div>

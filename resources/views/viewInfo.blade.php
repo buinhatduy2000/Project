@@ -1,8 +1,19 @@
 @extends('master')
-
+@section('css')
+    <style>
+        .tbody-content{
+            height: auto;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="tbody-user col col-sm-9 col-lg-10">
     <div class="tbody-content">
+        @if(Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{Session::get('error')}}
+            </div>
+        @endif
         <div class="tbody-user-detail">
             <div class="tbody-user-title">
                 <p>User Information</p>

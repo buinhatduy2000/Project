@@ -19,6 +19,7 @@ class CreateIdeasTable extends Migration
             $table->foreignId('user_id')->constrained('accounts');
             $table->foreignId('category_id')->constrained('categories');
             $table->text('description')->nullable();
+            $table->text('department');
             $table->softDeletes();
             $table->timestamps();
         });
