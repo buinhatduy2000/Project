@@ -1,5 +1,6 @@
 @extends('user.master')
 @section('content')
+<div class="tbody-detail-docs col col-sm-9 col-lg-10">
 <div class="tbody-content">
 {{--        <div class="tbody-box-search">--}}
 {{--            <form class="d-flex">--}}
@@ -42,7 +43,7 @@
                     </div>
                     <div class="view-detail">
                         <ul>
-                            <li>1222 <span>views</span></li>
+                            <li>{{$idea->views}} <span>views</span></li>
                             <li>150 <span>likes</span></li>
                             <li>12 <span>dislikes</span></li>
                         </ul>
@@ -54,42 +55,49 @@
                     </div>
                 </div>
                 <div class="view-detail-responsive">
-                    <p>1222 views</p>
+                    <p>{{$idea->views}} views</p>
                     <p>150 likes</p>
                     <p>12 dislikes</p>
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="comments">
+                    @foreach ($comments as $comment)
                     <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
+                        <p>
+                            @if ($comment->anonymous == null)
+                            <span>{{$comment->author->personal_info->first_name}}</span>
+                            @else
+                            <span>Anonymous</span>
+                            @endif
+                            {{$comment->content}}
+                        </p>
+                        <h6>{{$comment->created_at}} &emsp;</h6>
                     </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
-                    <div class="comments-detail">
-                        <p><span>terrylucas</span> &nbsp; Imperdiet in sit rhoncus, eleifend tellus augue lectus
-                            potenti pellentesque</p>
-                        <h6>August 17, 2020 &emsp; Reply</h6>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="input-comment">
-                <input type="text" placeholder="Add a comments...">
-                <button>Post</button>
-            </div>
+            <form action="comment/{{$idea->id}}" method="POST" class="form-comment">
+                @csrf
+                <div class="input-comment">
+                    <input type="text" name="comment" placeholder="Add a comments...">
+                    <button type="submit">Post</button>
+                </div>
+                <div class="checkbox-comment form-check">
+                    <input class="form-check-input" type="checkbox" name="anonymous" value="1" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Comment by anonymous
+                    </label>
+                </div>
+            </form>
         </div>
+</div>
 </div>
 @endsection

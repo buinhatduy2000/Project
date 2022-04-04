@@ -18,9 +18,9 @@ class AccountMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::guard('account')->check() && !in_array(Auth::guard('account')->user()->role, [Account::ACCOUNT_QAC, Account::ACCOUNT_QAM, Account::ACCOUNT_STAFF])){
+        if(!Auth::guard('account')->check()){
             return redirect('/login');
-        }else{
+        } else {
             return $next($request);
         }
     }

@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->foreignId('idea_id')->constrained('ideas');
             $table->text('content');
-            $table->integer('parent_id');
+            $table->foreignId('account_id')->constrained('accounts');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -2,6 +2,9 @@ body{
     margin: 0;
     padding: 0;
 }
+i {
+    display: inline-block;
+}
 .header {
     border-bottom: 1px solid #000000;
 }
@@ -165,12 +168,11 @@ body{
     margin: 0 6px;
 }
 .tbody-content {
-    width: 100%;
     padding-right: 14px;
 }
 /* homepage */
 .tbody-home {
-    height: 1640px;
+    height: 100%;
     margin-bottom: 100px;
 }
 .tbody-filter {
@@ -283,6 +285,10 @@ body{
     display: flex;
     flex-direction: row-reverse;
     margin-right: 24px;
+}
+.no-docs-upload {
+    font-size: 32px;
+    text-align: center;
 }
 
 /* footer */
@@ -452,6 +458,10 @@ body{
 }
 
 /* detail documents */
+.tbody-detail-docs {
+    height: 100%;
+    margin-bottom: 100px;
+}
 .tbody-detail {
     text-align: center;
     color: #8F8F8F;
@@ -516,6 +526,18 @@ body{
     font-weight: 300;
     line-height: 24px;
 }
+.file-docs p{
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #272833;;
+    border: 1px solid #dbdbdd;
+    border-radius: 4px;
+    width: 234px;
+    height: 53px;
+    padding: 16px;
+    margin-right: 18px;
+}
 .view-detail-responsive {
     display: none;
 }
@@ -528,9 +550,6 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.btn-dowload-responsive {
-    display: none;
-}
 .view-icon ul{
     list-style-type: none;
     display: flex;
@@ -540,10 +559,15 @@ body{
     margin: 0 20px 0 20px;
     font-size: 24px;
 }
+.view-icon ul li span {
+    font-size: 16px;
+    font-weight: 500;
+}
 .view-detail ul {
     list-style-type: none;
     display: flex;
     margin-top: 9px;
+    padding: 0;
 }
 .view-detail ul li {
     margin: 0 16px 0 16px;
@@ -576,12 +600,19 @@ body{
     font-size: 14px;
     color: #8F8F8F;
 }
+.form-comment {
+    margin-left: 58px;
+}
+.checkbox-comment {
+    float: right;
+    margin-top: 6px;
+    margin-right: 4px;
+}
 .input-comment {
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
     border-radius: 4px;
-    margin-left: 58px;
 }
 .input-comment input {
     border: none;
@@ -595,8 +626,25 @@ body{
     line-height: 18px;
     padding: 7px 60px;
 }
+.reply-comments {
+    margin-top: 8px;
+}
+.btn-reply {
+    border: none;
+    background-color: white;
+}
+.answers-detail {
+    margin-left: 36px;
+}
+.reply-comments-detail {
+    display: none;
+}
 
 /* create - docs */
+.tbody-create-docs {
+    height: 100%;
+    margin-bottom: 100px;
+}
 .create-docs {
     margin: 0 auto;
 }
@@ -642,6 +690,9 @@ body{
     justify-content: space-between;
     margin: 0 auto;
 }
+.document-file p {
+    margin-bottom: 2px;
+}
 .inputfile {
 	width: 0.1px;
 	height: 0.1px;
@@ -659,10 +710,17 @@ body{
     display: inline-block;
     cursor: pointer;
 }
+.inputfile + label span {
+    display: none;
+}
 .inputfile:focus + label, .inputfile + label:hover {
     background-color: rgb(185, 185, 185);
 }
-.create-docs button {
+.docs-save {
+    text-align: center;
+    margin-top: 24px;
+}
+.create-docs div button {
     width: 157.28px;
     height: 32.95px;
     font-size: 15px;
@@ -672,12 +730,12 @@ body{
     background-color: #FFFFFF;
     border-radius: 14px 14px 16px 14px;
     border: 1px solid #18A0FB;
-    margin: 48px 534px;
 }
 
 /* category  */
 .tbody-category {
-    height: 1040px;
+    height: 100%;
+    margin-bottom: 100px;
 }
 .tbody-category-h4 {
     background: rgba(196, 196, 196, 0.28);
@@ -799,11 +857,14 @@ body{
     background-color: white;
     margin-left: 42px;
 }
+.category-tool-responsive {
+    display: none;
+}
 
 /* user detail */
 .tbody-user {
-    height: 1980px;
-    margin-bottom: 50px;
+    height: 100%;
+    margin-bottom: 100px;
 }
 .tbody-user-title {
     font-size: 14px;
@@ -861,15 +922,44 @@ body{
 }
 @media screen and (max-width: 992px)
 {
+    .header-left {
+        display: none;
+    }
     .login-right {
         height: 1180px;
     }
     .tbody-home {
-        height: 2140px;
+        height: 100%;
         margin-bottom: 100px;
     }
-    .header-middle {
+    .tbody-responsive-navbar {
+        display: block;
+    }
+    .login-box {
         display: none;
+    }
+    #navbar-item-detail {
+        display: none;
+        box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04);
+        border-radius: 4px;
+    }
+    #navbar-item-cancel {
+        display: none;
+    }
+    #navbar-item-detail a {
+        color: black;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    #navbar-item-detail ul{
+        text-align: center;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    #navbar-item-detail li {
+        margin: 8px 24px;
     }
     .header-search-box {
         display: none;
@@ -888,7 +978,7 @@ body{
         padding: 0;
     }
     .footer-member {
-        display: none;
+        margin-right: 18px;
     }
     .tbody-sitebar ul {
         margin-left: 24px;
@@ -902,6 +992,23 @@ body{
     .tbody-user {
         height: 2480px;
         margin-bottom: 50px;
+    }
+    /* category */
+    .category-item h3 {
+        font-size: 18px;
+    }
+    .category-btn-edit {
+        font-size: 12px;
+        width: 80px;
+        height: 32.95px;
+    }
+    .category-btn-delete {
+        font-size: 12px;
+        width: 80px;
+        height: 32.95px;
+    }
+    .user-box {
+        margin-right: 12px;
     }
 }
 @media screen and (max-width: 678px)
@@ -962,6 +1069,33 @@ body{
     .tbody-detail-ct {
         height: 990px;
     }
+    /* category  */
+    .category-tool-responsive {
+        display: inline-block;
+    }
+    .category-tool {
+        display: none;
+    }
+    .category-btn-edit {
+        width: 28px;
+    }
+    .category-btn-delete {
+        width: 28px;
+        margin-left: 4px;
+    }
+    #save-responsive {
+        display: none;
+    }
+    /* create docs */
+    .create-docs-detail {
+        width: 402px;
+    }
+    .document {
+        width: 402px;
+    }
+    .document-file {
+        width: 402px;
+    }
 }
 @media screen and (max-width: 581px) {
     .box-right {
@@ -1015,9 +1149,17 @@ body{
     }
 }
 @media screen and (max-width: 480px) {
+    /* footer */
+    .footer-1 {
+        display: block;
+    }
+    .footer-member {
+        display: inline-block;
+        margin-top: 24px;
+    }
     /* home page */
     .tbody-home {
-        height: 2340px;
+        height: 100%;
     }
     .tbody-documents {
         display: block;
@@ -1049,17 +1191,13 @@ body{
     .tbody-detail-ct {
         height: 1280px;
     }
-    .btn-dowload-responsive {
-        display: inline-block;
-    }
-    .download-icon {
-        display: none;
-    }
     .view-icon ul{
         display: inline;
     }
     .view-icon ul li {
         display: inline;
+        margin: 0 20px 0 20px;
+        font-size: 24px;
     }
     .views-like-dislike {
         display: inline;
@@ -1083,8 +1221,20 @@ body{
         text-align: start;
         margin-left: 34px;
     }
+    /* category */
+    .category-item h3 {
+        font-size: 16px;
+    }
 }
-@media screen and (max-width: 421px) {
+@media screen and (max-width: 426px) {
+    /* footer */
+    .footer-1 {
+        display: block;
+    }
+    .footer-member {
+        display: inline-block;
+        margin-top: 24px;
+    }
     /* home page */
     .tbody-doc-left {
         height: 310px;
@@ -1093,6 +1243,10 @@ body{
         font-size: 14px;
     }
     /* detail page */
+    .tbody-detail-docs {
+        height: 100%;
+        margin-bottom: 200px;
+    }
     .detail-docs {
         margin-left: 12px;
     }
@@ -1102,23 +1256,19 @@ body{
     .docs-date-category {
         margin-left: 72px;
     }
-    .input-comment {
+    .form-comment {
         margin-left: 12px;
     }
     .input-comment input {
         margin-left: 0;
-    }
-    .btn-dowload-responsive {
-        display: inline-block;
-    }
-    .download-icon {
-        display: none;
     }
     .view-icon ul{
         display: inline;
     }
     .view-icon ul li {
         display: inline;
+        margin: 0 10px 0 10px;
+        font-size: 24px;
     }
     .views-like-dislike {
         display: inline;
@@ -1145,5 +1295,30 @@ body{
     }
     .tbody-dropdown-ct {
         position: static;
+    }
+    /* create docs */
+    .create-docs-detail {
+        width: 302px;
+    }
+    .document {
+        width: 302px;
+    }
+    .document-file {
+        width: 302px;
+    }
+    .inputfile + label p{
+        display: none;
+    }
+    .inputfile + label span {
+        display: inline-block;
+    }
+    .user-box {
+        display: none;
+    }
+    .login-infor-user {
+        justify-content: center;
+    }
+    .login-infor-user img {
+        margin-left: 0;
     }
 }

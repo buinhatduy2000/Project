@@ -6,8 +6,10 @@ use App\Models\Account;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Idea;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Validator;
 
 class CategoryController extends Controller
 {
@@ -19,8 +21,10 @@ class CategoryController extends Controller
         return view('user.category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
     }
 
-    public function store(Request $request, Category $category){
-         
+    public function store(Request $request){
+        $request->validate([
+            'category_name' => 'required|max:255'
+        ]);
         $cate = Category::create([
             'category_name' => $request->category_name,
             'first_closure_date' => Carbon::now(),
@@ -33,13 +37,16 @@ class CategoryController extends Controller
 
     }
 
-    public function update(Request $request, $id, Account $account, Category $category){
-        if (! Gate::allows('edit-cate', $account)) {
-            return redirect()->back()->with('error','You can not edit category');
-        }
+    public function update(Request $request, $id){
+//        if (! Gate::allows('edit-cate', $account)) {
+//            return redirect()->back()->with('error','You can not edit category');
+//        }
         $cate = Category::find($id);
 
         if($cate){
+            $request->validate([
+                'category_name' => 'required'
+            ]);
             $update_cate = $cate->update([
                 'category_name' => $request->input('category_name'),
             ]);
@@ -51,9 +58,9 @@ class CategoryController extends Controller
     }
 
     public function destroy(Request $request, $id, Category $category){
-        if (! Gate::allows('delete-cate', $category)) {
-            return redirect()->back()->with('error','You can not delete category');
-        }
+//        if (! Gate::allows('delete-cate', $category)) {
+//            return redirect()->back()->with('error','You can not delete category');
+//        }
         $cate = Category::find($id);
         if (count($cate->idea) != 0){
             return redirect()->back()->with('error','Delete Category Not Success');
@@ -68,5 +75,4 @@ class CategoryController extends Controller
         }
 
     }
-
 }

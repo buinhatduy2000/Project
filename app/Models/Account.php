@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Account extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
     protected $table = 'accounts';
     protected $fillable = ['user_name', 'password', 'role'];
     protected $hidden = [
@@ -19,9 +20,6 @@ class Account extends Authenticatable
     const ACCOUNT_STAFF = 'staff';
     const ACCOUNT_QAC = 'QAC';
     const ACCOUNT_QAM = 'QAM';
-    /**
-     * @var mixed
-     */
 
     public function is_admin()
     {

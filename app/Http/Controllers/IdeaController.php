@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IdeaRequest;
 use App\Models\Document;
 use App\Models\Idea;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -57,6 +58,8 @@ class IdeaController extends Controller
             'user_id' => Auth::guard('account')->user()->id,
             'description' => $request->description ?? '',
             'category_id' => $request->category_id,
+            'views' => 0,
+            'comments' => 0,
         ]);
         $lastInsertId = DB::getPdo()->lastInsertId();
         foreach ($pathFile as $file) {
@@ -81,7 +84,13 @@ class IdeaController extends Controller
     {
         $idea = Idea::find($id);
 
-        return view('user.idea.detail', ['idea' => $idea]);
+        $comments = Comment::where('idea_id', $id)->get();
+
+        // dd(count($comments));
+
+        Idea::find($id)->increment('views');
+
+        return view('user.idea.detail', ['idea' => $idea, 'comments' => $comments]);
     }
 
     /**

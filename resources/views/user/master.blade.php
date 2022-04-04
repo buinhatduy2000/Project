@@ -6,20 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="{{asset('project/css/style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('project/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('project/css/style-admin.css') }}" />
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
     @yield('css')
 </head>
+
 <body>
 <div class="header">
     <div class="header-navbar">
@@ -87,14 +89,6 @@
 </script>
 <div class="tbody-home">
     <div class="tbody">
-        <div class="tbody-box-responsive">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                <input class="btn btn-outline-success" type="button" id="category" value="Category"/>
-                <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category"/>
-            </form>
-        </div>
         <div class="tbody-sitebar-responsive" id="cate-ct">
             <h6>
                 @if(Auth::guard('account')->check())
@@ -104,8 +98,8 @@
                 @endif
             </h6>
             <ul>
-                @foreach($category as $item)
-                    <li><a href="">{{$item->category_name}}</a></li>
+                @foreach ($category as $item)
+                    <li><a href="/category-by-id/{{ $item->id }}">{{ $item->category_name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -130,47 +124,48 @@
                 @endif
             </h4>
             <ul>
-                @foreach($category as $item)
-                    <li><a href="" class="">{{$item->category_name}}</a></li>
+                @foreach ($category as $item)
+                    <li><a href="/category-by-id/{{ $item->id }}">{{ $item->category_name }}</a></li>
                 @endforeach
             </ul>
         </div>
         @yield('content')
     </div>
-</div>
-<div class="footer">
-    <div class="footer-1">
-        <div class="intro-gr3">
-            <h5>Group3</h5>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
-                massa elit ornare nulla varius nisi arcu.
-            </p>
-            <h4>+44 322 11 00</h4>
+
+    <div class="footer">
+        <div class="footer-1">
+            <div class="intro-gr3">
+                <h5>Group3</h5>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
+                    massa elit ornare nulla varius nisi arcu.
+                </p>
+                <h4>+44 322 11 00</h4>
+            </div>
+            <div class="tool">
+                <ul>
+                    <li>Front End</li>
+                    <li>Minh</li>
+                    <li>Dung</li>
+                </ul>
+                <ul>
+                    <li>Back End</li>
+                    <li>Toan</li>
+                    <li>Duy</li>
+                </ul>
+                <ul>
+                    <li>Test Web</li>
+                    <li>Nam</li>
+                    <li>Bien</li>
+                </ul>
+            </div>
         </div>
-        <div class="tool">
-            <ul>
-                <li>Front End</li>
-                <li>Minh</li>
-                <li>Dung</li>
-            </ul>
-            <ul>
-                <li>Back End</li>
-                <li>Toan</li>
-                <li>Duy</li>
-            </ul>
-            <ul>
-                <li>Test Web</li>
-                <li>Nam</li>
-                <li>Bien</li>
-            </ul>
+        <div class="footer-2">
+            <p>2022 © All rights reserved. Created by Group3</p>
         </div>
     </div>
-    <div class="footer-2">
-        <p>2022 © All rights reserved. Created by Group3</p>
-    </div>
-</div>
 
 </body>
 @yield('script')
+
 </html>

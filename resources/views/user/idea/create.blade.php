@@ -54,7 +54,9 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit">Create</button>
+                    <div class="docs-save">
+                        <button type="submit">Create</button>
+                    </div>                    
                 </div>
             </form>
         </div>

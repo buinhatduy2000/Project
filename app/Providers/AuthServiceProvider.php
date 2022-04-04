@@ -36,16 +36,16 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($account->role, [Account::ACCOUNT_QAM, Account::ACCOUNT_QAC, Account::ACCOUNT_ADMIN]);
         });
         Gate::define('list-user', function (Account $account) {
-            return $account->role === Account::ACCOUNT_ADMIN;
+            return $account->is_admin();
         });
         Gate::define('create-user', function (Account $account) {
-            return $account->role === Account::ACCOUNT_ADMIN;
+            return $account->is_admin();
         });
         Gate::define('edit-user', function (Account $account) {
-            return $account->role === Account::ACCOUNT_ADMIN;
+            return $account->is_admin();
         });
         Gate::define('delete-user', function (Account $account) {
-            return $account->role === Account::ACCOUNT_ADMIN;
+            return $account->is_admin();
         });
     }
 }
