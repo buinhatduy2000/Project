@@ -63,7 +63,7 @@
                                 <p class="tbody-doc-right-date"><i class="bi bi-calendar2-week"></i>
                                     <span>Expiry:</span>{{ $idea->category->second_closure_date }}
                                 </p>
-                                <button class="btn btn-outline-success">Download</button>
+                                <button class="btn btn-outline-success button-download-idea" data-id="{{$idea->id}}">Download</button>
                                 <button class="btn btn-outline-secondary"><a
                                         href="{{ route('idea.show', ['idea' => $idea->id]) }}">See More</a></button>
                                 <p class="view">
