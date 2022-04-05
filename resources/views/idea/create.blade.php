@@ -44,15 +44,23 @@
                     <div class="document-file">
                         <input type="file" name="files[]" id="file" class="inputfile" multiple/>
                         <label for="file"><i class="bi bi-file-earmark-plus"></i> Upload Documents</label>
-                        @error('files.*')
-                            <p>{{$message}}</p>
-                        @enderror
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="term" />
                             <label class="form-check-label" for="flexCheckDefault">
                                 Agree to the terms
                             </label>
+                            @error('term')
+                            <p class="error">{{$message}}</p>
+                            @enderror
                         </div>
+                    </div>
+                    <div class="create-docs-detail">
+                        @error('files')
+                        <p class="error">{{$message}}</p>
+                        @enderror
+                        @error('files.*')
+                        <p class="error">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="docs-save">
                         <button type="submit">Create</button>

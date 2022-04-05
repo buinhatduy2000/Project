@@ -27,8 +27,9 @@ class IdeaRequest extends FormRequest
             'idea_title' => 'required|max:255',
             'description' => 'max:255',
             'category_id' => 'required',
-
-            'files.*' => 'sometimes|required|file|mimes:pdf,doc,docs,docx|max:2048'
+            'files' => 'required',
+            'files.*' => 'file|mimes:pdf,doc,docs,docx|max:2048',
+            'term' => 'accepted'
         ];
     }
 }

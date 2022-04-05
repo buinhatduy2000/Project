@@ -59,7 +59,7 @@
                 </div>
                 <div class="tbody-doc-right">
                     <p><i class="bi bi-calendar2-week"></i> {{$idea->category->first_closure_date}} to {{$idea->category->second_closure_date}}</p>
-                    <button class="btn btn-outline-success">Download</button>
+                    <button class="btn btn-outline-success button-download-idea" data-id="{{$idea->id}}">Download</button>
                     <button class="btn btn-outline-secondary"><a href="{{route('idea.show', ['idea' => $idea->id])}}">See More</a></button>
                     <p class="view">
                         <i class="bi bi-tag"></i> {{$idea->category->category_name}} &emsp;&emsp;&emsp;&nbsp;
