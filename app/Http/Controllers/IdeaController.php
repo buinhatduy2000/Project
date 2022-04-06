@@ -81,13 +81,17 @@ class IdeaController extends Controller
                 $q->where('personal_info.department', '=', $department);
             }])->where('role', Account::ACCOUNT_QAC)->get();
 
+            foreach ($users as $key => $user){
+                if (!$user->personal_info){
+                    $users->forget($key);
+                }
+            }
             $category_mail = Category::where('id', $request->category_id)->first();
-            // dd($users);
-            // dd($category);
 
             foreach($users as $user){
+                $email_QAC = $user->personal_info->email;
                 $mailable = new SubmitIdea($user, $category_mail);
-                Mail::to($user->personal_info->email)->send($mailable);
+                Mail::to($email_QAC)->send($mailable);
             }
 
             return redirect()->route('viewInfo', ['id' => Auth::guard('account')->user()->id])->with('success', "Create successful");

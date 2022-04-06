@@ -29,4 +29,8 @@ class Idea extends Model
     {
         return $this->hasMany(Comment::class, 'idea_id', 'id');
     }
+    public function latestComment()
+    {
+        return $this->hasOne(Comment::class, 'idea_id')->latest('id');
+    }
 }
