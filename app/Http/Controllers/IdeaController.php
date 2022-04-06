@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Mail\SubmitIdea;
 use Illuminate\Support\Facades\Mail;
+use ZipArchive;
+use File;
 
 class IdeaController extends Controller
 {
@@ -53,7 +55,7 @@ class IdeaController extends Controller
         $pathFile = [];
         if ($request->hasFile('files')) {
             foreach ($request->file('files') as $files) {
-                $fileName = time() . Str::random(5) . "." . $files->getClientOriginalExtension();
+                $fileName = date('Ymd') . Str::random(5) . "." . $files->getClientOriginalExtension();
                 $files->move(public_path() . $destinationPath, $fileName);
                 $pathFile[] = $destinationPath . $fileName;
             }
@@ -155,5 +157,27 @@ class IdeaController extends Controller
         $likes = $idea->likers()->count();
 
         return response()->json(['success'=>$response, 'likes'=>$likes]);
+    }
+
+    public function downloadIdea($id)
+    {
+        $files = Idea::with('documents')->find($id);
+        if (!$files){
+
+        }
+        $zip = new ZipArchive;
+        $zipName = 'download_'.$files->idea_title.'.zip';
+        if (!is_dir(public_path(). '/zip/')){
+            mkdir(public_path().'/zip', '0777');
+        }
+        if ($zip->open(public_path('/zip/'.$zipName), ZipArchive::CREATE)== TRUE)
+        {
+            foreach ($files->documents as $item) {
+                $relativeName = basename($item->file_name);
+                $zip->addFile(public_path($item->file_name), $relativeName);
+            }
+            $zip->close();
+        }
+        return response()->download(public_path($zipName));
     }
 }

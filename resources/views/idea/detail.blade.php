@@ -55,7 +55,7 @@
                                 ></i></li>
 {{--                            <li><i class="bi bi-hand-thumbs-down"></i></li>--}}
                             <li><i class="bi bi-chat-square"></i></li>
-                            <li class="btn-dowload-responsive"><i class="bi bi-download"></i></li>
+                            <li class="btn-dowload-responsive"><i class="bi bi-download button-download-idea" data-id="{{$idea->id}}"></i></li>
                         </ul>
                     </div>
                     <div class="view-detail">
