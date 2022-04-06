@@ -16,8 +16,8 @@ class CategoryFactory extends Factory
     {
         return [
             'category_name' => "Category " . $this->faker->randomNumber('2'),
-            'first_closure_date' => Carbon::now(),
-            'second_closure_date' => Carbon::now()->addDays(14),
+            'first_closure_date' => Carbon::now()->addDays(2),
+            'second_closure_date' => Carbon::now()->addDays(16),
         ];
     }
 }
