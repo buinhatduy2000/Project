@@ -23,9 +23,57 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Admin',
             'dob' => '2000-09-01',
             'phone_number' => '0888888888',
-            'email' => 'duybngch18459@fpt.edu.vn',
+            'email' => ' ',
             'address' => 'Ha Noi, Viet Nam',
             'department' => 'Management',
+        ]);
+
+        \App\Models\Account::create([
+            'user_name' => "qam_account",
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'role' => 'QAM',
+        ]);
+        Personal::create([
+            'user_id' => 2,
+            'first_name' => 'QAM',
+            'last_name' => 'Account 1',
+            'dob' => '2000-09-01',
+            'phone_number' => '0888888888',
+            'email' => ' ',
+            'address' => 'Ha Noi, Viet Nam',
+            'department' => 'Management',
+        ]);
+
+        \App\Models\Account::create([
+            'user_name' => "qac_account_1",
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'role' => 'QAC',
+        ]);
+        Personal::create([
+            'user_id' => 3,
+            'first_name' => 'QAC',
+            'last_name' => 'Account 1',
+            'dob' => '2000-09-01',
+            'phone_number' => '0888888888',
+            'email' => 'buinhatduykbhb.2000@gmail.com',
+            'address' => 'Ha Noi, Viet Nam',
+            'department' => 'IT',
+        ]);
+
+        \App\Models\Account::create([
+            'user_name' => "qac_account_2",
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'role' => 'QAC',
+        ]);
+        Personal::create([
+            'user_id' => 4,
+            'first_name' => 'QAC',
+            'last_name' => 'Account 2',
+            'dob' => '2000-09-01',
+            'phone_number' => '0888888888',
+            'email' => 'duybngch18459@fpt.edu.vn',
+            'address' => 'Ha Noi, Viet Nam',
+            'department' => 'Education',
         ]);
         
         \App\Models\Account::create([
@@ -34,12 +82,12 @@ class DatabaseSeeder extends Seeder
             'role' => 'staff',
         ]);
         Personal::create([
-            'user_id' => 2,
+            'user_id' => 5,
             'first_name' => 'Bui Nhat',
             'last_name' => 'Duy',
             'dob' => '2000-09-01',
             'phone_number' => '0888888888',
-            'email' => 'buinhatduykbhb.2000@gmail.com',
+            'email' => 'duybngch18459.18459@gmail.com',
             'address' => 'Ha Noi, Viet Nam',
             'department' => 'IT',
         ]);
@@ -52,14 +100,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Personal::create([
-            'user_id' => 3,
+            'user_id' => 6,
             'first_name' => 'Nguyen Ngoc',
             'last_name' => 'Minh',
             'dob' => '2000-11-08',
             'phone_number' => '0888888888',
             'email' => 'minhnngbh18582@fpt.edu.vn',
             'address' => 'Ha Noi, Viet Nam',
-            'department' => 'IT',
+            'department' => 'Education',
         ]);
 
     }
