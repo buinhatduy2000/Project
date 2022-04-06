@@ -13,24 +13,44 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if(request()->sort_by == 'popular'){
-            $ideas = Idea::where('deleted_at', null)->sortByDesc('views');
-        }
-        else if(request()->sort_by == 'newtest'){
-            $ideas = Idea::where('deleted_at', null)->sortByDesc('created_at');
-        }
-        else if(request()->sort_by == 'like'){
-            dd(request()->sort_by);
-        }
-        else if(request()->sort_by == 'comments'){
-            $ideas = Idea::withCount('comments')->orderBy('comments_count', 'desc');
+        if (Auth::guard('account')->user()->role == Account::ACCOUNT_STAFF) {
+            if(request()->sort_by == 'popular'){
+                // $ideas = Idea::where('deleted_at', null)->sortByDesc('views');
+                dd(request()->sort_by);
+            }
+            else if(request()->sort_by == 'newtest'){
+                // $ideas = Idea::where('deleted_at', null)->sortByDesc('created_at');
+                dd(request()->sort_by);
+            }
+            else if(request()->sort_by == 'like'){
+                dd(request()->sort_by);
+            }
+            else if(request()->sort_by == 'comments'){
+                // $ideas = Idea::withCount('comments')->orderBy('comments_count', 'desc');
+                dd(request()->sort_by);
+            }
+            else{
+                $ideas = Idea::where('department', Auth::guard('account')->user()->personal_info->department);
+            }
         }
         else{
-            $ideas = Idea::where('deleted_at', null);
+            if(request()->sort_by == 'popular'){
+                $ideas = Idea::where('deleted_at', null)->sortByDesc('views');
+            }
+            else if(request()->sort_by == 'newtest'){
+                $ideas = Idea::where('deleted_at', null)->sortByDesc('created_at');
+            }
+            else if(request()->sort_by == 'like'){
+                dd(request()->sort_by);
+            }
+            else if(request()->sort_by == 'comments'){
+                $ideas = Idea::withCount('comments')->orderBy('comments_count', 'desc');
+            }
+            else{
+                $ideas = Idea::where('deleted_at', null);
+            }
         }
-        if (Auth::guard('account')->user()->role == Account::ACCOUNT_STAFF) {
-            $ideas = $ideas->where('department', Auth::guard('account')->user()->personal_info->department);
-        }
+        
         return view('home', ['ideas' => $ideas->get()]);
 
     }
