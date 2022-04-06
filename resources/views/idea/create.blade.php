@@ -20,7 +20,7 @@
                     <div class="create-docs-detail">
                         <div class="document">
                             <label for="docs-introduction">Introduction</label>
-                            <textarea name="description" id="docs-introduction" cols="10" rows="7"></textarea>
+                            <textarea name="description" id="docs-introduction" cols="10" rows="7">{{old('description')}}</textarea>
                         </div>
                         @error('description')
                             <p>{{ $message }}</p>
@@ -52,7 +52,7 @@
                             <p>{{ $message }}</p>
                         @enderror
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="term" />
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="term" value="true" {{ !old('term') ?: 'checked' }} />
                             <label class="form-check-label" for="flexCheckDefault">
                                 Agree to the terms
                             </label>
