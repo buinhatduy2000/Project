@@ -164,12 +164,11 @@ class IdeaController extends Controller
 
         return response()->json(['success'=>$response, 'likes'=>$likes]);
     }
-
     public function downloadIdea($id)
     {
         $files = Idea::with('documents')->find($id);
         if (!$files){
-
+            return response()->json(['error'  => 'Idea do not exist']);
         }
         $zip = new ZipArchive;
         $zipName = 'download_'.$files->idea_title.'.zip';
@@ -184,6 +183,9 @@ class IdeaController extends Controller
             }
             $zip->close();
         }
-        return response()->download(public_path($zipName));
+        if (file_exists(public_path('/zip/'.$zipName))) {
+            $headers = ['Content-Type' => 'application/zip', 'Content-Disposition' => 'attachment'];
+            return response()->download(public_path('/zip/'.$zipName), $zipName, $headers);
+        }
     }
 }

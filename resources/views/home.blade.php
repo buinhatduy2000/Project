@@ -1,23 +1,17 @@
 @extends('master')
-@section('css')
+{{-- @section('css')
     <style>
         .tbody-content {
             height: 100%;
         }
 
     </style>
-@endsection
+@endsection --}}
 @section('content')
-    <div class="tbody-home col col-sm-9 col-lg-10">
+
+    <div class="tbody-home">
         <div class="tbody-content">
-            <div class="tbody-box-search">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Search
-                    </button>
-                </form>
-            </div>
+            <!-- filter -->
             @if ($ideas)
                 <div class="tbody-filter">
                     <div class="tbody-filter-left">
@@ -36,6 +30,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- hiện thị bài viết -->
                 @if (!count($ideas))
                     <h1 class="no-docs-upload">No document uploaded</h1>
                 @else
@@ -47,12 +42,22 @@
                                     {{ $idea->author->personal_info->first_name . ' ' . $idea->author->personal_info->last_name }}
                                     - {{ $idea->category->first_closure_date }} &ensp;
                                     <i class="bi bi-tag"> {{ $idea->category->category_name }}</i>
-                                    <i class="bi bi-people-fill"> 2300</i>
                                 </p>
                                 <p class="tbody-doc-right-date-responsive">
                                     <i class="bi bi-calendar2-week"></i>
                                     <span>Expiry:</span> {{ $idea->category->second_closure_date }}
                                 </p>
+                                @if (!$idea->description)
+                                    <p>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio totam dolores
+                                        nisi.
+                                        Labore odio sequi sint dignissimos voluptas! Eligendi facilis minima eum officia
+                                        ullam
+                                        tempore debitis eaque nemo esse similique.
+                                    </p>
+                                @else
+                                    <p>{{ $idea->description }}</p>
+                                @endif
                                 @if ($idea->anonymous == 1)
                                     <p class="author">Post with Anonymous</p>
                                 @else
@@ -60,10 +65,6 @@
                                         {{ $idea->author->personal_info->first_name . ' ' . $idea->author->personal_info->last_name }}
                                         - {{ $idea->created_at->format('m/d/Y') }}</p>
                                 @endif
-                                <p>
-                                    {{ $idea->description }}
-                                </p>
-
                             </div>
                             <div class="tbody-doc-right col-sm-3">
                                 <p class="tbody-doc-right-date"><i class="bi bi-calendar2-week"></i>
@@ -110,6 +111,7 @@
             @endif
         </div>
     </div>
+
     <script language="javascript">
         document.getElementById("navbar-item").onclick = function() {
             document.getElementById("navbar-item-detail").style.display =
