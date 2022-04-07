@@ -10,7 +10,7 @@ class Idea extends Model
 {
     use HasFactory, Likeable;
     protected $table = 'ideas';
-    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'department'];
+    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'department', 'anonymous'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

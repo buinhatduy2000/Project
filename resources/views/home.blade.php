@@ -1,9 +1,10 @@
 @extends('master')
 @section('css')
     <style>
-        .tbody-content{
+        .tbody-content {
             height: 100%;
         }
+
     </style>
 @endsection
 @section('content')
@@ -52,25 +53,31 @@
                                     <i class="bi bi-calendar2-week"></i>
                                     <span>Expiry:</span> {{ $idea->category->second_closure_date }}
                                 </p>
+                                @if ($idea->anonymous == 1)
+                                    <p class="author">Post with Anonymous</p>
+                                @else
+                                    <p class="author">
+                                        {{ $idea->author->personal_info->first_name . ' ' . $idea->author->personal_info->last_name }}
+                                        - {{ $idea->created_at->format('m/d/Y') }}</p>
+                                @endif
                                 <p>
                                     {{ $idea->description }}
                                 </p>
-                                <p class="author">
-                                    {{ $idea->author->personal_info->first_name . ' ' . $idea->author->personal_info->last_name }}
-                                    - {{ $idea->created_at->format('m/d/Y') }}</p>
+
                             </div>
                             <div class="tbody-doc-right col-sm-3">
                                 <p class="tbody-doc-right-date"><i class="bi bi-calendar2-week"></i>
                                     <span>Expiry:</span>{{ $idea->category->second_closure_date }}
                                 </p>
-                                <button class="btn btn-outline-success button-download-idea" data-id="{{$idea->id}}">Download</button>
+                                <button class="btn btn-outline-success button-download-idea"
+                                    data-id="{{ $idea->id }}">Download</button>
                                 <button class="btn btn-outline-secondary"><a
                                         href="{{ route('idea.show', ['idea' => $idea->id]) }}">See More</a></button>
                                 <p class="view">
                                     <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
                                     &emsp;&emsp;&emsp;&nbsp;
                                     <i class="bi bi-people-fill"></i> {{ $idea->views }}
-                                    <i class="bi bi-hand-thumbs-up-fill"></i> {{$idea->likers()->count()}}
+                                    <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likers()->count() }}
                                     <i class="bi bi-chat-square"></i> {{ $idea->comments->count() }}
                                 </p>
                             </div>

@@ -22,10 +22,16 @@
         <div class="tbody-detail-ct">
             <div class="infor-user">
                 <img src="{{asset('project/img/avatar.png')}}" alt="">
+                @if ($idea->anonymous == 1)
                 <div class="infor-user-name">
-                    <a href="#">{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}}</a>
+                    <a href="">Anonymous</a>
+                </div>
+                @else
+                <div class="infor-user-name">
+                    <a href="">{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}}</a>
                     <h6>{{ ucfirst(trans($idea->author->role)) }}</h6>
                 </div>
+                @endif
             </div>
             <div class="detail-docs">
                 <div class="docs-date-category">

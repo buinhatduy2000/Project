@@ -48,6 +48,7 @@ class IdeaController extends Controller
      */
     public function store(IdeaRequest $request)
     {
+        // dd($request->all());
         $destinationPath = '/uploads/';
         if (!is_dir(public_path(). '/uploads/')){
             mkdir(public_path().'/uploads', '0777');
@@ -67,6 +68,7 @@ class IdeaController extends Controller
             'description' => $request->description ?? '',
             'category_id' => $request->category_id,
             'department' => $department,
+            'anonymous' => $request->anonymous,
             'views' => 0,
         ]);
         $lastInsertId = DB::getPdo()->lastInsertId();
