@@ -49,7 +49,6 @@
                 </div>
             </div>
             <div class="tbody-category">
-
                 @foreach ($categories as $cate)
                     <div class="category-item">
                         <h3 id="category-item-name">{{ $cate->category_name }}</h3>
@@ -128,6 +127,7 @@
                     </div>
                 @endforeach
             </div>
+            {{$categories->links('paginate')}}
         </div>
     </div>
 @endsection
