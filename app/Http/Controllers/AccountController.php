@@ -58,7 +58,7 @@ class AccountController extends Controller
 //        if (! Gate::allows('list-user', $account)) {
 //            return redirect()->route('login')->with('error','You do not have permission');
 //        }
-        $users = Account::where('role', '!=', Account::ACCOUNT_ADMIN)->get();
+        $users = Account::where('role', '!=', Account::ACCOUNT_ADMIN)->paginate(5);
         return view('listUser', compact('users'));
     }
 

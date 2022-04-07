@@ -72,24 +72,17 @@
                                         '{{ $category->category_name }}',
                                     @endforeach
                                 ]
+                                var idea_month = [
+                                    @foreach ($idea_monthly as $item)
+                                        '{{ $item }}',
+                                    @endforeach
+                                ]
                                 new Chart("myChart", {
                                     type: "line",
                                     data: {
                                         labels: xValues,
                                         datasets: [{
-                                                data: [{{ count($ideas_jan) }},
-                                                    {{ count($ideas_feb) }},
-                                                    {{ count($ideas_mar) }},
-                                                    {{ count($ideas_apr) }},
-                                                    {{ count($ideas_may) }},
-                                                    {{ count($ideas_jun) }},
-                                                    {{ count($ideas_jul) }},
-                                                    {{ count($ideas_aug) }},
-                                                    {{ count($ideas_sep) }},
-                                                    {{ count($ideas_oct) }},
-                                                    {{ count($ideas_nov) }},
-                                                    {{ count($ideas_dec) }},
-                                                ],
+                                                data: idea_month,
                                                 borderColor: "red",
                                                 fill: false,
                                             },
@@ -116,20 +109,7 @@
                                     data: {
                                         labels: xValues,
                                         datasets: [{
-                                            data: [
-                                                {{ count($ideas_jan) }},
-                                                {{ count($ideas_feb) }},
-                                                {{ count($ideas_mar) }},
-                                                {{ count($ideas_apr) }},
-                                                {{ count($ideas_may) }},
-                                                {{ count($ideas_jun) }},
-                                                {{ count($ideas_jul) }},
-                                                {{ count($ideas_aug) }},
-                                                {{ count($ideas_sep) }},
-                                                {{ count($ideas_oct) }},
-                                                {{ count($ideas_nov) }},
-                                                {{ count($ideas_dec) }},
-                                            ],
+                                            data: idea_month,
                                             borderColor: "red",
                                             fill: false,
                                         }, ],
