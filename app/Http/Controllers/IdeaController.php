@@ -163,14 +163,11 @@ class IdeaController extends Controller
     {
         $files = Idea::with('documents')->find($id);
         if (!$files){
-
+            return response()->json(['error'  => 'Idea do not exist']);
         }
         $zip = new ZipArchive;
-        $zipName = 'download_'.$files->idea_title.'.zip';
-        if (!is_dir(public_path(). '/zip/')){
-            mkdir(public_path().'/zip', '0777');
-        }
-        if ($zip->open(public_path('/zip/'.$zipName), ZipArchive::CREATE)== TRUE)
+        $zipName = 'download_'.$files->idea_title.'_'.$id.'.zip';
+        if ($zip->open(public_path($zipName), ZipArchive::CREATE)== TRUE)
         {
             foreach ($files->documents as $item) {
                 $relativeName = basename($item->file_name);
@@ -178,6 +175,8 @@ class IdeaController extends Controller
             }
             $zip->close();
         }
-        return response()->download(public_path($zipName));
+        if (file_exists(public_path($zipName))) {
+            return response()->download(public_path($zipName))->deleteFileAfterSend();
+        }
     }
 }
