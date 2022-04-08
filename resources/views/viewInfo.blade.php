@@ -1,13 +1,13 @@
 @extends('master')
-@section('css')
+{{-- @section('css')
     <style>
         .tbody-content{
             height: auto;
         }
     </style>
-@endsection
+@endsection --}}
 @section('content')
-<div class="tbody-user col col-sm-9 col-lg-10">
+<div class="tbody-user">
     <div class="tbody-content">
         @if(Session::has('error'))
             <div class="alert alert-danger" role="alert">

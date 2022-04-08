@@ -922,9 +922,6 @@ i {
         height: 100%;
         /*margin-bottom: 100px;*/
     }
-    .tbody-responsive-navbar {
-        display: block;
-    }
     .login-box {
         display: none;
     }
@@ -1137,6 +1134,9 @@ i {
     .tbody-detail-ct {
         height: 1080px;
     }
+    .user-box {
+        display: none;
+    }
 }
 @media screen and (max-width: 480px) {
     /* footer */
@@ -1214,6 +1214,9 @@ i {
     /* category */
     .category-item h3 {
         font-size: 16px;
+    }
+    .tbody-responsive-navbar {
+        display: block;
     }
 }
 @media screen and (max-width: 426px) {
@@ -1301,9 +1304,6 @@ i {
     }
     .inputfile + label span {
         display: inline-block;
-    }
-    .user-box {
-        display: none;
     }
     .login-infor-user {
         justify-content: center;

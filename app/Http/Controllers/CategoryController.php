@@ -14,8 +14,8 @@ use Illuminate\Validation\Validator;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::paginate(10)->sortByDesc('id');
-        return view('category', compact('categories'))->with('i', (request()-> input('page', 1) -1)*10);
+        $categories = Category::paginate(5);
+        return view('category', ['categories' => $categories]);
     }
 
     public function store(Request $request){

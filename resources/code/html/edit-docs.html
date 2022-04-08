@@ -1,252 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Create Documents</title>
+        <link rel="stylesheet" href="../css/style.css" />
+        <!-- CSS only -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+        />
+        <!-- JavaScript Bundle with Popper -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Zen+Old+Mincho&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Documents</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Zen+Old+Mincho&display=swap"
-        rel="stylesheet" />
-</head>
-
-<body>
-    <!-- navbar đã login -->
-    <div class="header">
-        <div class="header-navbar">
-            <div class="header-left">
-                <ul>
-                    <li><a href="./home.html">Home</a></li>
-                    <li><a href="./start-page.html">Startpage</a></li>
-                    <li><a href="">Follow</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
-            </div>
-            <div class="header-middle"><img src="../img/logo.png" alt="" /></div>
-            <div class="header-right">
-                <div class="header-search-box">
-                    <input class="search-box" placeholder="Search" />
-                    <button class="search-box-btn" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
+    <body>
+        <!-- navbar đã login -->
+        <div class="header">
+            <div class="header-navbar">
+                <div class="header-left">
+                    <ul>
+                        <li><a href="./home.html">Home</a></li>
+                        <li><a href="./start-page.html">Startpage</a></li>
+                        <li><a href="">Follow</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="user-box">
-                    <div class="dropdown">
-                        <div class="login-infor-user" data-bs-toggle="dropdown">
-                            <img src="../img/avatar.png" alt="" />
-                            <div class="login-infor-user-name">
-                                <p>Oliver Smith</p>
-                                <h6>Teacher English</h6>
+                <div class="header-middle">
+                    <img src="../img/logo.png" alt="" />
+                </div>
+                <div class="header-right">
+                    <div class="header-search-box">
+                        <input class="search-box" placeholder="Search" />
+                        <button class="search-box-btn" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <div class="user-box">
+                        <div class="dropdown">
+                            <div
+                                class="login-infor-user"
+                                data-bs-toggle="dropdown"
+                            >
+                                <img src="../img/avatar.png" alt="" />
+                                <div class="login-infor-user-name">
+                                    <p>Oliver Smith</p>
+                                    <h6>Teacher English</h6>
+                                </div>
+                                <p><i class="bi bi-chevron-down"></i></p>
                             </div>
-                            <p><i class="bi bi-chevron-down"></i></p>
+                            <ul
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownMenuLink"
+                            >
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="./use-detail.html"
+                                        >View Profile</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="./create-docs.html"
+                                        >New Docs</a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Logout</a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="./use-detail.html">View Profile</a></li>
-                            <li><a class="dropdown-item" href="./create-docs.html">New Docs</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
+                    </div>
+                    <div class="tbody-responsive-navbar">
+                        <button class="btn btn-secondary" id="navbar-item">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <button
+                            class="btn btn-secondary"
+                            id="navbar-item-cancel"
+                        >
+                            <i class="bi bi-list"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="tbody-responsive-navbar">
-                    <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
-                    <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-list"></i></button>
-                </div>
             </div>
         </div>
-    </div>
-    <!-- navbar after responsive -->
-    <div id="navbar-item-detail">
-        <div class="login-infor-user" data-bs-toggle="dropdown">
-            <img src="../img/avatar.png" alt="" />
-            <div class="login-infor-user-name">
-                <p>Oliver Smith</p>
-                <h6>Teacher English</h6>
-            </div>            
-        </div>
-        <ul>
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./start-page.html">Startpage</a></li>
-            <li><a href="">Follow</a></li>
-            <li><a href="">Contact</a></li>  
-            <li><a href="./use-detail.html">View Profile</a></li>   
-            <li><a href="./create-docs.html">New Docs</a></li>    
-            <li><a href="">Logout</a></li>         
-        </ul>
-    </div>    
-
-    <div class="tbody">
-        <!-- sitebar category after responsive: sitebar này bt sẽ ẩn sao khi thu nhỏ trang web mới hiện -->
-        <div class="tbody-box-responsive">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                <input class="btn btn-outline-success" type="button" id="category" value="Category" />
-                <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category" />
-            </form>
-        </div>
-        <div class="tbody-sitebar-responsive" id="cate-ct">
-            <h6><a href="./category.html">Category Edit</a></h6>
+        <!-- navbar after responsive -->
+        <div id="navbar-item-detail">
+            <div class="login-infor-user" data-bs-toggle="dropdown">
+                <img src="../img/avatar.png" alt="" />
+                <div class="login-infor-user-name">
+                    <p>Oliver Smith</p>
+                    <h6>Teacher English</h6>
+                </div>
+            </div>
             <ul>
-                <li><a href="">Book</a></li>
-                <li><a href="">Community</a></li>
-                <li><a href="">Infrastructure</a></li>
-                <li><a href="">Subjects</a></li>
-                <li><a href="">Service</a></li>
-                <li><a href="">School fee</a></li>
-                <li><a href="">Sharing experiences</a></li>
-                <li><a href="">Rank and position</a></li>
-                <li><a href="">Homework</a></li>
-                <li><a href="">Exam</a></li>
-                <li><a href="">Game</a></li>
-            </ul>
-        </div>        
-        <!--sitebar category simple: sitebar mặc định -->
-        <div class="tbody-sitebar col col-sm-3 col-lg-2">
-            <h4>Category</h4>
-            <ul>
-                <li><a href="">Book</a></li>
-                <li><a href="">Community</a></li>
-                <li><a href="">Infrastructure</a></li>
-                <li><a href="">Subjects</a></li>
-                <li><a href="">Service</a></li>
-                <li><a href="">School fee</a></li>
-                <li><a href="">Sharing experiences</a></li>
-                <li><a href="">Rank and position</a></li>
-                <li><a href="">Homework</a></li>
-                <li><a href="">Exam</a></li>
-                <li><a href="">Game</a></li>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./start-page.html">Startpage</a></li>
+                <li><a href="">Follow</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="./use-detail.html">View Profile</a></li>
+                <li><a href="./create-docs.html">New Docs</a></li>
+                <li><a href="">Logout</a></li>
             </ul>
         </div>
-        <!-- tbody-create-docs để chỉnh độ dài cho footer không đè lên -->
-        <div class="tbody-create-docs col col-lg-10">
-            <div class="tbody-content">
-                <div class="tbody-detail">
-                    <p>New Document</p>
-                </div>
-                <div class="tbody-ct">
-                    <form class="create-docs" action="">                    
-                        <div class="create-docs-detail">
-                            <div class="document">
-                                <label for="docs-name">Document name</label>
-                                <input type="text" id="docs-name" name="docs-name" />
-                            </div>
-                            <p>Error creating documentation!</p>
-                        </div>
-                        <div class="create-docs-detail">
-                            <div class="document">
-                                <label for="docs-introduction">Introduction</label>
-                                <textarea name="docs-introduction" id="docs-introduction" cols="10" rows="7"></textarea>
-                            </div>
-                            <p>Error creating documentation!</p>
-                        </div>
-                        <div class="create-docs-detail">
-                            <div class="document">
-                                <label for="docs-category">Category</label>
-                                <select name="docs-category" id="docs-category">
-                                    <option value="Book">Book</option>
-                                    <option value="Community">Community</option>
-                                    <option value="Infrastructure">Infrastructure</option>
-                                    <option value="Subjects">Subjects</option>
-                                    <option value="Service">Service</option>
-                                    <option value="School fee">School fee</option>
-                                    <option value="Sharing experiences">
-                                        Sharing experiences
-                                    </option>
-                                    <option value="Rank and position">Rank and position</option>
-                                    <option value="Homework">Homework</option>
-                                    <option value="Exam">Exam</option>
-                                    <option value="Game">Game</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="document-file">
-                            <div>
-                                <input type="file" name="file" id="file" class="inputfile" />
-                                <label for="file"><i class="bi bi-file-earmark-plus"></i><p>Upload
-                                    Documents</p><span>Up docs</span></label>
-                                <p class="error">Error creating documentation!</p>
-                                <p>FileName.docs</p>
-                                <p>FileName.txt</p>
-                                <p>FileName.pdf</p>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Agree to the terms
-                                </label>
-                            </div>                            
-                        </div>      
-                        <div class="docs-save">
-                            <button>Save</button>
-                        </div>                  
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer-1">
-            <div class="intro-gr3 col col-lg-4">
-                <h5>Group3</h5>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
-                    massa elit ornare nulla varius nisi arcu.
-                </p>
-                <h4>+44 322 11 00</h4>
-            </div>
-            <div class="footer-member">
-                <p>FrontE</p>
-                <p>Minh</p>
-                <p>Dung</p>
-            </div>
-            <div class="footer-member">
-                <p>BackE</p>
-                <p>Toan</p>
-                <p>Duy</p>
-            </div>
-            <div class="footer-member">
-                <p>Tester</p>
-                <p>Nam</p>
-                <p>Bien</p>
-            </div>
-        </div>
-        <div class="footer-2">
-            <p>2022 © All rights reserved. Created by Group3</p>
-        </div>
-    </div>
-    <script language="javascript">
-        document.getElementById("navbar-item").onclick = function () {
-            document.getElementById("navbar-item-detail").style.display = 'block';
-            document.getElementById("navbar-item-cancel").style.display = 'block';
-            document.getElementById("navbar-item").style.display = 'none';
-        };
-        document.getElementById("navbar-item-cancel").onclick = function () {
-            document.getElementById("navbar-item-detail").style.display = 'none';
-            document.getElementById("navbar-item-cancel").style.display = 'none';
-            document.getElementById("navbar-item").style.display = 'block';
-        };  
-        document.getElementById("category").onclick = function () {
-            document.getElementById("cate-ct").style.display = 'block';
-            document.getElementById("cate-cancel").style.display = 'block';
-            document.getElementById("category").style.display = 'none';
-        };
-        document.getElementById("cate-cancel").onclick = function () {
-            document.getElementById("cate-ct").style.display = 'none';
-            document.getElementById("cate-cancel").style.display = 'none';
-            document.getElementById("category").style.display = 'block';
-        };    
-    </script>  
-</body>
 
+        <div class="tbody">
+            <!-- sitebar category after responsive: sitebar này bt sẽ ẩn sao khi thu nhỏ trang web mới hiện -->
+            <div class="tbody-box-responsive">
+                <form class="d-flex">
+                    <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                    />
+                    <button class="btn btn-outline-success" type="submit">
+                        Search
+                    </button>
+                    <input
+                        class="btn btn-outline-success"
+                        type="button"
+                        id="category"
+                        value="Category"
+                    />
+                    <input
+                        class="btn btn-outline-success"
+                        type="button"
+                        id="cate-cancel"
+                        value="Category"
+                    />
+                </form>
+            </div>
+            <div class="tbody-sitebar-responsive" id="cate-ct">
+                <h6><a href="./category.html">Category Edit</a></h6>
+                <ul>
+                    <li><a href="">Book</a></li>
+                    <li><a href="">Community</a></li>
+                    <li><a href="">Infrastructure</a></li>
+                    <li><a href="">Subjects</a></li>
+                    <li><a href="">Service</a></li>
+                    <li><a href="">School fee</a></li>
+                    <li><a href="">Sharing experiences</a></li>
+                    <li><a href="">Rank and position</a></li>
+                    <li><a href="">Homework</a></li>
+                    <li><a href="">Exam</a></li>
+                    <li><a href="">Game</a></li>
+                </ul>
+            </div>
+            <!--sitebar category simple: sitebar mặc định -->
+            <div class="tbody-sitebar col col-sm-3 col-lg-2">
+                <h4>Category</h4>
+                <ul>
+                    <li><a href="">Book</a></li>
+                    <li><a href="">Community</a></li>
+                    <li><a href="">Infrastructure</a></li>
+                    <li><a href="">Subjects</a></li>
+                    <li><a href="">Service</a></li>
+                    <li><a href="">School fee</a></li>
+                    <li><a href="">Sharing experiences</a></li>
+                    <li><a href="">Rank and position</a></li>
+                    <li><a href="">Homework</a></li>
+                    <li><a href="">Exam</a></li>
+                    <li><a href="">Game</a></li>
+                </ul>
+            </div>
+            <!-- tbody-create-docs để chỉnh độ dài cho footer không đè lên -->
+            <div class="tbody-create-docs col col-lg-10">
+                <div class="tbody-content">
+                    <div class="tbody-detail">
+                        <p>New Document</p>
+                    </div>
+                    <div class="tbody-ct">
+                        <form class="create-docs" action="">
+                            <div class="create-docs-detail">
+                                <div class="document">
+                                    <label for="docs-name">Document name</label>
+                                    <input
+                                        type="text"
+                                        id="docs-name"
+                                        name="docs-name"
+                                    />
+                                </div>
+                                <p>Error creating documentation!</p>
+                            </div>
+                            <div class="create-docs-detail">
+                                <div class="document">
+                                    <label for="docs-introduction"
+                                        >Introduction</label
+                                    >
+                                    <textarea
+                                        name="docs-introduction"
+                                        id="docs-introduction"
+                                        cols="10"
+                                        rows="7"
+                                    ></textarea>
+                                </div>
+                                <p>Error creating documentation!</p>
+                            </div>
+                            <div class="create-docs-detail">
+                                <div class="document">
+                                    <label for="docs-category">Category</label>
+                                    <select
+                                        name="docs-category"
+                                        id="docs-category"
+                                    >
+                                        <option value="Book">Book</option>
+                                        <option value="Community">
+                                            Community
+                                        </option>
+                                        <option value="Infrastructure">
+                                            Infrastructure
+                                        </option>
+                                        <option value="Subjects">
+                                            Subjects
+                                        </option>
+                                        <option value="Service">Service</option>
+                                        <option value="School fee">
+                                            School fee
+                                        </option>
+                                        <option value="Sharing experiences">
+                                            Sharing experiences
+                                        </option>
+                                        <option value="Rank and position">
+                                            Rank and position
+                                        </option>
+                                        <option value="Homework">
+                                            Homework
+                                        </option>
+                                        <option value="Exam">Exam</option>
+                                        <option value="Game">Game</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="document-file">
+                                <div>
+                                    <input
+                                        type="file"
+                                        name="file"
+                                        id="file"
+                                        class="inputfile"
+                                    />
+                                    <label for="file"
+                                        ><i class="bi bi-file-earmark-plus"></i>
+                                        <p>Upload Documents</p>
+                                        <span>Up docs</span></label
+                                    >
+                                    <p class="error">
+                                        Error creating documentation!
+                                    </p>
+                                    <p>FileName.docs</p>
+                                    <p>FileName.txt</p>
+                                    <p>FileName.pdf</p>
+                                </div>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        value=""
+                                        id="flexCheckDefault"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="flexCheckDefault"
+                                    >
+                                        Agree to the terms
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="docs-save">
+                                <button>Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-1">
+                <div class="intro-gr3 col col-lg-4">
+                    <h5>Group3</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sit viverra massa elit ornare nulla varius nisi arcu.
+                    </p>
+                    <h4>+44 322 11 00</h4>
+                </div>
+                <div class="footer-member">
+                    <p>FrontE</p>
+                    <p>Minh</p>
+                    <p>Dung</p>
+                </div>
+                <div class="footer-member">
+                    <p>BackE</p>
+                    <p>Toan</p>
+                    <p>Duy</p>
+                </div>
+                <div class="footer-member">
+                    <p>Tester</p>
+                    <p>Nam</p>
+                    <p>Bien</p>
+                </div>
+            </div>
+            <div class="footer-2">
+                <p>2022 © All rights reserved. Created by Group3</p>
+            </div>
+        </div>
+        <script language="javascript">
+            document.getElementById("navbar-item").onclick = function () {
+                document.getElementById("navbar-item-detail").style.display =
+                    "block";
+                document.getElementById("navbar-item-cancel").style.display =
+                    "block";
+                document.getElementById("navbar-item").style.display = "none";
+            };
+            document.getElementById("navbar-item-cancel").onclick =
+                function () {
+                    document.getElementById(
+                        "navbar-item-detail"
+                    ).style.display = "none";
+                    document.getElementById(
+                        "navbar-item-cancel"
+                    ).style.display = "none";
+                    document.getElementById("navbar-item").style.display =
+                        "block";
+                };
+            document.getElementById("category").onclick = function () {
+                document.getElementById("cate-ct").style.display = "block";
+                document.getElementById("cate-cancel").style.display = "block";
+                document.getElementById("category").style.display = "none";
+            };
+            document.getElementById("cate-cancel").onclick = function () {
+                document.getElementById("cate-ct").style.display = "none";
+                document.getElementById("cate-cancel").style.display = "none";
+                document.getElementById("category").style.display = "block";
+            };
+        </script>
+    </body>
 </html>

@@ -48,6 +48,7 @@ class IdeaController extends Controller
      */
     public function store(IdeaRequest $request)
     {
+        // dd($request->all());
         $destinationPath = '/uploads/';
         if (!is_dir(public_path(). '/uploads/')){
             mkdir(public_path().'/uploads', '0777');
@@ -67,6 +68,7 @@ class IdeaController extends Controller
             'description' => $request->description ?? '',
             'category_id' => $request->category_id,
             'department' => $department,
+            'anonymous' => $request->anonymous,
             'views' => 0,
         ]);
         $lastInsertId = DB::getPdo()->lastInsertId();
@@ -81,13 +83,17 @@ class IdeaController extends Controller
                 $q->where('personal_info.department', '=', $department);
             }])->where('role', Account::ACCOUNT_QAC)->get();
 
+            foreach ($users as $key => $user){
+                if (!$user->personal_info){
+                    $users->forget($key);
+                }
+            }
             $category_mail = Category::where('id', $request->category_id)->first();
-            // dd($users);
-            // dd($category);
 
             foreach($users as $user){
+                $email_QAC = $user->personal_info->email;
                 $mailable = new SubmitIdea($user, $category_mail);
-                Mail::to($user->personal_info->email)->send($mailable);
+                Mail::to($email_QAC)->send($mailable);
             }
 
             return redirect()->route('viewInfo', ['id' => Auth::guard('account')->user()->id])->with('success', "Create successful");
@@ -158,7 +164,6 @@ class IdeaController extends Controller
 
         return response()->json(['success'=>$response, 'likes'=>$likes]);
     }
-
     public function downloadIdea($id)
     {
         $files = Idea::with('documents')->find($id);
@@ -175,8 +180,9 @@ class IdeaController extends Controller
             }
             $zip->close();
         }
-        if (file_exists(public_path($zipName))) {
-            return response()->download(public_path($zipName))->deleteFileAfterSend();
+        if (file_exists(public_path('/zip/'.$zipName))) {
+            $headers = ['Content-Type' => 'application/zip', 'Content-Disposition' => 'attachment'];
+            return response()->download(public_path('/zip/'.$zipName), $zipName, $headers);
         }
     }
 }

@@ -51,15 +51,22 @@
                         @error('files.*')
                             <p>{{ $message }}</p>
                         @enderror
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="term" value="true" {{ !old('term') ?: 'checked' }} />
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Agree to the terms
-                            </label>
-                            @error('term')
-                            <p class="error">{{$message}}</p>
-                            @enderror
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="anonymous" value="1"/>
+                                <label class="form-check-label" for="flexCheckDefault">  Post with anonymous   </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="term" value="true" {{ !old('term') ?: 'checked' }} />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Agree to the terms
+                                </label>
+                                @error('term')
+                                <p class="error">{{$message}}</p>
+                                @enderror
+                            </div>
                         </div>
+                        
                     </div>
                     <div class="create-docs-detail">
                         @error('files')

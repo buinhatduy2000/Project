@@ -10,7 +10,7 @@ class Idea extends Model
 {
     use HasFactory, Likeable;
     protected $table = 'ideas';
-    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'department'];
+    protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'department', 'anonymous'];
 
     public function author(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
@@ -28,5 +28,9 @@ class Idea extends Model
     public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Comment::class, 'idea_id', 'id');
+    }
+    public function latestComment()
+    {
+        return $this->hasOne(Comment::class, 'idea_id')->latest('id');
     }
 }

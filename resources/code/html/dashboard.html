@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="../css/dashboard.css" /> -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Zen+Old+Mincho&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <!-- header navbar đây và navbar ơ trang detail.html là navbar chưa login. Navbar login ở trang edit-docs.html, create-docs.html, category.html-->
+    <div class="header">
+        <div class="header-navbar">
+            <div class="header-left">
+                <ul>
+                    <li><a href="./home.html">Home</a></li>
+                    <li><a href="./start-page.html">Startpage</a></li>
+                    <li><a href="">Follow</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+            <div class="header-middle"><img src="../img/logo.png" alt="" /></div>
+            <div class="header-right">
+                <div class="header-search-box">
+                    <input class="search-box" placeholder="Search" />
+                    <button class="search-box-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <div class="login-box">
+                    <button><a href="./login.html">Login</a></button>
+                </div>
+                <div class="tbody-responsive-navbar">
+                    <button class="btn btn-secondary" id="navbar-item">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <button class="btn btn-secondary" id="navbar-item-cancel">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- navbar after responsive -->
+    <div id="navbar-item-detail">
+        <ul>
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./start-page.html">Startpage</a></li>
+            <li><a href="">Follow</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="./login.html">Login</a></li>
+        </ul>
+    </div>
+
+    <div class="tbody">
+        <!-- sitebar category after responsive: sitebar này bt sẽ ẩn sao khi thu nhỏ trang web mới hiện -->
+        <div class="tbody-box-responsive">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="btn btn-outline-success" type="button" id="category" value="Category" />
+                <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category" />
+            </form>
+        </div>
+        <div class="tbody-sitebar-responsive" id="cate-ct">
+            <h6><a href="./category.html">Category Edit</a></h6>
+            <ul>
+                <li><a href="">Book</a></li>
+                <li><a href="">Community</a></li>
+                <li><a href="">Infrastructure</a></li>
+                <li><a href="">Subjects</a></li>
+                <li><a href="">Service</a></li>
+                <li><a href="">School fee</a></li>
+                <li><a href="">Sharing experiences</a></li>
+                <li><a href="">Rank and position</a></li>
+                <li><a href="">Homework</a></li>
+                <li><a href="">Exam</a></li>
+                <li><a href="">Game</a></li>
+            </ul>
+        </div>
+        <!--sitebar category simple: sitebar mặc định -->
+        <div class="tbody-sitebar col col-sm-3 col-lg-2">
+            <h4><a href="./category.html">Category</a></h4>
+            <ul>
+                <li><a href="">Book</a></li>
+                <li><a href="">Community</a></li>
+                <li><a href="">Infrastructure</a></li>
+                <li><a href="">Subjects</a></li>
+                <li><a href="">Service</a></li>
+                <li><a href="">School fee</a></li>
+                <li><a href="">Sharing experiences</a></li>
+                <li><a href="">Rank and position</a></li>
+                <li><a href="">Homework</a></li>
+                <li><a href="">Exam</a></li>
+                <li><a href="">Game</a></li>
+            </ul>
+        </div>
+        <!-- div class tbody-home để chỉnh chiều dài cho footer ko đè lên -->
+        <div class="tbody-home col col-sm-9 col-lg-10">
+            <div class="main-content">
+                <main>
+                    <h2 class="dash-title">Dashboard</h2>
+                    <div class="dash-cards">
+                        <div class="card-single">
+                            <div class="card-body">
+                                <span class="ti-briefcase"></span>
+                                <div>
+                                    <h5>All Ideas</h5>
+                                    <h4>1160</h4>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button id="view-likes-btn">View</button>
+                            </div>
+                        </div>
+
+                        <div class="card-single">
+                            <div class="card-body">
+                                <span class="ti-reload"></span>
+                                <div>
+                                    <h5>Number of ideas for the category/year</h5>
+                                    <h4>2022</h4>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button id="view-dislikes-btn">View</button>
+                            </div>
+                        </div>
+
+                        <div class="card-single">
+                            <div class="card-body">
+                                <span class="ti-check-box"></span>
+                                <div>
+                                    <h5>Number of contributors of each item</h5>
+                                    <h4>940</h4>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button id="view-downloads-btn">View</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="recent">
+                        <div class="activity-grid">
+                            <div class="activity-card">                                
+                                <div id="chart-all">    
+                                    <!-- show dashboard for number of staff, downloads, category -->
+                                    <h3>Overview</h3>                                    
+                                    <canvas id="myChart" style="width: 100%"></canvas>
+                                </div>
+                                <div id="chart-likes">
+                                    <h3>All Ideas</h3>                                    
+                                    <canvas id="myChartLikes" style="width: 100%"></canvas>
+                                </div>
+                                <div id="chart-dislikes">
+                                    <h3>Number of ideas for the category/year</h3>                                    
+                                    <canvas id="myChartDisLikes" style="width: 100%"></canvas>
+                                </div>
+                                <div id="chart-downloads">
+                                    <h3>Number of contributors of each item</h3>                                    
+                                    <canvas id="myChartDownloads" style="width: 100%"></canvas>
+                                </div>
+                                <script>
+                                    var xValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+                                    var yValues = ['Book', 'Community', 'Infrastructure', 'Subjects', 'Service', 'School fee', 'Sharing experiences', 'Rank and position', 'Homework', 'Exam', 'Game']
+                                    new Chart("myChart", {
+                                        type: "line",
+                                        data: {
+                                            labels: xValues,
+                                            datasets: [
+                                                {
+                                                    data: [860, 1140, 1060, 1060, 1070, 1990, 1330, 2210, 7830, 2478, 5677, 3456],
+                                                    borderColor: "red",
+                                                    fill: false,
+                                                },
+                                                {
+                                                    data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000, 5800, 4800],
+                                                    borderColor: "green",
+                                                    fill: false,
+                                                },
+                                                {
+                                                    data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100, 120, 200],
+                                                    borderColor: "blue",
+                                                    fill: false,
+                                                },
+                                            ],
+                                        },
+                                        options: {
+                                            legend: { display: false },
+                                        },
+                                    });
+                                    new Chart("myChartLikes", {
+                                        type: "line",
+                                        data: {
+                                            labels: xValues,
+                                            datasets: [
+                                                {
+                                                    data: [860, 1140, 1060, 1060, 1070, 1990, 1330, 2210, 7830, 2478, 5677, 3456],
+                                                    borderColor: "red",
+                                                    fill: false,
+                                                },
+                                            ],
+                                        },
+                                        options: {
+                                            legend: { display: false },
+                                        },
+                                    });
+                                    new Chart("myChartDisLikes", {
+                                        type: "horizontalBar",
+                                        data: {
+                                            labels: yValues,
+                                            datasets: [
+                                                {
+                                                    axis: 'y',
+                                                    data: [2, 3, 2, 4, 5, 7, 8, 9, 10, 8, 7],
+                                                    backgroundColor: '#00FF7B',
+                                                    hoverBackgroundColor: '#4CFF00',
+                                                    fill: false,
+                                                },
+                                            ],
+                                        },
+                                        options: {
+                                            legend: { display: false },
+                                            scales: {
+                                                xAxes: [{
+                                                    ticks: {
+                                                        min: 0
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    stacked: true
+                                                }]
+                                            }
+                                        },
+                                    });
+                                    new Chart("myChartDownloads", {
+                                        type: "horizontalBar",
+                                        data: {
+                                            labels: yValues,
+                                            datasets: [
+                                                {
+                                                    data: [2,3,2,4,5,6,9,7,9,6,4],
+                                                    backgroundColor: '#00F7FF',
+                                                    hoverBackgroundColor: '#0090FF',
+                                                    fill: false,
+                                                },
+                                            ],
+                                        },
+                                        options: {
+                                            legend: { display: false },
+                                            scales: {
+                                                xAxes: [{
+                                                    ticks: {
+                                                        min: 0
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    stacked: true
+                                                }]
+                                            }
+                                        },
+                                    });
+                                </script>
+                            </div>
+                            <div class="summary">
+                                <div class="summary-card">
+                                    <div class="summary-single">
+                                        <span class="ti-id-badge"></span>
+                                        <div>
+                                            <h5>1960</h5>
+                                            <small>Number of staff</small>
+                                        </div>
+                                    </div>
+                                    <div class="summary-single">
+                                        <span class="ti-calendar"></span>
+                                        <div>
+                                            <h5>1608</h5>
+                                            <small>downloads</small>
+                                        </div>
+                                    </div>
+                                    <div class="summary-single">
+                                        <span class="ti-face-smile"></span>
+                                        <div>
+                                            <h5>11</h5>
+                                            <small>Category</small>
+                                        </div>
+                                    </div>
+                                    <button id="view-all-btn" class="btn btn-outline-primary">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-1">
+            <div class="intro-gr3 col col-lg-4">
+                <h5>Group3</h5>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit viverra
+                    massa elit ornare nulla varius nisi arcu.
+                </p>
+                <h4>+44 322 11 00</h4>
+            </div>
+            <div class="footer-member">
+                <p>FrontE</p>
+                <p>Minh</p>
+                <p>Dung</p>
+            </div>
+            <div class="footer-member">
+                <p>BackE</p>
+                <p>Toan</p>
+                <p>Duy</p>
+            </div>
+            <div class="footer-member">
+                <p>Tester</p>
+                <p>Nam</p>
+                <p>Bien</p>
+            </div>
+        </div>
+        <div class="footer-2">
+            <p>2022 © All rights reserved. Created by Group3</p>
+        </div>
+    </div>
+    <script language="javascript">
+        document.getElementById("view-likes-btn").onclick = function () {
+            document.getElementById("chart-downloads").style.display = 'none';
+            document.getElementById("chart-likes").style.display = 'block';
+            document.getElementById("chart-dislikes").style.display = 'none';
+            document.getElementById("chart-all").style.display = 'none';
+        };
+        document.getElementById("view-dislikes-btn").onclick = function () {
+            document.getElementById("chart-downloads").style.display = 'none';
+            document.getElementById("chart-likes").style.display = 'none';
+            document.getElementById("chart-dislikes").style.display = 'block';
+            document.getElementById("chart-all").style.display = 'none';
+        };
+        document.getElementById("view-downloads-btn").onclick = function () {
+            document.getElementById("chart-downloads").style.display = 'block';
+            document.getElementById("chart-likes").style.display = 'none';
+            document.getElementById("chart-dislikes").style.display = 'none';
+            document.getElementById("chart-all").style.display = 'none';
+        };
+        document.getElementById("view-all-btn").onclick = function () {
+            document.getElementById("chart-downloads").style.display = 'none';
+            document.getElementById("chart-likes").style.display = 'none';
+            document.getElementById("chart-dislikes").style.display = 'none';
+            document.getElementById("chart-all").style.display = 'block';
+        };
+
+        document.getElementById("navbar-item").onclick = function () {
+            document.getElementById("navbar-item-detail").style.display = "block";
+            document.getElementById("navbar-item-cancel").style.display = "block";
+            document.getElementById("navbar-item").style.display = "none";
+        };
+        document.getElementById("navbar-item-cancel").onclick = function () {
+            document.getElementById("navbar-item-detail").style.display = "none";
+            document.getElementById("navbar-item-cancel").style.display = "none";
+            document.getElementById("navbar-item").style.display = "block";
+        };
+
+        document.getElementById("category").onclick = function () {
+            document.getElementById("cate-ct").style.display = "block";
+            document.getElementById("cate-cancel").style.display = "block";
+            document.getElementById("category").style.display = "none";
+        };
+        document.getElementById("cate-cancel").onclick = function () {
+            document.getElementById("cate-ct").style.display = "none";
+            document.getElementById("cate-cancel").style.display = "none";
+            document.getElementById("category").style.display = "block";
+        };
+    </script>
+</body>
+
+</html>
