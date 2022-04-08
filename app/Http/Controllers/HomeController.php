@@ -51,8 +51,8 @@ class HomeController extends Controller
                 $ideas = Idea::where('deleted_at', null)->get();
             }
         }
-        return view('home', ['ideas' => $ideas->paginate(5)]);
-
+        // return view('home', ['ideas' => $ideas->paginate(5)]);
+        return view('home', ['ideas' => $ideas]);
     }
 
     public function filByCategory($id)
@@ -91,7 +91,8 @@ class HomeController extends Controller
                 $ideas = Idea::where('category_id', $id)->where('deleted_at', null)->get();
             }
         }
-        return view('home', ['ideas' => $ideas->paginate(5)]);
+        // return view('home', ['ideas' => $ideas->paginate(5)]);
+        return view('home', ['ideas' => $ideas]);
     }
 
     public function dashboard(){
