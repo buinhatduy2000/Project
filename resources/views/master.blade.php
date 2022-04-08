@@ -145,11 +145,6 @@
                 @endforeach
             </ul>
         </div>
-        {{-- <div class="tbody-create-docs col col-lg-10">
-            <div class="tbody-content">
-                @yield('content')
-            </div>
-        </div> --}}
         @yield('content')
     </div>
 

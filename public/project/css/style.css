@@ -889,6 +889,9 @@ i {
 .tbody-responsive-navbar {
     display: none;
 }
+.category-btn-delete-responsive, .category-btn-edit-responsive{
+    display: none;
+}
 
 /* responsive */
 @media screen and (max-width: 1024px) {
@@ -1060,9 +1063,22 @@ i {
     .category-tool-responsive {
         display: inline-block;
     }
-    .category-tool {
+    /* .category-tool {
+        display: none;
+    } */
+    .category-btn-delete, .category-btn-edit{
         display: none;
     }
+    .category-btn-delete-responsive, .category-btn-edit-responsive{
+        display: inline-block;
+        font-size: 12px;
+        width: 45px;
+        height: 32.95px;
+        border: 1px solid #F6AD55;
+        border-radius: 6px;
+        color: #F6AD55;
+        background-color: white;
+    } 
     .category-btn-edit {
         width: 28px;
     }

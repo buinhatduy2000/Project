@@ -67,6 +67,9 @@
                         <div class="category-tool">
                             <button type="button" class="category-btn-edit" data-bs-toggle="modal"
                                 data-bs-target="#editModal{{ $cate->id }}">Edit</button>
+                            {{-- asdasasd --}}
+                            <button class="category-btn-edit-responsive" data-bs-toggle="modal"
+                                data-bs-target="#editModal{{ $cate->id }}"><i class="bi bi-pen"></i></button>
                             <div class="modal fade" id="editModal{{ $cate->id }}" tabindex="-1"
                                 aria-labelledby="editModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -102,8 +105,12 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="modal-footer">
+                                            {{-- <div class="modal-footer">
                                                 <button type="submit" class="category-btn-edit" id="save">Save</button>
+                                            </div> --}}
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary" id="save">Save</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             </div>
                                         </form>
                                     </div>
@@ -112,6 +119,9 @@
                             <!--Delete Modal -->
                             <button type="button" class="category-btn-delete" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal{{ $cate->id }}">Delete</button>
+                            {{-- asdsadasd --}}
+                            <button type="button" class="category-btn-delete-responsive" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{ $cate->id }}"><i class="bi bi-trash"></i></button>
                             <div class="modal fade" id="deleteModal{{ $cate->id }}" tabindex="-1"
                                 aria-labelledby="deleteModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -129,7 +139,7 @@
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="category-btn-delete">Delete</button>
+                                                <button type="submit" class="btn btn-primary">Delete</button>
                                             </form>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
