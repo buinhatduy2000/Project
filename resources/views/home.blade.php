@@ -88,7 +88,7 @@
                 @if (!count($ideas))
                     <br>
                 @else
-                    {{-- {{ $ideas->links('vendor.pagination.custom') }} --}}
+                     {{ $ideas->links('vendor.pagination.custom') }}
                 @endif
             @endif
         </div>
