@@ -1,14 +1,14 @@
 @extends('master')
 @section('content')
     <div class="tbody-category col col-lg-10">
-        @if(Session::has('error'))
+        @if (Session::has('error'))
             <div class="alert alert-danger" role="alert">
-                {{Session::get('error')}}
+                {{ Session::get('error') }}
             </div>
         @endif
-        @if(Session::has('success'))
+        @if (Session::has('success'))
             <div class="alert alert-success" role="alert">
-                {{Session::get('success')}}
+                {{ Session::get('success') }}
             </div>
         @endif
         <div class="tbody-content">
@@ -36,7 +36,8 @@
                                     </div>
                                     <div class="category-input-date">
                                         <label for="input-date" class="form-label">Category 1st Closure Date :</label>
-                                        <input class="form-control" type="date" id="cate-date" name="category_date" min="{{date('Y-m-d')}}">
+                                        <input class="form-control" type="date" id="cate-date" name="category_date"
+                                            min="{{ date('Y-m-d') }}">
                                     </div>
                                 </div>
                             </div>
@@ -50,9 +51,16 @@
             </div>
             <div class="tbody-category">
                 @foreach ($categories as $cate)
-                    <div class="category-item">
+                    <div
+                        class="category-item
+                    @if (date('Y-m-d') < $cate->first_closure_date) alert alert-success
+                    @elseif(date('Y-m-d') < $cate->second_closure_date)
+                        alert alert-warning
+                    @else
+                        alert alert-dark @endif
+                    ">
                         <h3 id="category-item-name">{{ $cate->category_name }}</h3>
-                        <p>{{$cate->first_closure_date}} - {{$cate->second_closure_date}}</p>
+                        {{-- <p>{{ $cate->first_closure_date }} - {{ $cate->second_closure_date }}</p> --}}
                         <div class="category-tool">
                             <button type="button" class="category-btn-edit" data-bs-toggle="modal"
                                 data-bs-target="#editModal{{ $cate->id }}">Edit</button>
@@ -65,33 +73,36 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                            <form action="{{ route('category.update', ['category' => $cate->id]) }}" method="POST"
-                                                class="form-edit" id="editItem">
-                                                @csrf
-                                                @method("PUT")
-                                                <div class="modal-body">
-                                                    <div class="category-input-name">
-                                                        <label for="input-name" class="form-label">Category Name :</label>
-                                                        <input class="form-control" type="text" id="cate-name" name="category_name" value="{{ $cate->category_name }}">
-                                                        @error('category_name')
-                                                         <p class="error">{{$message}}</p>
-                                                        @enderror
-                                                    </div>
-                                                    @if(\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
+                                        <form action="{{ route('category.update', ['category' => $cate->id]) }}"
+                                            method="POST" class="form-edit" id="editItem">
+                                            @csrf
+                                            @method("PUT")
+                                            <div class="modal-body">
+                                                <div class="category-input-name">
+                                                    <label for="input-name" class="form-label">Category Name :</label>
+                                                    <input class="form-control" type="text" id="cate-name"
+                                                        name="category_name" value="{{ $cate->category_name }}">
+                                                    @error('category_name')
+                                                        <p class="error">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+                                                @if (\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
                                                     <div class="category-input-date">
-                                                        <label for="input-date" class="form-label">Category 1st Closure Date :</label>
-                                                        <input class="form-control" type="date" id="cate-date" name="category_date"
-                                                               value="{{$cate->first_closure_date}}" min="{{date('Y-m-d')}}">
+                                                        <label for="input-date" class="form-label">Category 1st Closure
+                                                            Date :</label>
+                                                        <input class="form-control" type="date" id="cate-date"
+                                                            name="category_date" value="{{ $cate->first_closure_date }}"
+                                                            min="{{ date('Y-m-d') }}">
                                                         @error('category_date')
-                                                        <p class="error">{{$message}}</p>
+                                                            <p class="error">{{ $message }}</p>
                                                         @enderror
                                                     </div>
-                                                    @endif
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="category-btn-edit" id="save">Save</button>
-                                                </div>
-                                            </form>
+                                                @endif
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="category-btn-edit" id="save">Save</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +138,7 @@
                     </div>
                 @endforeach
             </div>
-            {{$categories->links('paginate')}}
+            {{ $categories->links('paginate') }}
         </div>
     </div>
 @endsection
