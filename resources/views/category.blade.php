@@ -53,12 +53,25 @@
             </div>
             <div class="tbody-category">
                 @foreach ($categories as $cate)
-                    <div class="category-item">
+                    <div
+                        class="category-item
+                    @if (date('Y-m-d') < $cate->first_closure_date) alert alert-success
+                    @elseif(date('Y-m-d') < $cate->second_closure_date)
+                        alert alert-warning
+                    @else
+                        alert alert-dark @endif
+                    ">
                         <h3 id="category-item-name">{{ $cate->category_name }}</h3>
-                        <p>{{$cate->first_closure_date}} - {{$cate->second_closure_date}}</p>
+                        {{-- <p>{{ $cate->first_closure_date }} - {{ $cate->second_closure_date }}</p> --}}
+                        @if (\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
+                            <a href="{{ route('export_csv', ['id' => $cate->id]) }}">Export CSV</a>
+                        @endif
                         <div class="category-tool">
                             <button type="button" class="category-btn-edit" data-bs-toggle="modal"
                                 data-bs-target="#editModal{{ $cate->id }}">Edit</button>
+                            {{-- asdasasd --}}
+                            <button class="category-btn-edit-responsive" data-bs-toggle="modal"
+                                data-bs-target="#editModal{{ $cate->id }}"><i class="bi bi-pen"></i></button>
                             <div class="modal fade" id="editModal{{ $cate->id }}" tabindex="-1"
                                 aria-labelledby="editModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -84,18 +97,25 @@
                                                                value="{{$cate->first_closure_date}}">
                                                         <p class="error error-edit-date"></p>
                                                     </div>
-                                                    @endif
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="category-btn-edit" id="save">Save</button>
-                                                </div>
-                                            </form>
+                                                @endif
+                                            </div>
+                                            {{-- <div class="modal-footer">
+                                                <button type="submit" class="category-btn-edit" id="save">Save</button>
+                                            </div> --}}
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary" id="save">Save</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <!--Delete Modal -->
                             <button type="button" class="category-btn-delete" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal{{ $cate->id }}">Delete</button>
+                            {{-- asdsadasd --}}
+                            <button type="button" class="category-btn-delete-responsive" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{ $cate->id }}"><i class="bi bi-trash"></i></button>
                             <div class="modal fade" id="deleteModal{{ $cate->id }}" tabindex="-1"
                                 aria-labelledby="deleteModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -113,7 +133,7 @@
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="category-btn-delete">Delete</button>
+                                                <button type="submit" class="btn btn-primary">Delete</button>
                                             </form>
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
@@ -125,7 +145,7 @@
                     </div>
                 @endforeach
             </div>
-            {{$categories->links('paginate')}}
+            {{ $categories->links('paginate') }}
         </div>
     </div>
 @endsection

@@ -26,18 +26,22 @@
     <div class="header">
         <div class="header-navbar">
             <div class="header-left">
-                <ul>
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    @if (Auth::guard('account')->user()->role !== \App\Models\Account::ACCOUNT_ADMIN)
-                        <li><a href="{{ route('idea.create') }}">New Idea</a></li>
-                    @endif
-                    @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_ADMIN)
+                @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
+                    <ul>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('adminListUser') }}">List User</a></li>
-                    @endif
-                    @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
+                    </ul>
+                @elseif(Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_QAM)
+                    <ul>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    @endif
-                </ul>
+                    </ul>
+                @else
+                    <ul>
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('idea.create') }}">New Idea</a></li>
+                    </ul>
+                @endif
             </div>
             <div class="header-middle"><a href="{{ route('home') }}"><img src="{{ asset('project/img/logo.png') }}"
                         alt="logo"></a></div>
@@ -81,7 +85,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="navbar-item-detail">
         <div class="login-infor-user" data-bs-toggle="dropdown">
             <img src="{{ asset('project/img/avatar.png') }}" alt="">
@@ -107,18 +111,8 @@
     <div class="tbody">
         <div class="tbody-box-responsive">
             <form class="d-flex">
-                <input
-                    class="btn btn-outline-success"
-                    type="button"
-                    id="category"
-                    value="Category"
-                />
-                <input
-                    class="btn btn-outline-success"
-                    type="button"
-                    id="cate-cancel"
-                    value="Category"
-                />
+                <input class="btn btn-outline-success" type="button" id="category" value="Category" />
+                <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category" />
             </form>
         </div>
         <div class="tbody-sitebar-responsive" id="cate-ct">
@@ -151,76 +145,71 @@
                 @endforeach
             </ul>
         </div>
-        {{-- <div class="tbody-create-docs col col-lg-10">
-            <div class="tbody-content">
-                @yield('content')
-            </div>
-        </div> --}}
         @yield('content')
     </div>
 
-        <div class="footer">
-            <div class="footer-1">
-                <div class="intro-gr3 col col-lg-4">
-                    <h5>Group3</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sit viverra massa elit ornare nulla varius nisi arcu.
-                    </p>
-                    <h4>+44 322 11 00</h4>
-                </div>
-                <div class="footer-member">
-                    <p>FrontE</p>
-                    <p>Minh</p>
-                    <p>Dung</p>
-                </div>
-                <div class="footer-member">
-                    <p>BackE</p>
-                    <p>Toan</p>
-                    <p>Duy</p>
-                </div>
-                <div class="footer-member">
-                    <p>Tester</p>
-                    <p>Nam</p>
-                    <p>Bien</p>
-                </div>
+    <div class="footer">
+        <div class="footer-1">
+            <div class="intro-gr3 col col-lg-4">
+                <h5>Group3</h5>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sit viverra massa elit ornare nulla varius nisi arcu.
+                </p>
+                <h4>+44 322 11 00</h4>
             </div>
-            <div class="footer-2">
-                <p>2022 © All rights reserved. Created by Group3</p>
+            <div class="footer-member">
+                <p>FrontE</p>
+                <p>Minh</p>
+                <p>Dung</p>
+            </div>
+            <div class="footer-member">
+                <p>BackE</p>
+                <p>Toan</p>
+                <p>Duy</p>
+            </div>
+            <div class="footer-member">
+                <p>Tester</p>
+                <p>Nam</p>
+                <p>Bien</p>
             </div>
         </div>
+        <div class="footer-2">
+            <p>2022 © All rights reserved. Created by Group3</p>
+        </div>
+    </div>
 
 
-        <script language="javascript">
-            document.getElementById("navbar-item").onclick = function () {
-                document.getElementById("navbar-item-detail").style.display =
+    <script language="javascript">
+        document.getElementById("navbar-item").onclick = function() {
+            document.getElementById("navbar-item-detail").style.display =
+                "block";
+            document.getElementById("navbar-item-cancel").style.display =
+                "block";
+            document.getElementById("navbar-item").style.display = "none";
+        };
+        document.getElementById("navbar-item-cancel").onclick =
+            function() {
+                document.getElementById(
+                    "navbar-item-detail"
+                ).style.display = "none";
+                document.getElementById(
+                    "navbar-item-cancel"
+                ).style.display = "none";
+                document.getElementById("navbar-item").style.display =
                     "block";
-                document.getElementById("navbar-item-cancel").style.display =
-                    "block";
-                document.getElementById("navbar-item").style.display = "none";
             };
-            document.getElementById("navbar-item-cancel").onclick =
-                function () {
-                    document.getElementById(
-                        "navbar-item-detail"
-                    ).style.display = "none";
-                    document.getElementById(
-                        "navbar-item-cancel"
-                    ).style.display = "none";
-                    document.getElementById("navbar-item").style.display =
-                        "block";
-                };
-            document.getElementById("category").onclick = function () {
-                document.getElementById("cate-ct").style.display = "block";
-                document.getElementById("cate-cancel").style.display = "block";
-                document.getElementById("category").style.display = "none";
-            };
-            document.getElementById("cate-cancel").onclick = function () {
-                document.getElementById("cate-ct").style.display = "none";
-                document.getElementById("cate-cancel").style.display = "none";
-                document.getElementById("category").style.display = "block";
-            };
-        </script>
+        document.getElementById("category").onclick = function() {
+            document.getElementById("cate-ct").style.display = "block";
+            document.getElementById("cate-cancel").style.display = "block";
+            document.getElementById("category").style.display = "none";
+        };
+        document.getElementById("cate-cancel").onclick = function() {
+            document.getElementById("cate-ct").style.display = "none";
+            document.getElementById("cate-cancel").style.display = "none";
+            document.getElementById("category").style.display = "block";
+        };
+    </script>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
