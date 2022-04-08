@@ -31,6 +31,8 @@ Route::group(['middleware' => 'account'], function() {
     Route::post('/idea/like', [\App\Http\Controllers\IdeaController::class, 'likeIdea'])->name('postLikeIdea');
     //download
     Route::get('/download-idea/{id}', [\App\Http\Controllers\IdeaController::class, 'downloadIdea'])->name('downloadIdea');
+    // download CSV
+    Route::get('/download-csv/{id}', [CategoryController::class, 'export_csv'])->name('export_csv');
     //user
     Route::get('/list-user', [\App\Http\Controllers\AccountController::class, 'listUser'])->name('adminListUser');
     Route::get('/create-user', [\App\Http\Controllers\AccountController::class, 'createUser'])->name('adminCreateUser');
