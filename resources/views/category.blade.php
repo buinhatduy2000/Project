@@ -61,7 +61,9 @@
                     ">
                         <h3 id="category-item-name">{{ $cate->category_name }}</h3>
                         {{-- <p>{{ $cate->first_closure_date }} - {{ $cate->second_closure_date }}</p> --}}
-                        <a href="{{route('export_csv',['id'=>$cate->id])}}">Export CSV</a>
+                        @if (\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
+                            <a href="{{ route('export_csv', ['id' => $cate->id]) }}">Export CSV</a>
+                        @endif
                         <div class="category-tool">
                             <button type="button" class="category-btn-edit" data-bs-toggle="modal"
                                 data-bs-target="#editModal{{ $cate->id }}">Edit</button>

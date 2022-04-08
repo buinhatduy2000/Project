@@ -35,7 +35,6 @@
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="">Download</a></li>
                     </ul>
                 @else
                     <ul>
@@ -43,18 +42,6 @@
                         <li><a href="{{ route('idea.create') }}">New Idea</a></li>
                     </ul>
                 @endif
-                {{-- <ul>
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    @if (Auth::guard('account')->user()->role !== \App\Models\Account::ACCOUNT_ADMIN)
-                        <li><a href="{{ route('idea.create') }}">New Idea</a></li>
-                    @endif
-                    @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_ADMIN)
-                        <li><a href="{{ route('adminListUser') }}">List User</a></li>
-                    @endif
-                    @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
-                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    @endif
-                </ul> --}}
             </div>
             <div class="header-middle"><a href="{{ route('home') }}"><img src="{{ asset('project/img/logo.png') }}"
                         alt="logo"></a></div>
