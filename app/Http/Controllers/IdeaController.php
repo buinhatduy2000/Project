@@ -180,9 +180,9 @@ class IdeaController extends Controller
             }
             $zip->close();
         }
-        if (file_exists(public_path('/zip/'.$zipName))) {
+        if (file_exists(public_path($zipName))) {
             $headers = ['Content-Type' => 'application/zip', 'Content-Disposition' => 'attachment'];
-            return response()->download(public_path('/zip/'.$zipName), $zipName, $headers);
+            return response()->download(public_path($zipName), $zipName, $headers)->deleteFileAfterSend();
         }
     }
 }
