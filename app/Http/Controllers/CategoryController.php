@@ -7,9 +7,12 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Idea;
+use App\Models\Personal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Validator;
+use App\Exports\CsvExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -78,5 +81,40 @@ class CategoryController extends Controller
             return redirect() -> route('category.index')->with('success', 'Delete Category Success');
         }
 
+    }
+    public function export_csv(Request $request, $id)
+    {
+        $category = Category::where('id', $id)->with('ideas')->first();
+        $arr = [];
+        foreach ($category->ideas as $idea){
+
+            $user = Personal::where('user_id',$idea->user_id)->first();
+            $ideaAuthor = ["author"=> $user->first_name .' '. $user->last_name];
+            $files = '';
+            foreach ($idea->documents as $key => $doc){
+                $fileName = explode('/', $doc->file_name);
+                $files .= $fileName[2];
+                $files .= ', ';
+            }
+            $ideaFile = ["file" => $files];
+            $comments = '';
+            $ideaLike = ["like" => $idea->likers->count()];
+            foreach ($idea->comments as $comment){
+                $author = $comment->author->personal_info;
+                $comments .= $author->last_name .': '.$comment->content;
+                $comments .= "; ";
+            }
+            $ideaComment = ["comment" => $comments];
+
+            $idea = $idea->toArray();
+            
+            $idea = $idea + $ideaAuthor + $ideaLike + $ideaFile + $ideaComment;
+
+            unset($idea['id'],$idea['user_id'],$idea['category_id'],$idea['deleted_at'],$idea['updated_at'],$idea['anonymous'],$idea['documents'],$idea['likers'],$idea['comments']);
+
+            array_push($arr, $idea);
+        }
+        $export = new CsvExport($arr);
+        return Excel::download($export, 'downloads.csv');
     }
 }
