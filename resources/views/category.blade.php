@@ -1,16 +1,18 @@
 @extends('master')
 @section('content')
     <div class="tbody-category col col-lg-10">
-        @if (Session::has('error'))
+        @if(Session::has('error'))
             <div class="alert alert-danger" role="alert">
-                {{ Session::get('error') }}
+                {{Session::get('error')}}
             </div>
         @endif
-        @if (Session::has('success'))
+        @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
-                {{ Session::get('success') }}
+                {{Session::get('success')}}
             </div>
         @endif
+        <div class="alert alert-success" id="success" role="alert" style="display: none"></div>
+        <div class="alert alert-error" id="error" role="alert" style="display: none"></div>
         <div class="tbody-content">
             <div class="tbody-title-category col-sm-12">
                 <button type="button" class="category-btn-new" data-bs-toggle="modal" data-bs-target="#newModal">
@@ -20,7 +22,7 @@
             <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="{{ route('category.store') }}" class="form-add" id="content" method="POST">
+                        <form class="form-add" id="content form-add" method="POST">
                             @csrf
                             <div class="modal-header">
                                 <h5 class="modal-title" id="newModalLabel">Create new category</h5>
@@ -32,12 +34,12 @@
                                     <div class="category-input-name">
                                         <label for="input-name" class="form-label">Category Name :</label>
                                         <input class="form-control" type="text" id="cate-name" name="category_name">
-                                        {{-- <p class="error">Error documentation!</p> --}}
+                                         <p class="error error-create-name"></p>
                                     </div>
                                     <div class="category-input-date">
                                         <label for="input-date" class="form-label">Category 1st Closure Date :</label>
-                                        <input class="form-control" type="date" id="cate-date" name="category_date"
-                                            min="{{ date('Y-m-d') }}">
+                                        <input class="form-control" type="date" id="cate-date" name="category_date">
+                                        <p class="error error-create-date"></p>
                                     </div>
                                 </div>
                             </div>
@@ -79,29 +81,21 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form action="{{ route('category.update', ['category' => $cate->id]) }}"
-                                            method="POST" class="form-edit" id="editItem">
-                                            @csrf
-                                            @method("PUT")
-                                            <div class="modal-body">
-                                                <div class="category-input-name">
-                                                    <label for="input-name" class="form-label">Category Name :</label>
-                                                    <input class="form-control" type="text" id="cate-name"
-                                                        name="category_name" value="{{ $cate->category_name }}">
-                                                    @error('category_name')
-                                                        <p class="error">{{ $message }}</p>
-                                                    @enderror
-                                                </div>
-                                                @if (\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
+                                            <form action="" method="POST" data-id="{{$cate->id}}" class="form-edit" id="editItem">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="modal-body">
+                                                    <div class="category-input-name">
+                                                        <label for="input-name" class="form-label">Category Name :</label>
+                                                        <input class="form-control" type="text" id="cate-name" name="category_name" value="{{ $cate->category_name }}">
+                                                        <p class="error error-edit-name"></p>
+                                                    </div>
+                                                    @if(\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
                                                     <div class="category-input-date">
-                                                        <label for="input-date" class="form-label">Category 1st Closure
-                                                            Date :</label>
-                                                        <input class="form-control" type="date" id="cate-date"
-                                                            name="category_date" value="{{ $cate->first_closure_date }}"
-                                                            min="{{ date('Y-m-d') }}">
-                                                        @error('category_date')
-                                                            <p class="error">{{ $message }}</p>
-                                                        @enderror
+                                                        <label for="input-date" class="form-label">Category 1st Closure Date :</label>
+                                                        <input class="form-control" type="date" id="cate-date" name="category_date"
+                                                               value="{{$cate->first_closure_date}}">
+                                                        <p class="error error-edit-date"></p>
                                                     </div>
                                                 @endif
                                             </div>
