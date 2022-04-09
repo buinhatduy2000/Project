@@ -26,22 +26,12 @@
     <div class="header">
         <div class="header-navbar">
             <div class="header-left">
-                @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
-                    <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('adminListUser') }}">List User</a></li>
-                    </ul>
-                @elseif(Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_QAM)
-                    <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    </ul>
-                @else
-                    <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('idea.create') }}">New Idea</a></li>
-                    </ul>
-                @endif
+                <ul>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="">Startpage</a></li>
+                    <li><a href="">Follow</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
             </div>
             <div class="header-middle"><a href="{{ route('home') }}"><img src="{{ asset('project/img/logo.png') }}"
                         alt="logo"></a></div>
@@ -68,7 +58,16 @@
                                 <li><a class="dropdown-item"
                                         href="{{ route('viewInfo', ['id' => Auth::guard('account')->user()->id]) }}">View
                                         Profile</a></li>
-                                {{-- <li><a class="dropdown-item" href="{{ route('idea.create') }}">New Idea</a></li> --}}
+                                @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_QAM)
+                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                @endif
+                                @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
+                                    <li><a class="dropdown-item" href="{{ route('adminListUser') }}">List User</a>
+                                    </li>
+                                @endif
+                                @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_STAFF)
+                                    <li><a class="dropdown-item" href="{{ route('idea.create') }}">New Idea</a></li>
+                                @endif
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                             </ul>
                         </div>
@@ -106,6 +105,10 @@
             @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
             @endif
+            <li><a class="dropdown-item"
+                    href="{{ route('viewInfo', ['id' => Auth::guard('account')->user()->id]) }}">View
+                    Profile</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
         </ul>
     </div>
     <div class="tbody">
