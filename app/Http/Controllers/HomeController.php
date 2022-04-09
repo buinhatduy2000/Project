@@ -17,14 +17,14 @@ class HomeController extends Controller
         if (Auth::guard('account')->user()->role == Account::ACCOUNT_STAFF) {
             $department = Auth::guard('account')->user()->personal_info->department;
             if(request()->sort_by == 'popular'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->withCount('likers')->orderByDesc('likers_count')->get();
+                $ideas = Idea::where('department', $department)->where('deleted_at', null)->withCount('likers')->orderByDesc('likers_count');
             }
             else if(request()->sort_by == 'view'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->orderBy('views', 'desc')->get();
+                $ideas = Idea::where('department', $department)->where('deleted_at', null)->orderBy('views', 'desc');
 
             }
             else if(request()->sort_by == 'newest'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->orderBy('created_at', 'desc')->get();
+                $ideas = Idea::where('department', $department)->where('deleted_at', null)->orderBy('created_at', 'desc');
             }
             else if(request()->sort_by == 'comments'){
                 $ideas = Idea::where('department', $department)->where('deleted_at', null)->with('latestComment')->get()->sortByDesc('latestComment.created_at');
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
             }
             else{
-                $ideas = Idea::where('deleted_at', null)->where('department', $department)->get();
+                $ideas = Idea::where('deleted_at', null)->where('department', $department);
             }
         }
         else{
