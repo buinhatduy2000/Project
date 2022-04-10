@@ -172,7 +172,8 @@ i {
 }
 /* homepage */
 .tbody-home {
-    height: 100%;
+    height: auto;
+    width: 100%;
     /*margin-bottom: 100px;*/
 }
 .tbody-filter {
@@ -1078,7 +1079,7 @@ i {
         border-radius: 6px;
         color: #F6AD55;
         background-color: white;
-    } 
+    }
     .category-btn-edit {
         width: 28px;
     }
