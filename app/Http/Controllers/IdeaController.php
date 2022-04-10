@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\Idea;
 use App\Models\Comment;
 use App\Models\Account;
+use App\Models\LikeDislike;
 use App\Models\Personal;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -109,7 +110,14 @@ class IdeaController extends Controller
      */
     public function show($id)
     {
-        $idea = Idea::with('documents')->find($id);
+        $idea = Idea::with('documents','likeDislikes')->withCount([
+            'likeDislikes as likes_count' => function ($query) {
+                $query->where('type', 1);
+            },
+            'likeDislikes as dislikes_count' => function ($query) {
+                $query->where('type', 0);
+            }
+        ])->where('id', $id)->first();
         if (!$idea){
             return redirect()->route('viewInfo', ['id' => Auth::guard('account')->user()->id])->with('error', "Idea do not exist");
         }
@@ -155,15 +163,63 @@ class IdeaController extends Controller
         //
     }
 
-    public function likeIdea(Request $request)
+    public function likeDislikeIdea(Request $request)
     {
         $idea = Idea::find($request->id);
+        if (!$idea){
+            return response()->json(['error'  => 'Idea do not exist']);
+        }
         $account = Auth::guard('account')->user();
-        $response = $account->toggleLike($idea);
-        $likes = $idea->likers()->count();
+        $react = LikeDislike::where([
+           'user_id' => $account->id,
+           'idea_id' => $request->id,
+        ])->first();
+        if (!$react){
+            LikeDislike::create([
+                'user_id' => $account->id,
+                'idea_id' => $request->id,
+                'type' => $request->status == 'like' ? 1 : 0
+            ]);
 
-        return response()->json(['success'=>$response, 'likes'=>$likes]);
+            $status = $request->status == 'like' ? 'liked' : 'disliked';
+            $reactCount = Idea::select('id')->where('id', $request->id)->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                }
+            ])->first();
+            return response()->json(['success'=> $request->status. ' success' , 'status' => $status, 'reactCount' => $reactCount]);
+        }
+        if ($react->type == 1 && $request->status == 'liked' || $react->type == 0 && $request->status == 'disliked'){
+            $react->delete();
+            $status = $request->status == 'liked' ? 'unlike' : 'undislike';
+            $reactCount = Idea::select('id')->where('id', $request->id)->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                }
+            ])->first();
+            return response()->json(['success'=> $request->status. ' success' , 'status' => $status, 'reactCount' => $reactCount]);
+        }
+        $react->update([
+            'type' => $request->status == 'like' ? 1 : 0
+        ]);
+        $status = $request->status == 'like' ? 'toliked' : 'todisliked';
+        $reactCount = Idea::select('id')->where('id', $request->id)->withCount([
+            'likeDislikes as likes_count' => function ($query) {
+                $query->where('type', 1);
+            },
+            'likeDislikes as dislikes_count' => function ($query) {
+                $query->where('type', 0);
+            }
+        ])->first();
+        return response()->json(['success'=> $request->status. ' success' , 'status' => $status, 'reactCount' => $reactCount]);
     }
+
     public function downloadIdea($id)
     {
         $files = Idea::with('documents')->find($id);

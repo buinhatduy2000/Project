@@ -59,13 +59,29 @@
                         </div>
                         <div class="view-icon">
                             <ul>
-                                <li id="like-idea"><i class=@if (Auth::guard('account')->user()->hasLiked($idea)) "bi bi-hand-thumbs-up-fill" style="color: blue"
-                            @else
-                                "bi bi-hand-thumbs-up" @endif><span class="like-count">{{ $idea->likers()->count() }}</span></i>
+                                <li><i id="like-idea" class=
+                                    @if (Auth::guard('account')->user()->isLiked($idea))
+                                        "bi bi-hand-thumbs-up-fill" style="color: blue" data-is="liked"
+                                    @else
+                                        "bi bi-hand-thumbs-up" data-is="like"
+                                    @endif
+                                >
+                                        <span class="like-count">{{$idea->likes_count}}</span>
+                                    </i>
                                 </li>
-                                {{-- <li><i class="bi bi-hand-thumbs-down"></i></li> --}}
+                                <li>
+                                    <i id="dislike-idea" class=
+                                        @if (Auth::guard('account')->user()->isDisliked($idea))
+                                           "bi bi-hand-thumbs-down-fill" style="color: red" data-is="disliked"
+                                        @else
+                                            "bi bi-hand-thumbs-down" data-is="dislike"
+                                        @endif
+                                    >
+                                    <span class="dislike-count">{{$idea->dislikes_count}}</span>
+                                    </i>
+                                </li>
                                 <li><i class="bi bi-chat-square"></i><span>{{ $idea->comments->count() }}</span></li>
-                                <li><i class="bi bi-download button-download-idea" data-id="{{ $idea->id }}"></i></li>
+                                <li><a href="{{route('downloadIdea', ['id' => $idea->id])}}"><i class="bi bi-download button-download-idea"></i></a></li>
                             </ul>
                         </div>
                         <div class="view-detail-responsive">
@@ -124,33 +140,79 @@
                 }
             });
             var flag = true
-            $('#like-idea').on('click', function() {
+            $('#like-idea ,#dislike-idea').on('click', function() {
+                var button = $(this);
+                var status = button.attr('data-is')
+                console.log(button)
+                console.log(button + "-" +status)
                 if (!flag) {
                     return false;
                 }
-                var likeButton = $(this);
                 var id = {{ $idea->id }}
                 $.ajax({
                     type: 'POST',
-                    url: '/idea/like',
+                    url: '/idea/like-dislike',
                     data: {
-                        id: id
+                        id: id,
+                        status: status
                     },
                     beforeSend: function() {
                         flag = false
                     },
                     success: function(data) {
-                        if (jQuery.isEmptyObject(data.success)) {
-                            likeButton.children().removeClass('bi-hand-thumbs-up-fill').css(
-                                'color', '')
-                            likeButton.children().addClass('bi-hand-thumbs-up')
-                        } else {
-                            likeButton.children().removeClass('bi-hand-thumbs-up')
-                            likeButton.children().addClass('bi-hand-thumbs-up-fill').css(
+                        var newStatus = data.status
+                        if (data.status === "liked") {
+                            button.removeClass('bi-hand-thumbs-up')
+                            button.addClass('bi-hand-thumbs-up-fill').css(
                                 'color', 'blue')
+                            button.attr('data-is', newStatus)
+                        }
+                        if (data.status === "disliked") {
+                            button.removeClass('bi-hand-thumbs-down')
+                            button.addClass('bi-hand-thumbs-down-fill').css(
+                                'color', 'red')
+                            button.attr('data-is', newStatus)
+                        }
+                        if (data.status === "unlike") {
+                            button.removeClass('bi-hand-thumbs-up-fill').css(
+                                'color', '')
+                            button.addClass('bi-hand-thumbs-up')
+                            button.attr('data-is', newStatus.slice(2))
+                        }
+                        if (data.status === "undislike") {
+                            button.removeClass('bi-hand-thumbs-down-fill').css(
+                                'color', '')
+                            button.addClass('bi-hand-thumbs-down')
+                            button.attr('data-is', newStatus.slice(2))
+                        }
+                        if (data.status === "toliked") {
+                            button.removeClass('bi-hand-thumbs-up')
+                            button.addClass('bi-hand-thumbs-up-fill').css(
+                                'color', 'blue')
+                            $('#dislike-idea').removeClass('bi-hand-thumbs-down-fill').css(
+                                'color', '')
+                            $('#dislike-idea').addClass('bi-hand-thumbs-down')
+                            $('#dislike-idea').attr('data-is', 'dislike')
+                            button.attr('data-is', newStatus.slice(2))
+                        }
+                        if (data.status === "todisliked") {
+                            button.removeClass('bi-hand-thumbs-down')
+                            button.addClass('bi-hand-thumbs-down-fill').css(
+                                'color', 'red')
+                            $('#like-idea').removeClass('bi-hand-thumbs-up-fill').css(
+                                'color', '')
+                            $('#like-idea').addClass('bi-hand-thumbs-up')
+                            $('#like-idea').attr('data-is', 'like')
+                            button.attr('data-is', newStatus.slice(2))
+                        }
+                        if (!('reactCount' in data)){
+                            $('.like-count').text('0')
+                            $('.dislike-count').text('0')
+                        } else {
+                            $('.like-count').text(data.reactCount.likes_count)
+                            $('.dislike-count').text(data.reactCount.dislikes_count)
                         }
                         flag = true
-                        $('.like-count').text(data.likes)
                     }
                 });
             })
