@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="document-date">
                                             <i class="far fa-calendar-alt" style="width: 30px;
-                                                    height: 30px; color: rgba(26, 41, 61, 0.83);"></i>
+                                                        height: 30px; color: rgba(26, 41, 61, 0.83);"></i>
                                             <span>{{ $cate->first_closure_date }} to
                                                 {{ $cate->second_closure_date }}</span>
                                         </div>
@@ -59,7 +59,7 @@
                                             <button class="btn btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="true">
-                                                <strong>. . .</strong>
+                                                <strong>...</strong>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                                 <button type="button" class="dropdown-item" data-bs-toggle="modal"
@@ -118,6 +118,9 @@
                 {{ $categories->links('paginate') }}
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     @else
         <div class="tbody-category col col-lg-10">
             @if (Session::has('error'))

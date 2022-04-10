@@ -467,7 +467,7 @@
 }
 .tbody-content {
     width: 100%;
-    height: 40px;
+    height: auto;
 }
 .tbody-filter {
     display: flex;

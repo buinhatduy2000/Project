@@ -5,13 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Documents</title>
+    <title>Enterprise Web Software Development</title>
     <link rel="stylesheet" href="{{ asset('project/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('project/css/style-admin.css') }}" />
+    <link rel="icon"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzwvp8QkB_6Bs9z7EV6Cp8fwhWSqf9Qf3QDAldd7RyW-kiu-O-lEpQYq-5bHhL5daqtMU&usqp=CAU"
+        type="image/x-icon">
+
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
@@ -184,7 +189,7 @@
                         @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_ADMIN || Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
                             <a href="{{ route('category.index') }}">Campaign</a>
                         @else
-                        Campaign
+                            Campaign
                         @endif
                     </h4>
                     <ul>
@@ -268,9 +273,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
 integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous">
 </script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function activeMenu(index) {
         const itemMenu = document.getElementsByClassName('menu')
