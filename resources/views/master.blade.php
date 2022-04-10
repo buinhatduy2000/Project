@@ -45,7 +45,7 @@
                     <div onclick="activeMenu(1)" class="menu">
                         <a href="{{ route('category.index') }}">
                             <img src="{{ asset('project/img/document.png') }}" alt="">
-                            <span>Documents</span>
+                            <span>Campaign</span>
                         </a>
                     </div>
                     <div onclick="activeMenu(2)" class="menu">
@@ -167,7 +167,7 @@
                 <div class="tbody-sitebar-responsive" id="cate-ct">
                     <h4>
                         @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_ADMIN || Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
-                            <a href="{{ route('category.index') }}">Category</a>
+                            <a href="{{ route('category.index') }}">Campaign</a>
                         @endif
                     </h4>
                     <ul>
@@ -182,9 +182,9 @@
                 <div class="tbody-sitebar col col-sm-3 col-lg-2">
                     <h4>
                         @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_ADMIN || Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
-                            <a href="{{ route('category.index') }}">Category</a>
+                            <a href="{{ route('category.index') }}">Campaign</a>
                         @else
-                            Category
+                        Campaign
                         @endif
                     </h4>
                     <ul>

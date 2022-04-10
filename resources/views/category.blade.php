@@ -58,8 +58,8 @@
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                                ...
+                                                aria-expanded="true">
+                                                <strong>. . .</strong>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                                 <button type="button" class="dropdown-item" data-bs-toggle="modal"
@@ -79,7 +79,7 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel">Edit category</h5>
+                                                        <h5 class="modal-title" id="deleteModalLabel">Edit Campaign</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
@@ -89,7 +89,7 @@
                                                         @method('PUT')
                                                         <div class="modal-body">
                                                             <div class="category-input-date">
-                                                                <label for="input-date" class="form-label">Category 1st
+                                                                <label for="input-date" class="form-label">Campaign 1st
                                                                     Closure Date :</label>
                                                                 <input class="form-control" type="date" id="cate-date"
                                                                     name="category_date"
@@ -144,19 +144,19 @@
                             <form class="form-add" id="content form-add" method="POST">
                                 @csrf
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="newModalLabel">Create new category</h5>
+                                    <h5 class="modal-title" id="newModalLabel">Create new campaign</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-add" id="content">
                                         <div class="category-input-name">
-                                            <label for="input-name" class="form-label">Category Name :</label>
+                                            <label for="input-name" class="form-label">Campaign Name :</label>
                                             <input class="form-control" type="text" id="cate-name" name="category_name">
                                             <p class="error error-create-name"></p>
                                         </div>
                                         <div class="category-input-date">
-                                            <label for="input-date" class="form-label">Category 1st Closure Date
+                                            <label for="input-date" class="form-label">Campaign 1st Closure Date
                                                 :</label>
                                             <input class="form-control" type="date" id="cate-date" name="category_date">
                                             <p class="error error-create-date"></p>
@@ -194,7 +194,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel">Edit category</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel">Edit campaign</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -204,7 +204,7 @@
                                                 @method('PUT')
                                                 <div class="modal-body">
                                                     <div class="category-input-name">
-                                                        <label for="input-name" class="form-label">Category Name
+                                                        <label for="input-name" class="form-label">Campaign Name
                                                             :</label>
                                                         <input class="form-control" type="text" id="cate-name"
                                                             name="category_name" value="{{ $cate->category_name }}">
@@ -212,7 +212,7 @@
                                                     </div>
                                                     @if (\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
                                                         <div class="category-input-date">
-                                                            <label for="input-date" class="form-label">Category 1st
+                                                            <label for="input-date" class="form-label">Campaign 1st
                                                                 Closure Date :</label>
                                                             <input class="form-control" type="date" id="cate-date"
                                                                 name="category_date"
@@ -245,12 +245,12 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel">Delete category</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete campaign</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Do you want to delete category ?
+                                                Do you want to delete this campaign ?
                                             </div>
                                             <div class="modal-footer">
                                                 <form action="{{ route('category.destroy', ['category' => $cate->id]) }}"

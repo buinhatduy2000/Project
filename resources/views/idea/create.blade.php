@@ -28,9 +28,9 @@
                     </div>
                     <div class="create-docs-detail">
                         <div class="document">
-                            <label for="docs-category">Category</label>
+                            <label for="docs-category">Campaign</label>
                             <select name="category_id" id="docs-category">
-                                <option value="">---Choose Category---</option>
+                                <option value="">---Choose Campaign---</option>
                                 @foreach ($category as $item)
                                     @if (date('Y-m-d') < $item->first_closure_date)
                                         <option value="{{ $item->id }}"
