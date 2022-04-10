@@ -16,18 +16,26 @@ class HomeController extends Controller
     {
         if (Auth::guard('account')->user()->role == Account::ACCOUNT_STAFF) {
             $department = Auth::guard('account')->user()->personal_info->department;
+            $ideas = Idea::where('department', $department)->where('deleted_at', null);
             if(request()->sort_by == 'popular'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->withCount('likers')->orderByDesc('likers_count');
+                $ideas->withCount([
+                    'likeDislikes as likes_count' => function ($query) {
+                        $query->where('type', 1);
+                    },
+                    'likeDislikes as dislikes_count' => function ($query) {
+                        $query->where('type', 0);
+                    },
+                ])->orderByRaw('likes_count - dislikes_count DESC');
             }
             else if(request()->sort_by == 'view'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->orderBy('views', 'desc');
+                $ideas->orderBy('views', 'desc');
 
             }
             else if(request()->sort_by == 'newest'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->orderBy('created_at', 'desc');
+                $ideas->orderBy('created_at', 'desc');
             }
             else if(request()->sort_by == 'comments'){
-                $ideas = Idea::where('department', $department)->where('deleted_at', null)->with('latestComment')
+                $ideas->with('latestComment')
                         ->withCount([
                             'likeDislikes as likes_count' => function ($query) {
                                 $query->where('type', 1);
@@ -37,33 +45,38 @@ class HomeController extends Controller
                             }
                         ])->get()->sortByDesc('latestComment.created_at');
 
-                return view('home', ['ideas' => $ideas->paginate_helper(5)->appends(['sort_by' => request()->sort_by])]);
+                return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
 
             }
-            else{
-                $ideas = Idea::where('deleted_at', null)->where('department', $department);
-                $ideas->withCount([
-                    'likeDislikes as likes_count' => function ($query) {
-                        $query->where('type', 1);
-                    },
-                    'likeDislikes as dislikes_count' => function ($query) {
-                        $query->where('type', 0);
-                    }
-                ]);
-            }
+            $ideas->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                }
+            ]);
         }
         else{
+            $ideas = Idea::where('deleted_at', null);
             if(request()->sort_by == 'popular'){
-                $ideas = Idea::where('deleted_at', null)->withCount('likers')->orderByDesc('likers_count');
+                $ideas->withCount([
+                    'likeDislikes as likes_count' => function ($query) {
+                        $query->where('type', 1);
+                    },
+                    'likeDislikes as dislikes_count' => function ($query) {
+                        $query->where('type', 0);
+                    },
+                ])->orderByRaw('likes_count - dislikes_count DESC');
             }
             else if(request()->sort_by == 'view'){
-                $ideas = Idea::where('deleted_at', null)->orderBy('views', 'desc');
+                $ideas->orderBy('views', 'desc');
             }
             else if(request()->sort_by == 'newest'){
-                $ideas = Idea::where('deleted_at', null)->orderBy('created_at', 'desc');
+                $ideas->orderBy('created_at', 'desc');
             }
             else if(request()->sort_by == 'comments'){
-                $ideas = Idea::where('deleted_at', null)->with('latestComment')
+                $ideas->with('latestComment')
                         ->withCount([
                             'likeDislikes as likes_count' => function ($query) {
                                 $query->where('type', 1);
@@ -72,19 +85,17 @@ class HomeController extends Controller
                                 $query->where('type', 0);
                             }
                         ])->get()->sortByDesc('latestComment.created_at');
-                return view('home', ['ideas' => $ideas->paginate_helper(5)->appends(['sort_by' => request()->sort_by])]);
+                return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
             }
-            else{
-                $ideas = Idea::where('deleted_at', null);
-                $ideas->withCount([
-                    'likeDislikes as likes_count' => function ($query) {
-                        $query->where('type', 1);
-                    },
-                    'likeDislikes as dislikes_count' => function ($query) {
-                        $query->where('type', 0);
-                    }
-                ]);
-            }
+            $ideas->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                }
+            ]);
+
         }
          return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
 //        return view('home', ['ideas' => $ideas]);
@@ -96,7 +107,14 @@ class HomeController extends Controller
             $department = Auth::guard('account')->user()->personal_info->department;
             $ideas = Idea::where('category_id', $id)->where('department', $department);
             if(request()->sort_by == 'popular'){
-                $ideas->withCount('likers')->orderByDesc('likers_count');
+                $ideas->withCount([
+                    'likeDislikes as likes_count' => function ($query) {
+                        $query->where('type', 1);
+                    },
+                    'likeDislikes as dislikes_count' => function ($query) {
+                        $query->where('type', 0);
+                    },
+                ])->orderByRaw('likes_count - dislikes_count DESC');
             }
             else if(request()->sort_by == 'view'){
                 $ideas->orderBy('views', 'desc');
@@ -116,21 +134,26 @@ class HomeController extends Controller
                     ])->get()->sortByDesc('latestComment.created_at');
                 return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
             }
-            else{
-                $ideas->withCount([
+            $ideas->withCount([
                     'likeDislikes as likes_count' => function ($query) {
                         $query->where('type', 1);
                     },
                     'likeDislikes as dislikes_count' => function ($query) {
                         $query->where('type', 0);
                     }
-                ]);
-            }
+            ]);
         }
         else{
             $ideas = Idea::where('category_id', $id)->where('deleted_at', null);
             if(request()->sort_by == 'popular'){
-                $ideas->withCount('likers')->orderByDesc('likers_count');
+                $ideas->withCount([
+                    'likeDislikes as likes_count' => function ($query) {
+                        $query->where('type', 1);
+                    },
+                    'likeDislikes as dislikes_count' => function ($query) {
+                        $query->where('type', 0);
+                    },
+                ])->orderByRaw('likes_count - dislikes_count DESC');
             }
             else if(request()->sort_by == 'view'){
                 $ideas->orderBy('views', 'desc');
@@ -150,19 +173,16 @@ class HomeController extends Controller
                     ])->get()->sortByDesc('latestComment.created_at');
                 return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
             }
-            else{
-                $ideas->withCount([
-                    'likeDislikes as likes_count' => function ($query) {
-                        $query->where('type', 1);
-                    },
-                    'likeDislikes as dislikes_count' => function ($query) {
-                        $query->where('type', 0);
-                    }
-                ]);
-            }
+            $ideas->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                }
+            ]);
         }
          return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
-//        return view('home', ['ideas' => $ideas]);
     }
 
     public function dashboard(){
