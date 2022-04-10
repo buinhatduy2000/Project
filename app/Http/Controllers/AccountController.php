@@ -73,7 +73,7 @@ class AccountController extends Controller
                 $query->where('type', 0);
             }
         ]);
-        return view('viewinfo', ['account' => $account, 'ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
+        return view('viewInfo', ['account' => $account, 'ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
     }
 
     public function listUser(Account $account)
