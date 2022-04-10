@@ -10,7 +10,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="tbody-detail-docs">
+    <div class="tbody-detail-docs col col-sm-9 col-lg-10">
         <div class="tbody-content">
             <div class="tbody-detail">
                 <p>Ideas</p>

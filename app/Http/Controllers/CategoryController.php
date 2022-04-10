@@ -103,7 +103,11 @@ class CategoryController extends Controller
             }
             $ideaFile = ["file" => $files];
             $comments = '';
-            $ideaLike = ["like" => $idea->likers->count()];
+            $ideaLike = ["like" => $idea->likes_count];
+            $ideaDisLike = ["dislike" => $idea->dislikes_count];
+            // dd($ideaDisLike);
+            $ideaLike = ["like" => $idea->likes_count];
+
             foreach ($idea->comments as $comment){
                 $author = $comment->author->personal_info;
                 $comments .= $author->last_name .': '.$comment->content;

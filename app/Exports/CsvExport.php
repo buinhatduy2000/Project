@@ -52,7 +52,7 @@ class CsvExport implements  WithHeadings, WithStrictNullComparison, Responsable,
             'author',
             'like',
             'file',
-            // 'dislike',
+            'dislike',
             'comment',
         ];
     }

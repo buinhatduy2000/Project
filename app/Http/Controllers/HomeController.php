@@ -54,7 +54,20 @@ class HomeController extends Controller
         }
         else{
             if(request()->sort_by == 'popular'){
-                $ideas = Idea::where('deleted_at', null)->withCount('likers')->orderByDesc('likers_count');
+                // $ideas = Idea::where('deleted_at', null)->withCount('likers')->orderByDesc('likers_count');
+                $ideas = Idea::where('deleted_at', null);
+                $ideas
+                ->withCount([
+                    'likeDislikes as likes_count' => function ($query) {
+                        $query->where('type', 1);
+                    },
+                    'likeDislikes as dislikes_count' => function ($query) {
+                        $query->where('type', 0);
+                    }
+                ])
+                ->selectRaw('likes_count - dislikes_count AS popular')
+                ->orderByDesc('popular');
+                // dd($ideas);
             }
             else if(request()->sort_by == 'view'){
                 $ideas = Idea::where('deleted_at', null)->orderBy('views', 'desc');
