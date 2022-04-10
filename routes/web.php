@@ -28,11 +28,13 @@ Route::group(['middleware' => 'account'], function() {
     Route::get('/personal-info/{id}', [\App\Http\Controllers\AccountController::class, 'viewInfo'])->name('viewInfo');
     Route::resource('/idea', \App\Http\Controllers\IdeaController::class);
     Route::post('/idea/comment/{id}', [\App\Http\Controllers\CommentController::class, 'postComment']);
-    Route::post('/idea/like', [\App\Http\Controllers\IdeaController::class, 'likeIdea'])->name('postLikeIdea');
+    Route::post('/idea/like-dislike', [\App\Http\Controllers\IdeaController::class, 'likeDislikeIdea'])->name('postLikeDislikeIdea');
     //download
     Route::get('/download-idea/{id}', [\App\Http\Controllers\IdeaController::class, 'downloadIdea'])->name('downloadIdea');
     // download CSV
     Route::get('/download-csv/{id}', [CategoryController::class, 'export_csv'])->name('export_csv');
+    //download category document
+    Route::get('/download-cate/{id}', [CategoryController::class, 'downloadCate'])->name('downloadCate');
     //user
     Route::get('/list-user', [\App\Http\Controllers\AccountController::class, 'listUser'])->name('adminListUser');
     Route::get('/create-user', [\App\Http\Controllers\AccountController::class, 'createUser'])->name('adminCreateUser');

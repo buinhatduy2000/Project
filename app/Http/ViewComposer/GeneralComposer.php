@@ -11,7 +11,7 @@ class GeneralComposer
     public function compose(View $view)
     {
         $view->with([
-            'category' => Category::all()->sortByDesc('id'),
+            'category' => Category::whereNull('deleted_at')->orderByDesc('id')->get(),
         ]);
     }
 

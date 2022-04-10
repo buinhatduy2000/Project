@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Overtrue\LaravelLike\Traits\Liker;
 
 class Account extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes, Liker;
+    use HasFactory, Notifiable, SoftDeletes;
     protected $table = 'accounts';
     protected $fillable = ['user_name', 'password', 'role'];
     protected $hidden = [
@@ -47,6 +47,29 @@ class Account extends Authenticatable
     public function ideas()
     {
         return $this->hasMany(Idea::class, 'user_id', 'id');
+    }
+
+    public function likeDislikes()
+    {
+        return $this->hasMany(LikeDislike::class, 'user_id');
+    }
+
+    public function isLiked(Model $object): bool
+    {
+        return $this->whereHas('likeDislikes' , function($q) use ($object) {
+                $q->where('user_id', Auth::guard('account')->user()->id)
+                    ->where('idea_id', $object->id)
+                    ->where('type', 1);
+            })->get()->count() > 0;
+    }
+
+    public function isDisliked(Model $object): bool
+    {
+        return $this->whereHas('likeDislikes' , function($q) use ($object) {
+                $q->where('user_id', Auth::guard('account')->user()->id);
+                $q->where('idea_id', $object->id);
+                $q->where('type', 0);
+            })->get()->count() > 0;
     }
 
 }

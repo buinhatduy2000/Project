@@ -70,16 +70,20 @@
                                 <p class="tbody-doc-right-date"><i class="bi bi-calendar2-week"></i>
                                     <span>Expiry:</span>{{ $idea->category->second_closure_date }}
                                 </p>
-                                <button class="btn btn-outline-success button-download-idea"
-                                    data-id="{{ $idea->id }}">Download</button>
-                                <button class="btn btn-outline-secondary"><a
-                                        href="{{ route('idea.show', ['idea' => $idea->id]) }}">See More</a></button>
+                                <a href="{{route('downloadIdea', ['id' => $idea->id])}}">
+                                    <button class="btn btn-outline-success button-download-idea"
+                                            data-id="{{ $idea->id }}">Download</button>
+                                </a>
+                                <a href="{{ route('idea.show', ['idea' => $idea->id]) }}">
+                                    <button class="btn btn-outline-secondary">See More</button>
+                                </a>
                                 <p class="view">
                                     <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
                                     &emsp;&emsp;&emsp;&nbsp;
-                                    <i class="bi bi-people-fill"></i> {{ $idea->views }}
-                                    <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likers()->count() }}
-                                    <i class="bi bi-chat-square"></i> {{ $idea->comments->count() }}
+                                    <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
+                                    <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likes_count }}&nbsp;
+                                    <i class="bi bi-hand-thumbs-down-fill"></i> {{ $idea->dislikes_count }}&nbsp;
+                                    <i class="bi bi-chat-square"></i> {{ $idea->comments->count() }}&nbsp;
                                 </p>
                             </div>
                         </div>

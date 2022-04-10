@@ -8,7 +8,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 
 class Idea extends Model
 {
-    use HasFactory, Likeable;
+    use HasFactory;
     protected $table = 'ideas';
     protected $fillable = ['idea_title', 'user_id', 'category_id', 'description', 'views', 'department', 'anonymous'];
 
@@ -32,5 +32,10 @@ class Idea extends Model
     public function latestComment()
     {
         return $this->hasOne(Comment::class, 'idea_id')->latest('id');
+    }
+
+    public function likeDislikes()
+    {
+        return $this->hasMany(LikeDislike::class, 'idea_id');
     }
 }

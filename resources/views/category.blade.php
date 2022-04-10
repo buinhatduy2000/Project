@@ -64,7 +64,10 @@
                         <h3 id="category-item-name">{{ $cate->category_name }}</h3>
                         {{-- <p>{{ $cate->first_closure_date }} - {{ $cate->second_closure_date }}</p> --}}
                         @if (\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
-                            <a href="{{ route('export_csv', ['id' => $cate->id]) }}">Export CSV</a>
+                            <div>
+                            <a href="{{ route('export_csv', ['id' => $cate->id]) }}"><button type="button" class="btn btn-secondary">Export CSV</button></a>
+                            <a href="{{ route('downloadCate', ['id' => $cate->id]) }}"><button type="button" class="btn btn-info">Download All File</button></a>
+                            </div>
                         @endif
                         <div class="category-tool">
                             <button type="button" class="category-btn-edit" data-bs-toggle="modal"

@@ -14,6 +14,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
 use App\Exports\CsvExport;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
+use File;
 
 class CategoryController extends Controller
 {
@@ -110,7 +112,7 @@ class CategoryController extends Controller
             $ideaComment = ["comment" => $comments];
 
             $idea = $idea->toArray();
-            
+
             $idea = $idea + $ideaAuthor + $ideaLike + $ideaFile + $ideaComment;
 
             unset($idea['id'],$idea['user_id'],$idea['category_id'],$idea['deleted_at'],$idea['updated_at'],$idea['anonymous'],$idea['documents'],$idea['likers'],$idea['comments']);
@@ -119,5 +121,29 @@ class CategoryController extends Controller
         }
         $export = new CsvExport($arr);
         return Excel::download($export, 'downloads.csv');
+    }
+
+    public function downloadCate($id)
+    {
+        $cate = Category::with('ideas')->where('id', $id)->first();
+        if ($cate->ideas->isEmpty()){
+            return redirect()->back()->with('error',  $cate->category_name.' has no ideas');
+        }
+        $zip = new ZipArchive;
+        $zipName = 'download_'.$cate->category_name.'.zip';
+        foreach ($cate->ideas as $idea){
+            if ($zip->open(public_path($zipName), ZipArchive::CREATE)== TRUE)
+            {
+                foreach ($idea->documents as $item) {
+                    $relativeName = basename($item->file_name);
+                    $zip->addFile(public_path($item->file_name), $relativeName);
+                }
+                $zip->close();
+            }
+        }
+        if (file_exists(public_path($zipName))) {
+            $headers = ['Content-Type' => 'application/zip', 'Content-Disposition' => 'attachment'];
+            return response()->download(public_path($zipName), $zipName, $headers)->deleteFileAfterSend();
+        }
     }
 }
