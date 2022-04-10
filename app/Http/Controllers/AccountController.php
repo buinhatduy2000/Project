@@ -36,21 +36,44 @@ class AccountController extends Controller
 
     public function viewInfo ($id) {
         $account = Account::find($id);
-        $ideas = Idea::where('user_id', $id)->get();
+        $ideas = Idea::where('deleted_at', null)->where('user_id', $id);
         if(request()->sort_by == 'popular'){
-            $ideas = Idea::where('user_id', $id)->get()->sortByDesc('views');
-
+            $ideas->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                },
+            ])->orderByRaw('likes_count - dislikes_count DESC');
         }
-        else if(request()->sort_by == 'newtest'){
-            $ideas = Idea::where('user_id', $id)->get()->sortByDesc('created_at');
+        else if(request()->sort_by == 'view'){
+            $ideas->orderBy('views', 'desc');
         }
-        else if(request()->sort_by == 'like'){
-            dd(request()->sort_by);
+        else if(request()->sort_by == 'newest'){
+            $ideas->orderBy('created_at', 'desc');
         }
         else if(request()->sort_by == 'comments'){
-            $ideas = Idea::where('user_id', $id)->withCount('comments')->orderBy('comments_count', 'desc')->get();
+            $ideas->with('latestComment')
+                ->withCount([
+                    'likeDislikes as likes_count' => function ($query) {
+                        $query->where('type', 1);
+                    },
+                    'likeDislikes as dislikes_count' => function ($query) {
+                        $query->where('type', 0);
+                    }
+                ])->get()->sortByDesc('latestComment.created_at');
+            return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
         }
-        return view('viewInfo', ['account' => $account, 'ideas' => $ideas]);
+        $ideas->withCount([
+            'likeDislikes as likes_count' => function ($query) {
+                $query->where('type', 1);
+            },
+            'likeDislikes as dislikes_count' => function ($query) {
+                $query->where('type', 0);
+            }
+        ]);
+        return view('viewInfo', ['account' => $account, 'ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
     }
 
     public function listUser(Account $account)
