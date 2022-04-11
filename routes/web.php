@@ -36,12 +36,14 @@ Route::group(['middleware' => 'account'], function() {
     //download category document
     Route::get('/download-cate/{id}', [CategoryController::class, 'downloadCate'])->name('downloadCate');
     //user
-    Route::get('/list-user', [\App\Http\Controllers\AccountController::class, 'listUser'])->name('adminListUser');
-    Route::get('/create-user', [\App\Http\Controllers\AccountController::class, 'createUser'])->name('adminCreateUser');
-    Route::post('/create-user', [\App\Http\Controllers\AccountController::class, 'storeUser'])->name('adminStoreUser');
-    Route::get('/edit-user/{id}', [\App\Http\Controllers\AccountController::class, 'editUser'])->name('adminEditUser');
-    Route::put('/edit-user/{id}', [\App\Http\Controllers\AccountController::class, 'updateUser'])->name('adminUpdateUser');
-    Route::get('/delete-user/{id}', [\App\Http\Controllers\AccountController::class, 'deleteUser'])->name('adminDeleteUser');
+    Route::group(['prefix'=> 'user'], function(){
+        Route::get('/list', [\App\Http\Controllers\AccountController::class, 'listUser'])->name('adminListUser');
+        Route::get('/create', [\App\Http\Controllers\AccountController::class, 'createUser'])->name('adminCreateUser');
+        Route::post('/create', [\App\Http\Controllers\AccountController::class, 'storeUser'])->name('adminStoreUser');
+        Route::get('/edit/{id}', [\App\Http\Controllers\AccountController::class, 'editUser'])->name('adminEditUser');
+        Route::put('/edit/{id}', [\App\Http\Controllers\AccountController::class, 'updateUser'])->name('adminUpdateUser');
+        Route::get('/delete/{id}', [\App\Http\Controllers\AccountController::class, 'deleteUser'])->name('adminDeleteUser');
+    });
 });
 
 Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');;

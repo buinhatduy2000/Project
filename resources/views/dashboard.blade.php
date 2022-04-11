@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <span class="ti-reload"></span>
                             <div>
-                                <h5>Number of ideas for the category/year</h5>
+                                <h5>Number of ideas for the campain/year</h5>
                                 <h4>2022</h4>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <span class="ti-check-box"></span>
                             <div>
-                                <h5>Number of contributors of each item</h5>
+                                <h5>Number of contributors of each campain</h5>
                                 <h4>940</h4>
                             </div>
                         </div>
@@ -58,11 +58,11 @@
                                 <canvas id="myChartLikes" style="width: 100%"></canvas>
                             </div>
                             <div id="chart-dislikes">
-                                <h3>Number of ideas for the category/year</h3>
+                                <h3>Number of ideas for the campaign/year</h3>
                                 <canvas id="myChartDisLikes" style="width: 100%"></canvas>
                             </div>
                             <div id="chart-downloads">
-                                <h3>Number of contributors of each item</h3>
+                                <h3>Number of contributors of each campain</h3>
                                 <canvas id="myChartDownloads" style="width: 100%"></canvas>
                             </div>
                             <script>
@@ -77,6 +77,13 @@
                                         '{{ $item }}',
                                     @endforeach
                                 ]
+
+                                var contributors = [
+                                    @foreach($contributors as $item)
+                                        '{{$item->ideas->count()}}',
+                                    @endforeach
+                                ]
+
                                 new Chart("myChart", {
                                     type: "line",
                                     data: {
@@ -144,7 +151,8 @@
                                         scales: {
                                             xAxes: [{
                                                 ticks: {
-                                                    min: 0
+                                                    min: 0,
+                                                    stepSize: 1
                                                 }
                                             }],
                                             yAxes: [{
@@ -159,12 +167,7 @@
                                     data: {
                                         labels: yValues,
                                         datasets: [{
-                                            // data: [
-                                            //     @foreach ($categories as $category)
-                                            //         {{ $category->ideas->count() }},
-                                            //     @endforeach
-                                            // ],
-                                            data: [2, 3, 2, 4, 5, 7, 8, 9, 10, 8, 7],
+                                            data: contributors,
                                             backgroundColor: '#00F7FF',
                                             hoverBackgroundColor: '#0090FF',
                                             fill: false,
@@ -177,7 +180,8 @@
                                         scales: {
                                             xAxes: [{
                                                 ticks: {
-                                                    min: 0
+                                                    min: 0,
+                                                    stepSize: 1
                                                 }
                                             }],
                                             yAxes: [{

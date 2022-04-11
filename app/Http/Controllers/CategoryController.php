@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'category_name' => ['required','max' => '255', Rule::unique('categories')->whereNull('deleted_at')],
+            'category_name' => ['required','max:255', Rule::unique('categories')->whereNull('deleted_at')],
             'category_date' => 'required|date_format:Y-m-d|after_or_equal:'.date('Y-m-d')
         ]);
         $cate = Category::create([
@@ -43,9 +43,9 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         $cate = Category::find($id);
         if($cate){
-            if (!Auth::guard('account')->user()->role == Account::ACCOUNT_ADMIN) {
+            if (Auth::guard('account')->user()->role !== Account::ACCOUNT_ADMIN) {
                 $request->validate([
-                    'category_name' => ['required','max' => '255', Rule::unique('categories')->ignore($id)->whereNull('deleted_at')],
+                    'category_name' => ['required','max:255', Rule::unique('categories')->ignore($id)->whereNull('deleted_at')],
 //                'category_date' => 'required|date_format:Y-m-d|after_or_equal:'.date('Y-m-d')
                 ]);
                 $update_cate = $cate->update([
@@ -53,7 +53,7 @@ class CategoryController extends Controller
                 ]);
             }else {
                 $request->validate([
-                    'category_name' => 'required|max:255|unique:categories,category_name,'.$id,
+                    'category_name' => ['required','max:255', Rule::unique('categories')->ignore($id)->whereNull('deleted_at')],
                     'category_date' => 'required|date_format:Y-m-d|after_or_equal:'.date('Y-m-d')
                 ]);
                 $update_cate = $cate->update([
@@ -89,10 +89,21 @@ class CategoryController extends Controller
     }
     public function export_csv(Request $request, $id)
     {
-        $category = Category::where('id', $id)->with('ideas')->first();
+        $cate = Category::with('ideas')->where('id', $id)->first();
+        if (!$cate->ideas->count()){
+            return redirect()->back()->with('error', 'Campaign '.$cate->category_name. ' do not have ideas');
+        }
+        $ideas = Idea::where('category_id', $id)
+            ->withCount([
+                'likeDislikes as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'likeDislikes as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                }
+            ])->get();
         $arr = [];
-        foreach ($category->ideas as $idea){
-
+        foreach ($ideas as $idea){
             $user = Personal::where('user_id',$idea->user_id)->first();
             $ideaAuthor = ["author"=> $user->first_name .' '. $user->last_name];
             $files = '';
@@ -103,10 +114,10 @@ class CategoryController extends Controller
             }
             $ideaFile = ["file" => $files];
             $comments = '';
-            $ideaLike = ["like" => $idea->likes_count];
-            $ideaDisLike = ["dislike" => $idea->dislikes_count];
+//            $ideaLike = ["like" => $idea->likes_count];
+//            $ideaDisLike = ["dislike" => $idea->dislikes_count];
             // dd($ideaDisLike);
-            $ideaLike = ["like" => $idea->likes_count];
+//            $ideaLike = ["like" => $idea->likes_count];
 
             foreach ($idea->comments as $comment){
                 $author = $comment->author->personal_info;
@@ -117,14 +128,14 @@ class CategoryController extends Controller
 
             $idea = $idea->toArray();
 
-            $idea = $idea + $ideaAuthor + $ideaLike + $ideaFile + $ideaComment;
+            $idea = $idea + $ideaAuthor + $ideaFile + $ideaComment;
 
-            unset($idea['id'],$idea['user_id'],$idea['category_id'],$idea['deleted_at'],$idea['updated_at'],$idea['anonymous'],$idea['documents'],$idea['likers'],$idea['comments']);
+            unset($idea['id'],$idea['user_id'],$idea['category_id'],$idea['deleted_at'],$idea['updated_at'],$idea['anonymous'],$idea['documents'],$idea['comments']);
 
             array_push($arr, $idea);
         }
         $export = new CsvExport($arr);
-        return Excel::download($export, 'downloads.csv');
+        return Excel::download($export, 'downloads.csv')->deleteFileAfterSend();
     }
 
     public function downloadCate($id)

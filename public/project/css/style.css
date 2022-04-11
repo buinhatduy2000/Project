@@ -150,6 +150,10 @@ i {
 }
 .tbody-sitebar li {
     height: 39px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 }
 .tbody-sitebar li a {
     color: black;

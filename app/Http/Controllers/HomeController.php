@@ -189,7 +189,10 @@ class HomeController extends Controller
         $ideas = Idea::all();
         $categories = Category::withCount('ideas')->get();
 
-        $contributors = Idea::select('user_id')->groupBy('category_id')->get();
+        $contributors = Category::with([
+            'ideas' => function($q) {
+                $q->select('user_id', 'category_id')->groupByRaw('user_id, category_id');
+            }])->get();
 
         $month = ['1','2','3','4','5','6', '7', '8', '9', '10', '11', '12'];
         $idea_monthly = array();
@@ -208,6 +211,7 @@ class HomeController extends Controller
             'ideas' => $ideas,
             'categories' => $categories,
             'idea_monthly' => $idea_monthly,
+            'contributors' => $contributors,
         ]);
     }
 }

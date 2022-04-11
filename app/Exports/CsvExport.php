@@ -49,10 +49,10 @@ class CsvExport implements  WithHeadings, WithStrictNullComparison, Responsable,
             'department',
             'created_at',
             'views',
-            'author',
             'like',
-            'file',
             'dislike',
+            'author',
+            'file',
             'comment',
         ];
     }

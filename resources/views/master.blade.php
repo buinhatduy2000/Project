@@ -42,24 +42,25 @@
             <div class="admin-content-left">
                 <div class="admin-box-function">
                     <span class="admin-title">Manage</span>
-                    <div onclick="activeMenu(0)" class="menu">
-                        <img src="{{ asset('project/img/viewSite.png') }}" alt="">
-                        <a href="{{ route('home') }}">
-                            <span>View Site</span>
-                    </div>
-                    <div onclick="activeMenu(1)" class="menu">
-                        <a href="{{ route('category.index') }}">
-                            <img src="{{ asset('project/img/document.png') }}" alt="">
-                            <span>Campaign</span>
-                        </a>
-                    </div>
-                    <div onclick="activeMenu(2)" class="menu">
-                        <img src="{{ asset('project/img/users.png') }}" alt="">
-                        <a href={{ route('adminListUser') }}>
-                            <span>Users</span>
-                        </a>
+                    <a href="{{ route('home') }}">
+                        <div onclick="activeMenu(0)" class="menu {{ (request()->is('/')) ? 'active-bgr' : '' }}">
+                            <img src="{{ asset('project/img/viewSite.png') }}" alt="">
+                                <span>View Site</span>
+                        </div>
+                    </a>
+                    <a href="{{ route('category.index') }}">
+                        <div onclick="activeMenu(1)" class="menu {{ (request()->is('category')) ? 'active-bgr' : '' }}">
+                                <img src="{{ asset('project/img/document.png') }}" alt="">
+                                <span>Campaign</span>
+                        </div>
+                    </a>
+                    <a href={{ route('adminListUser') }}>
+                        <div onclick="activeMenu(2)" class="menu {{ (request()->is('user*')) ? 'active-bgr' : '' }}">
+                            <img src="{{ asset('project/img/users.png') }}" alt="">
+                                <span>Users</span>
 
-                    </div>
+                        </div>
+                    </a>
                     <div onclick="activeMenu(3)" class="menu">
                         <img src="{{ asset('project/img/Archived.png') }}" alt="">
                         <span>Archived pages</span>
