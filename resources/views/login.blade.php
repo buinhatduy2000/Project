@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="title-bottom">
-                    Remember em<input type="checkbox" name="remember em">
+                    Remember me<input type="checkbox" name="remember em">
                     <span>Forgot Password</span>
                 </div>
 
