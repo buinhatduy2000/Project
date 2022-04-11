@@ -114,10 +114,10 @@ class CategoryController extends Controller
             }
             $ideaFile = ["file" => $files];
             $comments = '';
-            $ideaLike = ["like" => $idea->likes_count];
-            $ideaDisLike = ["dislike" => $idea->dislikes_count];
+//            $ideaLike = ["like" => $idea->likes_count];
+//            $ideaDisLike = ["dislike" => $idea->dislikes_count];
             // dd($ideaDisLike);
-            $ideaLike = ["like" => $idea->likes_count];
+//            $ideaLike = ["like" => $idea->likes_count];
 
             foreach ($idea->comments as $comment){
                 $author = $comment->author->personal_info;
@@ -128,9 +128,9 @@ class CategoryController extends Controller
 
             $idea = $idea->toArray();
 
-            $idea = $idea + $ideaAuthor + $ideaLike + $ideaFile + $ideaComment;
+            $idea = $idea + $ideaAuthor + $ideaFile + $ideaComment;
 
-            unset($idea['id'],$idea['user_id'],$idea['category_id'],$idea['deleted_at'],$idea['updated_at'],$idea['anonymous'],$idea['documents'],$idea['likers'],$idea['comments']);
+            unset($idea['id'],$idea['user_id'],$idea['category_id'],$idea['deleted_at'],$idea['updated_at'],$idea['anonymous'],$idea['documents'],$idea['comments']);
 
             array_push($arr, $idea);
         }
