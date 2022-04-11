@@ -127,6 +127,7 @@
                                         },
                                     },
                                 });
+                                // 2
                                 new Chart("myChartDisLikes", {
                                     type: "horizontalBar",
                                     data: {
@@ -159,16 +160,13 @@
                                         }
                                     },
                                 });
+                                // 3
                                 new Chart("myChartDownloads", {
                                     type: "horizontalBar",
                                     data: {
                                         labels: yValues,
                                         datasets: [{
-                                            data: [
-                                                @foreach ($categories as $category)
-                                                    {{ $category->ideas->count() }},
-                                                @endforeach
-                                            ],
+                                            data: contributors,
                                             backgroundColor: '#00F7FF',
                                             hoverBackgroundColor: '#0090FF',
                                             fill: false,
@@ -181,7 +179,8 @@
                                         scales: {
                                             xAxes: [{
                                                 ticks: {
-                                                    min: 0
+                                                    min: 0,
+                                                    stepSize: 1
                                                 }
                                             }],
                                             yAxes: [{

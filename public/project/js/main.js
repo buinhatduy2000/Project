@@ -59,7 +59,7 @@ $(document).ready(function () {
                         $(this).remove();
                     });
                     window.location.reload()
-                }, 3000)
+                }, 2500)
                 $('.error-edit-name').text('')
                 $('.error-edit-date').text('')
                 $(`#editModal${id}`).modal('hide')
