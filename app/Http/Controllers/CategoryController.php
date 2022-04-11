@@ -89,6 +89,10 @@ class CategoryController extends Controller
     }
     public function export_csv(Request $request, $id)
     {
+        $cate = Category::with('ideas')->where('id', $id)->first();
+        if (!$cate->ideas->count()){
+            return redirect()->back()->with('error', 'Campaign '.$cate->category_name. ' do not have ideas');
+        }
         $ideas = Idea::where('category_id', $id)
             ->withCount([
                 'likeDislikes as likes_count' => function ($query) {
