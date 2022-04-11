@@ -77,6 +77,13 @@
                                         '{{ $item }}',
                                     @endforeach
                                 ]
+
+                                var contributors = [
+                                    @foreach($contributors as $item)
+                                        '{{$item->ideas->count()}}',
+                                    @endforeach
+                                ]
+
                                 new Chart("myChart", {
                                     type: "line",
                                     data: {
