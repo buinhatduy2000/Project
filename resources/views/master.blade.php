@@ -70,16 +70,16 @@
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="./start-page.html">Introduction</a></li>                                     
                 <li><a href="#">Contact</a></li> 
-                <li><a href="./category.html">Category</a></li>
+                <li><a href="{{ route('category.index') }}">Category</a></li>
                 <li>
                     <div class="login-infor-user" data-bs-toggle="dropdown">
                         <img src="../img/avatar.png" alt="">                                              
                     </div>
                     <div class="dropdown-menu tooluser" aria-l  abelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="./use-detail.html">View Profile</a>
-                        <a class="dropdown-item" href="./create-docs.html">New Docs</a>
+                        <a class="dropdown-item" href="{{ route('idea.create') }}">New iIeas</a>
                         <a class="dropdown-item" href="./dashboard.html">Dashboard</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </li> 
             </ul>                       

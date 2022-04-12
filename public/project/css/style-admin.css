@@ -626,10 +626,7 @@
 @media only screen and (max-width: 1350px) {
     .box .box-content-bottom{
         display: block;
-    }
-    .tbody-documents{
-        display: block;
-    }
+    }    
     .tbody-doc-left p{
         width: auto;
     }

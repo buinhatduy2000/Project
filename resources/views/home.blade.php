@@ -29,7 +29,7 @@
                         <div class="tbody-documents">
                             <div class="tbody-doc-left">
                                 <h3>{{ $idea->idea_title }}</h3>
-                                <p>
+                                <p class="intro-ideas">
                                 <p>{{ $idea->description }}</p>
                                 </p>
                                 @if ($idea->anonymous == 1)
@@ -53,7 +53,8 @@
                                 </a>
                                 <p class="view">
                                     <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
-                                    &emsp;&emsp;&emsp;&nbsp;
+                                </p>
+                                <p class="view">                                                                      
                                     <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
                                     <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likes_count }}&nbsp;
                                     <i class="bi bi-hand-thumbs-down-fill"></i> {{ $idea->dislikes_count }}&nbsp;
@@ -124,9 +125,10 @@
                                     <a href="{{ route('idea.show', ['idea' => $idea->id]) }}">
                                         <button class="btn btn-outline-secondary">See More</button>
                                     </a>
-                                    <p class="view">
-                                        <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
-                                        &emsp;&emsp;&emsp;&nbsp;
+                                    <p class="view-ct">
+                                        <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                       
+                                    </p>
+                                    <p class="view-ct2">
                                         <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
                                         <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likes_count }}&nbsp;
                                         <i class="bi bi-hand-thumbs-down-fill"></i> {{ $idea->dislikes_count }}&nbsp;
