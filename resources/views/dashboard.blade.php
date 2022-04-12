@@ -47,12 +47,7 @@
 
                 <section class="recent">
                     <div class="activity-grid">
-                        <div class="activity-card">
-                            <div id="chart-all">
-                                <!-- show dashboard for number of staff, downloads, category -->
-                                <h3>Overview</h3>
-                                <canvas id="myChart" style="width: 100%"></canvas>
-                            </div>
+                        <div class="activity-card">                            
                             <div id="chart-likes">
                                 <h3>All Ideas</h3>
                                 <canvas id="myChartLikes" style="width: 100%"></canvas>
@@ -83,34 +78,7 @@
                                         '{{$item->ideas->count()}}',
                                     @endforeach
                                 ]
-
-                                new Chart("myChart", {
-                                    type: "line",
-                                    data: {
-                                        labels: xValues,
-                                        datasets: [{
-                                                data: idea_month,
-                                                borderColor: "red",
-                                                fill: false,
-                                            },
-                                            {
-                                                data: [1600, 1700, 1700, 1900, 2000, 2700, 4000, 5000, 6000, 7000, 5800, 4800],
-                                                borderColor: "green",
-                                                fill: false,
-                                            },
-                                            {
-                                                data: [300, 700, 2000, 5000, 6000, 4000, 2000, 1000, 200, 100, 120, 200],
-                                                borderColor: "blue",
-                                                fill: false,
-                                            },
-                                        ],
-                                    },
-                                    options: {
-                                        legend: {
-                                            display: false
-                                        },
-                                    },
-                                });
+                                
                                 new Chart("myChartLikes", {
                                     type: "line",
                                     data: {
@@ -191,33 +159,7 @@
                                     },
                                 });
                             </script>
-                        </div>
-                        <div class="summary">
-                            <div class="summary-card">
-                                <div class="summary-single">
-                                    <span class="ti-id-badge"></span>
-                                    <div>
-                                        <h5>1960</h5>
-                                        <small>Number of staff</small>
-                                    </div>
-                                </div>
-                                <div class="summary-single">
-                                    <span class="ti-calendar"></span>
-                                    <div>
-                                        <h5>1608</h5>
-                                        <small>downloads</small>
-                                    </div>
-                                </div>
-                                <div class="summary-single">
-                                    <span class="ti-face-smile"></span>
-                                    <div>
-                                        <h5>{{count($categories)}}</h5>
-                                        <small>Category</small>
-                                    </div>
-                                </div>
-                                <button id="view-all-btn" class="btn btn-outline-primary">View</button>
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                 </section>
             </main>
@@ -242,13 +184,7 @@
             document.getElementById("chart-likes").style.display = 'none';
             document.getElementById("chart-dislikes").style.display = 'none';
             document.getElementById("chart-all").style.display = 'none';
-        };
-        document.getElementById("view-all-btn").onclick = function() {
-            document.getElementById("chart-downloads").style.display = 'none';
-            document.getElementById("chart-likes").style.display = 'none';
-            document.getElementById("chart-dislikes").style.display = 'none';
-            document.getElementById("chart-all").style.display = 'block';
-        };
+        };        
 
         document.getElementById("navbar-item").onclick = function() {
             document.getElementById("navbar-item-detail").style.display = "block";
