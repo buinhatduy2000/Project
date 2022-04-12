@@ -29,6 +29,79 @@
 </head>
 
 <body>
+    <!-- navbar chua login, bi navbar da login de len, xoa navbar da login di la nhin thay navbar chua login -->
+    <!-- <header>
+        <div class="row">
+          <nav id="navigation">
+            <a href="./home.html" class="logo">Group.3 Ideas</a>
+            <div class="tbody-responsive-navbar">
+                <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
+                <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-x-square"></i></i></button>
+            </div>          
+            <ul class="menu-left">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./start-page.html">Introduction</a></li>                                     
+                <li><a href="#">Contact</a></li> 
+                <li><a href="./category.html">Category</a></li>
+                <li><button type="button" class="custom-btn btn-12" onclick="location.href='./login.html'"><span>Start!</span><span>Login</span></button></li> 
+            </ul>                       
+          </nav>
+        </div>
+        <div id="navbar-item-detail">
+            <ul>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./start-page.html">Introduction</a></li>                                     
+                <li><a href="#">Contact</a></li> 
+                <li><a href="./category.html">Category</a></li>
+                <li><button type="button" class="custom-btn btn-12" onclick="location.href='./login.html'"><span>Start!</span><span>Login</span></button></li>
+            </ul>
+        </div> 	     
+    </header>  -->
+    <!-- navbar da login  -->
+    <header>
+        <div class="row">
+          <nav id="navigation">
+            <a href="./home.html" class="logo">Group.3 Ideas</a>
+            <div class="tbody-responsive-navbar">
+                <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
+                <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-x-square"></i></i></button>
+            </div>          
+            <ul class="menu-left">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="./start-page.html">Introduction</a></li>                                     
+                <li><a href="#">Contact</a></li> 
+                <li><a href="./category.html">Category</a></li>
+                <li>
+                    <div class="login-infor-user" data-bs-toggle="dropdown">
+                        <img src="../img/avatar.png" alt="">                                              
+                    </div>
+                    <div class="dropdown-menu tooluser" aria-l  abelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="./use-detail.html">View Profile</a>
+                        <a class="dropdown-item" href="./create-docs.html">New Docs</a>
+                        <a class="dropdown-item" href="./dashboard.html">Dashboard</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li> 
+            </ul>                       
+          </nav>
+        </div>
+        <div id="navbar-item-detail">
+            <ul>
+                <li>
+                    <img src="../img/avatar.png" alt="">
+                    <div class="login-infor-user-name">
+                        <p>Oliver Smith</p>
+                        <h6>Teacher English</h6>
+                    </div>
+                </li>
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./start-page.html">Introduction</a></li>                                     
+                <li><a href="#">Contact</a></li> 
+                <li><a href="./category.html">Category</a></li>
+                <li><button type="button" class="custom-btn btn-12" onclick="location.href='./login.html'"><span>Start!</span><span>Logout</span></button></li>
+            </ul>
+        </div> 	     
+    </header>
     @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
         <div class="admin-header">
             <div class="admin-logo">
@@ -128,16 +201,16 @@
                                 <button><a href="{{ route('login') }}">Login</a></button>
                             </div>
                         @endif
-                        <div class="tbody-responsive-navbar">
+                        <!-- <div class="tbody-responsive-navbar">
                             <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
                             <button class="btn btn-secondary" id="navbar-item-cancel"><i
                                     class="bi bi-list"></i></button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
 
-            <div id="navbar-item-detail">
+            <!-- <div id="navbar-item-detail">
                 <div class="login-infor-user" data-bs-toggle="dropdown">
                     <img src="{{ asset('project/img/avatar.png') }}" alt="">
                     <div class="login-infor-user-name">
@@ -162,7 +235,7 @@
                             Profile</a></li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                 </ul>
-            </div>
+            </div> -->
             <div class="tbody">
                 <div class="tbody-box-responsive">
                     <form class="d-flex">
