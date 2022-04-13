@@ -30,17 +30,15 @@
         @yield('css')
     </head>
 
-    <body>
-        <div class="admin-header">
-            <div class="admin-logo">
-                <img src="{{ asset('project/img/logo.png') }}" alt="">
-            </div>
-            <div class="admin-img-login">
-                <img src="{{ asset('project/img/img_login.png') }}" alt="">
-            </div>
-        </div>
+    <body>        
         <div class="admin-content">
             <div class="admin-content-left">
+                <div class="admin-header">
+                    <a href="../Admin/admin.html" class="logo">Group.3 Ideas</a>
+                    <div class="admin-img-login">
+                        <img src="{{ asset('project/img/img_login.png') }}" alt="">
+                    </div>
+                </div>
                 <div class="admin-box-function">
                     <span class="admin-title">Manage</span>
                     <a href="{{ route('home') }}">
@@ -217,7 +215,7 @@
         </header>
         <div class="tbody">
             <div class="tbody-box-responsive">
-                <form class="d-flex">
+                <form>
                     <input class="btn btn-outline-success" type="button" id="category" value="Category" />
                     <input class="btn btn-outline-success" type="button" id="cate-cancel" value="Category" />
                 </form>
@@ -308,13 +306,13 @@
             };
         document.getElementById("category").onclick = function() {
             document.getElementById("cate-ct").style.display = "block";
-            document.getElementById("cate-cancel").style.display = "block";
+            document.getElementById("cate-cancel").style.display = "inline-block";
             document.getElementById("category").style.display = "none";
         };
         document.getElementById("cate-cancel").onclick = function() {
             document.getElementById("cate-ct").style.display = "none";
             document.getElementById("cate-cancel").style.display = "none";
-            document.getElementById("category").style.display = "block";
+            document.getElementById("category").style.display = "inline-block";
         };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
