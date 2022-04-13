@@ -29,79 +29,6 @@
 </head>
 
 <body>
-    <!-- navbar chua login, bi navbar da login de len, xoa navbar da login di la nhin thay navbar chua login -->
-    <!-- <header>
-        <div class="row">
-          <nav id="navigation">
-            <a href="./home.html" class="logo">Group.3 Ideas</a>
-            <div class="tbody-responsive-navbar">
-                <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
-                <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-x-square"></i></i></button>
-            </div>          
-            <ul class="menu-left">
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./start-page.html">Introduction</a></li>                                     
-                <li><a href="#">Contact</a></li> 
-                <li><a href="./category.html">Category</a></li>
-                <li><button type="button" class="custom-btn btn-12" onclick="location.href='./login.html'"><span>Start!</span><span>Login</span></button></li> 
-            </ul>                       
-          </nav>
-        </div>
-        <div id="navbar-item-detail">
-            <ul>
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./start-page.html">Introduction</a></li>                                     
-                <li><a href="#">Contact</a></li> 
-                <li><a href="./category.html">Category</a></li>
-                <li><button type="button" class="custom-btn btn-12" onclick="location.href='./login.html'"><span>Start!</span><span>Login</span></button></li>
-            </ul>
-        </div> 	     
-    </header>  -->
-    <!-- navbar da login  -->
-    <header>
-        <div class="row">
-          <nav id="navigation">
-            <a href="./home.html" class="logo">Group.3 Ideas</a>
-            <div class="tbody-responsive-navbar">
-                <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
-                <button class="btn btn-secondary" id="navbar-item-cancel"><i class="bi bi-x-square"></i></i></button>
-            </div>          
-            <ul class="menu-left">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="./start-page.html">Introduction</a></li>                                     
-                <li><a href="#">Contact</a></li> 
-                <li><a href="{{ route('category.index') }}">Category</a></li>
-                <li>
-                    <div class="login-infor-user" data-bs-toggle="dropdown">
-                        <img src="../img/avatar.png" alt="">                                              
-                    </div>
-                    <div class="dropdown-menu tooluser" aria-l  abelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="./use-detail.html">View Profile</a>
-                        <a class="dropdown-item" href="{{ route('idea.create') }}">New iIeas</a>
-                        <a class="dropdown-item" href="./dashboard.html">Dashboard</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
-                    </div>
-                </li> 
-            </ul>                       
-          </nav>
-        </div>
-        <div id="navbar-item-detail">
-            <ul>
-                <li>
-                    <img src="../img/avatar.png" alt="">
-                    <div class="login-infor-user-name">
-                        <p>Oliver Smith</p>
-                        <h6>Teacher English</h6>
-                    </div>
-                </li>
-                <li><a href="./home.html">Home</a></li>
-                <li><a href="./start-page.html">Introduction</a></li>                                     
-                <li><a href="#">Contact</a></li> 
-                <li><a href="./category.html">Category</a></li>
-                <li><button type="button" class="custom-btn btn-12" onclick="location.href='./login.html'"><span>Start!</span><span>Logout</span></button></li>
-            </ul>
-        </div> 	     
-    </header>
     @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
         <div class="admin-header">
             <div class="admin-logo">
@@ -116,21 +43,21 @@
                 <div class="admin-box-function">
                     <span class="admin-title">Manage</span>
                     <a href="{{ route('home') }}">
-                        <div onclick="activeMenu(0)" class="menu {{ (request()->is('/')) ? 'active-bgr' : '' }}">
+                        <div onclick="activeMenu(0)" class="menu {{ request()->is('/') ? 'active-bgr' : '' }}">
                             <img src="{{ asset('project/img/viewSite.png') }}" alt="">
-                                <span>View Site</span>
+                            <span>View Site</span>
                         </div>
                     </a>
                     <a href="{{ route('category.index') }}">
-                        <div onclick="activeMenu(1)" class="menu {{ (request()->is('category')) ? 'active-bgr' : '' }}">
-                                <img src="{{ asset('project/img/document.png') }}" alt="">
-                                <span>Campaign</span>
+                        <div onclick="activeMenu(1)" class="menu {{ request()->is('category') ? 'active-bgr' : '' }}">
+                            <img src="{{ asset('project/img/document.png') }}" alt="">
+                            <span>Campaign</span>
                         </div>
                     </a>
                     <a href={{ route('adminListUser') }}>
-                        <div onclick="activeMenu(2)" class="menu {{ (request()->is('user*')) ? 'active-bgr' : '' }}">
+                        <div onclick="activeMenu(2)" class="menu {{ request()->is('user*') ? 'active-bgr' : '' }}">
                             <img src="{{ asset('project/img/users.png') }}" alt="">
-                                <span>Users</span>
+                            <span>Users</span>
 
                         </div>
                     </a>
@@ -144,75 +71,66 @@
             </div>
             @yield('content')
         @else
-            <div class="header">
-                <div class="header-navbar">
-                    <div class="header-left">
-                        <ul>
-                            <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="">Startpage</a></li>
-                            <li><a href="">Follow</a></li>
-                            <li><a href="">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="header-middle"><a href="{{ route('home') }}"><img
-                                src="{{ asset('project/img/logo.png') }}" alt="logo"></a></div>
-                    <div class="header-right">
-                        <div class="header-search-box">
-                            <input class="search-box" placeholder="Search" />
-                            <button class="search-box-btn" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                        @if (Auth::guard('account')->check())
-                            <div class="user-box">
-                                <div class="dropdown">
-                                    <div class="login-infor-user" data-bs-toggle="dropdown">
-                                        <img src="{{ asset('project/img/avatar.png') }}" alt="">
-                                        <div class="login-infor-user-name">
-                                            <p>{{ Auth::guard('account')->user()->personal_info->first_name .' ' .Auth::guard('account')->user()->personal_info->last_name }}
-                                            </p>
-                                            <h6>{{ ucfirst(trans(Auth::guard('account')->user()->role)) }}</h6>
-                                        </div>
-                                        <p><i class="bi bi-chevron-down"></i></p>
-                                    </div>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('viewInfo', ['id' => Auth::guard('account')->user()->id]) }}">View
-                                                Profile</a></li>
-                                        @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_QAM)
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('dashboard') }}">Dashboard</a></li>
-                                        @endif
-                                        @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_ADMIN)
-                                            <li><a class="dropdown-item" href="{{ route('adminListUser') }}">List
-                                                    User</a>
-                                            </li>
-                                        @endif
-                                        @if (Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_STAFF)
-                                            <li><a class="dropdown-item" href="{{ route('idea.create') }}">New
-                                                    Idea</a></li>
-                                        @endif
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        @else
-                            <div class="login-box">
-                                <button><a href="{{ route('login') }}">Login</a></button>
-                            </div>
-                        @endif
-                        <!-- <div class="tbody-responsive-navbar">
+            <header>
+                <div class="row">
+                    <nav id="navigation">
+                        <a href="{{ route('home') }}" class="logo">Group.3 Ideas</a>
+                        <div class="tbody-responsive-navbar">
                             <button class="btn btn-secondary" id="navbar-item"><i class="bi bi-list"></i></button>
                             <button class="btn btn-secondary" id="navbar-item-cancel"><i
-                                    class="bi bi-list"></i></button>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+                                    class="bi bi-x-square"></i></i></button>
+                        </div>
+                        <ul class="menu-left">
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="#">Introduction</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li>
+                                <div class="login-infor-user" data-bs-toggle="dropdown">
+                                    <img src="{{ asset('project/img/avatar.png') }}" alt="">
+                                </div>
+                                <div class="dropdown-menu tooluser" aria-l abelledby="dropdownMenuLink">
+                                    <a class="dropdown-item"
+                                        href="{{ route('viewInfo', ['id' => Auth::guard('account')->user()->id]) }}">View
+                                        Profile</a>
+                                    @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_STAFF)
+                                        <a class="dropdown-item" href="{{ route('idea.create') }}">New Ideas</a>
+                                    @endif
 
-            <!-- <div id="navbar-item-detail">
+                                    @if (Auth::guard('account')->user()->role === \App\Models\Account::ACCOUNT_QAM)
+                                        <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                    @endif
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div id="navbar-item-detail">
+                    <ul>
+                        <li>
+                            <img src="{{ asset('project/img/avatar.png') }}" alt="">
+                            <div class="login-infor-user-name">
+                                <p>{{ Auth::guard('account')->user()->personal_info->first_name .' ' .Auth::guard('account')->user()->personal_info->last_name }}
+                                </p>
+                                <h6>{{ ucfirst(trans(Auth::guard('account')->user()->role)) }}</h6>
+                            </div>
+                        </li>
+                        <li><a href="./home.html">Home</a></li>
+                        <li><a href="{{ route('viewInfo', ['id' => Auth::guard('account')->user()->id]) }}">View
+                                Profile</a></li>
+                        <li><a href="{{ route('idea.create') }}">New Ideas</a></li>
+                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li><button type="button" class="custom-btn btn-12"
+                                onclick="location.href='{{ route('logout') }}'"><span>Start!</span><span>Logout</span></button>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            {{-- <div id="navbar-item-detail">
                 <div class="login-infor-user" data-bs-toggle="dropdown">
-                    <img src="{{ asset('project/img/avatar.png') }}" alt="">
+                    <img src="{{ asset('project/img/avatar.png') }}">
                     <div class="login-infor-user-name">
                         <p>{{ Auth::guard('account')->user()->personal_info->first_name .' ' .Auth::guard('account')->user()->personal_info->last_name }}
                         </p>
@@ -235,7 +153,8 @@
                             Profile</a></li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                 </ul>
-            </div> -->
+            </div> --}}
+
             <div class="tbody">
                 <div class="tbody-box-responsive">
                     <form class="d-flex">

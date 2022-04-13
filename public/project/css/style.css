@@ -149,7 +149,7 @@ header a:hover,a :focus {
 	transition: all 0s ease;
 }
 header {
-	position: fixed;
+	position: sticky;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -209,7 +209,7 @@ ul.menu-left:before {
 	clear: both;
 }
 .signature {
-	position: fixed;
+	position: sticky;
 	font-weight: 100;
 	bottom: 10px;
 	color: #000;
