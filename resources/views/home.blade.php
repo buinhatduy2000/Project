@@ -27,7 +27,7 @@
                     </div>
                     @foreach ($ideas as $idea)
                         <div class="tbody-documents">
-                            <div class="tbody-doc-left">
+                            <div class="tbody-doc-left col-sm-8">
                                 <h3>{{ $idea->idea_title }}</h3>
                                 <p class="intro-ideas">
                                 <p>{{ $idea->description }}</p>
@@ -40,7 +40,7 @@
                                         - {{ $idea->created_at->format('m/d/Y') }}</p>
                                 @endif
                             </div>
-                            <div class="tbody-doc-right">
+                            <div class="tbody-doc-right col-sm-3" style="text-align:center">
                                 <p class="tbody-doc-right-date"><i class="bi bi-calendar2-week"></i>
                                     <span>Expiry:</span>{{ $idea->category->second_closure_date }}
                                 </p>
@@ -51,10 +51,10 @@
                                 <a href="{{ route('idea.show', ['idea' => $idea->id]) }}">
                                     <button class="btn btn-outline-secondary">See More</button>
                                 </a>
-                                <p class="view">
-                                    <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
+                                <p class="view-ct">
+                                        <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                       
                                 </p>
-                                <p class="view">                                                                      
+                                <p class="view-ct2">
                                     <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
                                     <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likes_count }}&nbsp;
                                     <i class="bi bi-hand-thumbs-down-fill"></i> {{ $idea->dislikes_count }}&nbsp;
@@ -103,9 +103,10 @@
                                     </p>
                                     <p class="tbody-doc-right-date-responsive">
                                         <i class="bi bi-calendar2-week"></i>
-                                        <span>Expiry:</span> {{ $idea->category->second_closure_date }}
-                                    </p>
-                                    <p>{{ $idea->description }}</p>
+                                        <span>Expiry:</span> {{ $idea->category->second_closure_date }} &nbsp;
+                                        <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;&nbsp;
+                                    </p>                                    
+                                    <p class="intro-ideas">{{ $idea->description }}</p>
                                     @if ($idea->anonymous == 1)
                                         <p class="author">Post with Anonymous</p>
                                     @else
@@ -124,16 +125,25 @@
                                     </a>
                                     <a href="{{ route('idea.show', ['idea' => $idea->id]) }}">
                                         <button class="btn btn-outline-secondary">See More</button>
-                                    </a>
-                                    <p class="view-ct">
-                                        <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                       
-                                    </p>
-                                    <p class="view-ct2">
-                                        <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
-                                        <i class="bi bi-hand-thumbs-up-fill"></i> {{ $idea->likes_count }}&nbsp;
-                                        <i class="bi bi-hand-thumbs-down-fill"></i> {{ $idea->dislikes_count }}&nbsp;
-                                        <i class="bi bi-chat-square"></i> {{ $idea->comments->count() }}&nbsp;
-                                    </p>
+                                    </a>    
+                                    <div class="view-ct2-responsive">
+                                        <p>
+                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}  
+                                            
+                                        </p>  
+                                        <p>
+                                            <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
+                                        </p>                                        
+                                    </div>
+                                    <div class="view-ct2">
+                                        <p>
+                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                              
+                                        </p>
+                                        <p>
+                                            <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
+                                        </p>
+                                    </div>                                                                 
+                                    
                                 </div>
                             </div>
                         @endforeach

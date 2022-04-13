@@ -34,7 +34,7 @@
         <div class="admin-content">
             <div class="admin-content-left">
                 <div class="admin-header">
-                    <a href="../Admin/admin.html" class="logo">Group.3 Ideas</a>
+                    <p class="logo">Group.3 Ideas</p>
                     <div class="admin-img-login">
                         <img src="{{ asset('project/img/img_login.png') }}" alt="">
                     </div>

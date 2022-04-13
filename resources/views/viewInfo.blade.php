@@ -55,24 +55,60 @@
             </div>
 
             @foreach($ideas as $idea)
-            <div class="tbody-documents">
-                <div class="tbody-doc-left">
-                    <h3>{{$idea->idea_title}}</h3>
-                    <p>
-                        {{$idea->description}}
-                    </p>
-                    <p class="author">{{$idea->author->personal_info->first_name .' '. $idea->author->personal_info->last_name}} - {{$idea->created_at->format('m/d/Y')}}</p>
-                </div>
-                <div class="tbody-doc-right">
-                    <p><i class="bi bi-calendar2-week"></i> {{$idea->category->first_closure_date}} to {{$idea->category->second_closure_date}}</p>
-                    <button class="btn btn-outline-success button-download-idea" data-id="{{$idea->id}}">Download</button>
-                    <button class="btn btn-outline-secondary"><a href="{{route('idea.show', ['idea' => $idea->id])}}">See More</a></button>
-                    <p class="view">
-                        <i class="bi bi-tag"></i> {{$idea->category->category_name}} &emsp;&emsp;&emsp;&nbsp;
-                        <i class="bi bi-people-fill"></i> {{$idea->views}}
-                    </p>
-                </div>
-            </div>
+                <div class="tbody-documents">
+                    <div class="tbody-doc-left col-sm-8">
+                        <h3>{{ $idea->idea_title }}</h3>
+                            <p class="author-responsive">
+                                {{ $idea->author->personal_info->first_name . ' ' . $idea->author->personal_info->last_name }}
+                                - {{ $idea->category->first_closure_date }} &ensp;
+                                <i class="bi bi-tag"> {{ $idea->category->category_name }}</i>
+                        </p>
+                        <p class="tbody-doc-right-date-responsive">
+                            <i class="bi bi-calendar2-week"></i>
+                            <span>Expiry:</span> {{ $idea->category->second_closure_date }} &nbsp;
+                            <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;&nbsp;
+                        </p>                                    
+                        <p class="intro-ideas">{{ $idea->description }}</p>
+                            @if ($idea->anonymous == 1)
+                                <p class="author">Post with Anonymous</p>
+                            @else
+                                <p class="author">
+                                    {{ $idea->author->personal_info->first_name . ' ' . $idea->author->personal_info->last_name }}
+                                    - {{ $idea->created_at->format('m/d/Y') }}
+                                </p>
+                            @endif
+                    </div>
+                    <div class="tbody-doc-right col-sm-3">
+                        <p class="tbody-doc-right-date"><i class="bi bi-calendar2-week"></i>
+                                        <span>Expiry:</span>{{ $idea->category->second_closure_date }}
+                                    </p>
+                                    <a href="{{ route('downloadIdea', ['id' => $idea->id]) }}">
+                                        <button class="btn btn-outline-success button-download-idea"
+                                            data-id="{{ $idea->id }}">Download</button>
+                                    </a>
+                                    <a href="{{ route('idea.show', ['idea' => $idea->id]) }}">
+                                        <button class="btn btn-outline-secondary">See More</button>
+                                    </a>    
+                                    <div class="view-ct2-responsive">
+                                        <p>
+                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}  
+                                            
+                                        </p>  
+                                        <p>
+                                            <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
+                                        </p>                                        
+                                    </div>
+                                    <div class="view-ct2">
+                                        <p>
+                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                              
+                                        </p>
+                                        <p>
+                                            <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
+                                        </p>
+                                    </div>                                                                 
+                                    
+                                </div>
+                            </div>
             @endforeach
             @if (!count($ideas))
                 <h1 class="no-docs-upload">No document uploaded</h1>

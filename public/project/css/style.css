@@ -173,7 +173,7 @@ header nav .logo {
 	font-size: 1.25rem;
 	line-height: inherit;
 	font-weight: 500;
-	color: black;
+	color: black !important;
 }
 
 header nav .logo:after {
@@ -465,14 +465,16 @@ i {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 192px;
+    height: 100%;
     margin-right: 0;
 }
 .intro-ideas {
+    height: 101px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden; 
+    margin-top: 12px;
 }
 .tbody-doc-left p{
     font-size: 18px;
@@ -525,6 +527,9 @@ i {
     margin-top: 0;
     display: flex;
     justify-content: space-evenly;    
+}
+.view-ct2-responsive {
+    display: none;
 }
 .page-navigation {
     display: flex;
@@ -1229,7 +1234,7 @@ i {
         display: none;
     }
     .tbody-doc-left {
-        height: 272px;
+        height: 100%;
         margin-right: 0;
     }
     .tbody-doc-right-date span {
@@ -1284,6 +1289,12 @@ i {
 }
 @media screen and (max-width: 678px)
 {    
+    .view-ct2-responsive {
+        display: inline-block;
+    }
+    .view-ct2 {
+        display: none;
+    }
     .tbody-home {
         width: 100% !important;
     }
@@ -1343,7 +1354,7 @@ i {
     }
     .tbody-doc-right-date {
         font-size: 14px;
-    }
+    }    
     /* detail page */
     .view-detail {
         display: none;
@@ -1395,7 +1406,7 @@ i {
         width: 402px;
     }
 }
-@media screen and (max-width: 581px) {
+@media screen and (max-width: 582px) {
     .footer-1 {
         display: block;
         padding-right: 0;
@@ -1441,6 +1452,9 @@ i {
     .view-ct2 {
         display: flex;
         flex-direction: column;
+    }    
+    .view-ct2 {
+        display: none;
     }
     /* detail page */
     .tbody-detail-ct {
@@ -1469,7 +1483,7 @@ i {
     }
     .tbody-doc-left {
         display: block;
-        height: 250px;
+        height: 100%;
     }
     .tbody-doc-right {
         display: block;
@@ -1480,14 +1494,14 @@ i {
     }
     .author {
         display: none;
-    }
-    .view-ct2 {
-        display: none;
-    }
+    }    
     .tbody-doc-right-date-responsive {
         display: block;
     }
     .tbody-doc-right-date {
+        display: none;
+    }
+    .view-ct2-responsive {
         display: none;
     }
     /* detail page */
@@ -1540,7 +1554,7 @@ i {
     }
     /* home page */
     .tbody-doc-left {
-        height: 310px;
+        height: 100%;
     }
     .author-responsive p{
         font-size: 14px;
