@@ -53,11 +53,11 @@ class CategoryController extends Controller
                 ]);
             }else {
                 $request->validate([
-                    'category_name' => ['required','max:255', Rule::unique('categories')->ignore($id)->whereNull('deleted_at')],
+                    // 'category_name' => ['required','max:255', Rule::unique('categories')->ignore($id)->whereNull('deleted_at')],
                     'category_date' => 'required|date_format:Y-m-d|after_or_equal:'.date('Y-m-d')
                 ]);
                 $update_cate = $cate->update([
-                    'category_name' => $request->input('category_name'),
+                    // 'category_name' => $request->input('category_name'),
                     'first_closure_date' => $request->category_date,
                     'second_closure_date' => Carbon::createFromFormat('Y-m-d', $request->category_date)->addDays(14),
                 ]);

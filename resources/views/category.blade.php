@@ -12,6 +12,8 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+            <div class="alert alert-success" id="success" role="alert" style="display: none"></div>
+            <div class="alert alert-error" id="error" role="alert" style="display: none"></div>
             <div class="box-table">
                 <table>
                     <thead>
