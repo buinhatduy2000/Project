@@ -15,6 +15,16 @@
 @endsection
 @section('content')
     <div class="admin-content-right">
+        @if (Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('error') }}
+            </div>
+        @endif
+        @if (Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
         <div class="userList-container">
             <div class="userList-btn">
                 <h2>User List:</h2>
@@ -50,7 +60,7 @@
                                 <a href="{{route('adminEditUser', ['id' => $user->id])}}"><button>Edit</button></a>
                                 <a href="{{route('adminDeleteUser', ['id' => $user->id])}}" onclick="return confirm('Are you really want to delete this account')"><button>Delete</button></a>
                             </td>
-                        </tr> 
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
