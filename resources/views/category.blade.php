@@ -53,7 +53,7 @@
                                         <div class="document-view">
                                             <span>{{ $cate->ideas->count() }}</span>
                                             <span class="document-view-between">
-                                                <a href="/category-by-id/{{ $cate->id }}">ideas</a>
+                                                <a href="/category-by-id/{{ $cate->id }}">{{ $cate->ideas->count() > 1 ? 'ideas' : 'idea' }}</a>
                                             </span>
                                             <i class="far fa-arrow-alt-circle-up" style="color: #9AE6B4;"></i>
                                         </div>
@@ -127,7 +127,7 @@
                 </table>
             </div>
             <div class="document-number">
-                {{ $categories->links('paginate') }}
+                {{ $categories->links('vendor.pagination.custom') }}
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
@@ -284,7 +284,7 @@
                         </div>
                     @endforeach
                 </div>
-                {{ $categories->links('paginate') }}
+                {{ $categories->links('vendor.pagination.custom') }}
             </div>
         </div>
     @endif

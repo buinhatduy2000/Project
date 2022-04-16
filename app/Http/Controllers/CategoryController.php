@@ -20,7 +20,7 @@ use File;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::paginate(5);
+        $categories = Category::whereNull('deleted_at')->paginate(5);
         return view('category', ['categories' => $categories]);
     }
 
@@ -70,9 +70,6 @@ class CategoryController extends Controller
     }
 
     public function destroy(Request $request, $id){
-//        if (! Gate::allows('delete-cate', $category)) {
-//            return redirect()->back()->with('error','You can not delete category');
-//        }
         $cate = Category::find($id);
         if ($cate->ideas->count() != 0){
             return redirect()->back()->with('error','Delete Category Not Success');
@@ -87,6 +84,7 @@ class CategoryController extends Controller
         }
 
     }
+
     public function export_csv(Request $request, $id)
     {
         $cate = Category::with('ideas')->where('id', $id)->first();

@@ -98,7 +98,6 @@ class HomeController extends Controller
 
         }
          return view('home', ['ideas' => $ideas->paginate(5)->appends(['sort_by' => request()->sort_by])]);
-//        return view('home', ['ideas' => $ideas]);
     }
 
     public function filByCategory($id)
