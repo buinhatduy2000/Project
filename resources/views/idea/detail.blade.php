@@ -117,9 +117,11 @@
                 </div>
                 <form action="comment/{{ $idea->id }}" method="POST" class="form-comment">
                     @csrf
+
+
                     <div class="input-comment">
-                        <input type="text" name="comment" placeholder="Add a comments...">
-                        <button type="submit">Post</button>
+                        <input class="comment-input form-control" type="text" name="comment" placeholder="Add a comments...">
+                        <button class="submit-comment" type="submit">Post</button>
                     </div>
                     <div class="checkbox-comment form-check">
                         <input class="form-check-input" type="checkbox" name="anonymous" value="1" id="flexCheckDefault">
@@ -134,6 +136,12 @@
 @section('script')
     <script>
         $(document).ready(function() {
+            $('.submit-comment').on('click', function(e) {
+                if (!$('.comment-input').val()){
+                    e.preventDefault()
+                    $('.comment-input').focus().addClass('is-invalid')
+                }
+            })
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
