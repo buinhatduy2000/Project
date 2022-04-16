@@ -30,7 +30,8 @@ $(document).ready(function () {
                     $("#success").slideUp(500, function() {
                         $(this).remove();
                     });
-                }, 3000)
+                    window.location.reload()
+                }, 2500)
                 $('.error-create-name').text('')
                 $('.error-create-date').text('')
                 $('#newModal').modal('hide')

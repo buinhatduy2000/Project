@@ -52,7 +52,7 @@
                                     <button class="btn btn-outline-secondary">See More</button>
                                 </a>
                                 <p class="view-ct">
-                                        <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                       
+                                        <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
                                 </p>
                                 <p class="view-ct2">
                                     <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
@@ -63,6 +63,11 @@
                             </div>
                         </div>
                     @endforeach
+                    @if (!count($ideas))
+                        <br>
+                    @else
+                        {{ $ideas->links('vendor.pagination.custom') }}
+                    @endif
                 </div>
             @endif
         </div>
@@ -105,7 +110,7 @@
                                         <i class="bi bi-calendar2-week"></i>
                                         <span>Expiry:</span> {{ $idea->category->second_closure_date }} &nbsp;
                                         <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;&nbsp;
-                                    </p>                                    
+                                    </p>
                                     <p class="intro-ideas">{{ $idea->description }}</p>
                                     @if ($idea->anonymous == 1)
                                         <p class="author">Post with Anonymous</p>
@@ -125,25 +130,25 @@
                                     </a>
                                     <a href="{{ route('idea.show', ['idea' => $idea->id]) }}">
                                         <button class="btn btn-outline-secondary">See More</button>
-                                    </a>    
+                                    </a>
                                     <div class="view-ct2-responsive">
                                         <p>
-                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}  
-                                            
-                                        </p>  
+                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
+
+                                        </p>
                                         <p>
                                             <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
-                                        </p>                                        
+                                        </p>
                                     </div>
                                     <div class="view-ct2">
                                         <p>
-                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}                                              
+                                            <i class="bi bi-tag"></i> {{ $idea->category->category_name }}
                                         </p>
                                         <p>
                                             <i class="bi bi-people-fill"></i> {{ $idea->views }}&nbsp;
                                         </p>
-                                    </div>                                                                 
-                                    
+                                    </div>
+
                                 </div>
                             </div>
                         @endforeach
