@@ -199,6 +199,13 @@
                             <h3 id="category-item-name">{{ $cate->category_name }}</h3>
                             {{-- <p>{{ $cate->first_closure_date }} - {{ $cate->second_closure_date }}</p> --}}
                             <div class="category-tool">
+                                @if(\Illuminate\Support\Facades\Auth::guard('account')->user()->role == \App\Models\Account::ACCOUNT_QAM)
+                                    <a href="{{ route('export_csv', ['id' => $cate->id]) }}"
+                                       style="text-decoration: none"><button class="category-btn-edit"
+                                         type="button">Export CSV</button></a>
+                                    <a href="{{ route('downloadCate', ['id' => $cate->id]) }}"
+                                       style="text-decoration: none"><button type="button"
+                                        class="category-btn-edit">Download All File</button></a>                                @endif
                                 <button type="button" class="category-btn-edit" data-bs-toggle="modal"
                                     data-bs-target="#editModal{{ $cate->id }}">Edit</button>
                                 {{-- asdasasd --}}
